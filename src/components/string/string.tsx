@@ -6,24 +6,21 @@ import {Button} from "../ui/button/button";
 import {Circle} from "../ui/circle/circle";
 import {TCircleItem} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
-import {reverseString} from "./reverse-string";
-export const StringComponent: React.FC = () => {
+import {reverseArray} from "./reverse-string";
+export const ArrayReverseComponent: React.FC = () => {
   const [array, setArray] = useState<TCircleItem[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isReversed, setIsReversed] = useState<boolean>(false);
-  const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-    setInputValue(e.currentTarget.value);
-  }
 
-  const handleButtonClick = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const symbols = inputValue.split('').map(item => ({
       item,
       state: ElementStates.Default
     }));
     setIsReversed(false); // Resetting the state upon new input
-    reverseString(symbols, setArray, setIsActive)
+      reverseArray(symbols, setArray, setIsActive)
         .then(() => {
           setIsReversed(true); // Setting the state upon completion of the operation
           setInputValue("");
@@ -34,11 +31,16 @@ export const StringComponent: React.FC = () => {
         });
     setInputValue("");
   }
+
+    const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
+        setInputValue(e.currentTarget.value);
+    }
+
   return (
     <SolutionLayout title="Строка">
       <form
           className={`${style["container"]}`}
-          onSubmit={handleButtonClick}
+          onSubmit={handleSubmit}
       >
         <Input
           placeholder="Введите строку"

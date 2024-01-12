@@ -14,7 +14,7 @@ export const FibonacciPage: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isReversed, setIsReversed] = useState<boolean>(false);
 
-  const performance = async (value: string) => {
+  const calculateFibonacci = async (value: string) => {
     setIsActive(true);
     const numbers = getFibonacciNumbers(parseInt(value));
     for (let i = 0; i < numbers.length; i++) {
@@ -28,13 +28,12 @@ export const FibonacciPage: React.FC = () => {
     e.preventDefault();
     if (inputValue.length !== 0) {
       setIsReversed(false);
-      performance(inputValue)
+      calculateFibonacci(inputValue)
           .then(() => {
             setIsReversed(true);
           })
           .catch(error => {
             console.error("An error occurred:", error);
-            // Обработка ошибок, если необходимо
           });
     }
   };
@@ -42,7 +41,7 @@ export const FibonacciPage: React.FC = () => {
     setInputValue(e.currentTarget.value)
     }
 
-    const isDisabled = (value: string) =>
+    const isDisabledButton = (value: string) =>
         !value || parseInt(value) > 19 || parseInt(value) < 1;
 
   return (
@@ -61,7 +60,7 @@ export const FibonacciPage: React.FC = () => {
         <Button
             text="Расчитать"
             type="submit"
-            disabled={isDisabled(inputValue)}
+            disabled={isDisabledButton(inputValue)}
             isLoader={isActive}
         />
       </form>
