@@ -91,7 +91,7 @@ export const FibonacciPage: React.FC = () => {
 //     - isActive: Tracks the activity state during the computation of Fibonacci numbers.
 //     - isReversed: Tracks the state when Fibonacci numbers are calculated.
 
-//     2. Method performance:
+//     2. Method calculateFibonacci:
 //     - Asynchronously calculates Fibonacci numbers based on the entered value.
 //     - During the calculations, it updates the numbers state and introduces a delay between updates for a visual effect.
 

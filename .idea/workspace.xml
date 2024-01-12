@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/fibonacci-page/fibonacci-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fibonacci-page/fibonacci-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/string/string.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/string/string.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fibonacci-page/fibonacci.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fibonacci-page/fibonacci.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +94,7 @@
       <updated>1703865867266</updated>
       <workItem from="1703865868302" duration="755000" />
       <workItem from="1705054537725" duration="4807000" />
-      <workItem from="1705070460876" duration="9570000" />
+      <workItem from="1705070460876" duration="10309000" />
     </task>
     <servers />
   </component>
