@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/string/reverse-string.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/string/string.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/delay.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/swap.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/string/string.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/string/string.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/string/string.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/string/string.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +102,7 @@
       <option name="presentableId" value="Default" />
       <updated>1703865867266</updated>
       <workItem from="1703865868302" duration="755000" />
-      <workItem from="1705054537725" duration="2612000" />
+      <workItem from="1705054537725" duration="4417000" />
     </task>
     <servers />
   </component>

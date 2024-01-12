@@ -11,7 +11,7 @@ export const StringComponent: React.FC = () => {
   const [array, setArray] = useState<TCircleItem[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [isActive, setIsActive] = useState<boolean>(false);
-
+  const [isReversed, setIsReversed] = useState<boolean>(false);
   const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value);
   }
@@ -22,8 +22,17 @@ export const StringComponent: React.FC = () => {
       item,
       state: ElementStates.Default
     }));
-    reverseString(letters, setArray, setIsActive);
-    setInputValue('');
+    setIsReversed(false); // Сбрасываем состояние при новом вводе
+    reverseString(letters, setArray, setIsActive)
+        .then(() => {
+          setIsReversed(true); // Устанавливаем состояние после завершения операции
+          setInputValue("");
+        })
+        .catch(error => {
+          console.error("An error occurred:", error);
+          // Обработка ошибок, если необходимо
+        });
+    setInputValue("");
   }
   return (
     <SolutionLayout title="Строка">
@@ -55,6 +64,11 @@ export const StringComponent: React.FC = () => {
                 </li>
             )}
         </ul>
+      {isReversed && (
+          <p className={`${style["notification"]} text_type_h3`}>
+            Строка развёрнута
+          </p>
+      )}
     </SolutionLayout>
   );
 };
