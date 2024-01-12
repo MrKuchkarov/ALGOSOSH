@@ -18,19 +18,19 @@ export const StringComponent: React.FC = () => {
 
   const handleButtonClick = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const letters = inputValue.split('').map(item => ({
+    const symbols = inputValue.split('').map(item => ({
       item,
       state: ElementStates.Default
     }));
-    setIsReversed(false); // Сбрасываем состояние при новом вводе
-    reverseString(letters, setArray, setIsActive)
+    setIsReversed(false); // Resetting the state upon new input
+    reverseString(symbols, setArray, setIsActive)
         .then(() => {
-          setIsReversed(true); // Устанавливаем состояние после завершения операции
+          setIsReversed(true); // Setting the state upon completion of the operation
           setInputValue("");
         })
         .catch(error => {
           console.error("An error occurred:", error);
-          // Обработка ошибок, если необходимо
+          // Error handling, if necessary
         });
     setInputValue("");
   }
