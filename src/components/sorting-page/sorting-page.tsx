@@ -16,6 +16,7 @@ export const SortingPage: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [radioBtnValue, setRadioBtnValue] = useState<string>(SortName.select);
   const [isReversed, setIsReversed] = useState<boolean>(false);
+  const [notificationText, setNotificationText] = useState<string>("");
 
   useEffect(() => {
     setInitArray(randomArray());
@@ -45,6 +46,19 @@ export const SortingPage: React.FC = () => {
   }
   const handleSortAscending = () => handleSortBtnClick(Direction.Ascending);
   const handleSortDescending = () => handleSortBtnClick(Direction.Descending);
+
+  useEffect(() => {
+    // Checking for the completion of sorting and setting the corresponding text
+    if (isReversed) {
+      const sortType =
+          radioBtnValue === SortName.select ? "отсортирован выбором" : "отсортирован пузырьком";
+      const sortOrder = sort === Direction.Ascending ? "по возрастанию" : "по убыванию";
+
+      setNotificationText(`Массив ${sortType} ${sortOrder}`);
+    } else {
+      setNotificationText(""); // If the array is not sorted, I clear the text
+    }
+  }, [isReversed, sort, radioBtnValue]);
 
   return (
     <SolutionLayout title="Сортировка массива">
@@ -76,7 +90,7 @@ export const SortingPage: React.FC = () => {
               className={`${style["container-btn"]}`}
           >
             <Button
-              text="По возростанию"
+              text="По возрастанию"
               sorting={Direction.Ascending}
               extraClass={`${style["sort-btn"]}`}
               isLoader={sort === Direction.Ascending && isActive}
@@ -112,9 +126,9 @@ export const SortingPage: React.FC = () => {
           </li>
           ))}
         </ul>
-        {isReversed && (
+        {notificationText && (
             <p className={`${style["notification"]} text_type_h3`}>
-              Массив отсортирован
+              {notificationText}
             </p>
         )}
       </div>
