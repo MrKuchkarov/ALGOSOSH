@@ -10,7 +10,7 @@ export enum SortName {
     select = "выбор",
 }
 
-export type TArrayItems = {
+export type TArrayItem = {
     item: number;
     state: ElementStates;
 }
