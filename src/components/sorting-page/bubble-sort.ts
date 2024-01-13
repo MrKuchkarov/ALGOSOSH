@@ -20,7 +20,7 @@ export const bubbleSortAscending = async (
             array[j + 1].state = ElementStates.Changing;
             setArray([...array]);
             await delay(DELAY_IN_MS);
-            if (array[j].item > array[j + 1].item) {
+            if (array[j].item < array[j + 1].item) {
                 swap(array, j, j + 1);
             }
             array[j].state = ElementStates.Default;
@@ -47,7 +47,7 @@ export const bubbleSortDescending = async (
             array[j + 1].state = ElementStates.Changing;
             setArray([...array]);
             await delay(DELAY_IN_MS);
-            if (array[j].item < array[j + 1].item) {
+            if (array[j].item > array[j + 1].item) {
                 swap(array, j, j + 1);
             }
             array[j].state = ElementStates.Default;
