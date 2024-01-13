@@ -7,11 +7,13 @@ import {swap} from "../../utils/swap";
 
 export const selectSortAscending = async (array: TArrayItem[],
                                           setArray: Dispatch<SetStateAction<TArrayItem[]>>,
-                                          setActive: Dispatch<SetStateAction<boolean>>) => {
+                                          setActive: Dispatch<SetStateAction<boolean>>,
+                                          setIsReversed: Dispatch<SetStateAction<boolean>>) => {
     setActive(true);
+    setIsReversed(false);
     for (let i = 0; i < array.length - 1; i++) {
         let minIndex = i;
-        for (let j = 0; j < array.length; j++) {
+        for (let j = i + 1; j < array.length; j++) {
             array[i].state = ElementStates.Changing;
             array[j].state = ElementStates.Changing;
             setArray([...array]);
@@ -28,15 +30,18 @@ export const selectSortAscending = async (array: TArrayItem[],
     array[array.length - 1].state = ElementStates.Modified;
     setArray([...array]);
     setActive(false);
+    setIsReversed(true);
 };
 
 export const selectSortDescending = async (array: TArrayItem[],
                                            setArray: Dispatch<SetStateAction<TArrayItem[]>>,
-                                           setActive: Dispatch<SetStateAction<boolean>>) => {
+                                           setActive: Dispatch<SetStateAction<boolean>>,
+                                           setIsReversed: Dispatch<SetStateAction<boolean>>) => {
     setActive(true);
+    setIsReversed(false);
     for (let i = 0; i < array.length - 1; i++) {
         let maxIndex = i;
-        for (let j = 0; j < array.length; j++) {
+        for (let j = i + 1; j < array.length; j++) {
             array[i].state = ElementStates.Changing;
             array[j].state = ElementStates.Changing;
             setArray([...array]);
@@ -53,4 +58,5 @@ export const selectSortDescending = async (array: TArrayItem[],
     array[array.length - 1].state = ElementStates.Modified;
     setArray([...array]);
     setActive(false);
+    setIsReversed(true);
 };

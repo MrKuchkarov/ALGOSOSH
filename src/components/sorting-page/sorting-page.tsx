@@ -22,6 +22,7 @@ export const SortingPage: React.FC = () => {
   }, []);
 
   const getRandomArray = () => {
+    setIsReversed(false);
     setInitArray(randomArray());
   };
 
@@ -32,16 +33,16 @@ export const SortingPage: React.FC = () => {
   const handleSortBtnClick = (value: Direction) => {
     setSort(value);
     if (radioBtnValue === SortName.select && value === Direction.Ascending) {
-      return selectSortAscending(initArray, setInitArray, setIsActive);
+      return selectSortAscending(initArray, setInitArray, setIsActive, setIsReversed);
     }
     if (radioBtnValue === SortName.select && value === Direction.Descending) {
-      return selectSortDescending(initArray, setInitArray, setIsActive);
+      return selectSortDescending(initArray, setInitArray, setIsActive, setIsReversed);
     }
     if (radioBtnValue === SortName.bubble && value === Direction.Ascending) {
-      return bubbleSortAscending(initArray, setInitArray, setIsActive);
+      return bubbleSortAscending(initArray, setInitArray, setIsActive, setIsReversed);
     }
     if (radioBtnValue === SortName.bubble && value === Direction.Descending) {
-      return  bubbleSortDescending(initArray, setInitArray, setIsActive);
+      return  bubbleSortDescending(initArray, setInitArray, setIsActive, setIsReversed);
     }
   }
 
