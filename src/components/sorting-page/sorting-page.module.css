@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container-radio-btn {
+    max-width: 980px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 52px;
+}
+
+.container-radio-input {
+    display: flex;
+    gap: 40px;
+}
+
+.container-btn {
+    display: flex;
+}
+
+.sort-btn {
+    margin: 0 12px 0 0;
+}
+
+.sort-btn:last-child {
+    margin: 0 0 0 68px;
+}
+
+.column-container {
+    padding: 0;
+    list-style-type: none;
+}
