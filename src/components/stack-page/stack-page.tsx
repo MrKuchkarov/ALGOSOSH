@@ -15,18 +15,18 @@ const [isCleaning, setIsCleaning] = useState<boolean>(false);
 const [isRemoving, setIsRemoving] = useState<boolean>(false);
 const [isReversed, setIsReversed] = useState<boolean>(false);
 
-const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 
 };
 
 const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
+    setInputValue(e.currentTarget.value)
+};
+const handleRemoveButton = async () => {
 
 };
-const handleRemoveButton = () => {
 
-};
-
-const handleClearButton = () => {
+const handleClearButton = async () => {
 
 };
 
@@ -41,8 +41,8 @@ const handleClearButton = () => {
             extraClass={`${style["stack-input"]}`}
             isLimitText={true}
             maxLength={4}
-            // value={inputValue}
-            // onChange={handleInputChange}
+            value={inputValue}
+            onChange={handleInputChange}
         />
         <Button
           text="Добавить"
