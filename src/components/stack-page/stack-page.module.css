@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    margin: 0 auto;
+    max-width: 830px;
+    align-items: center;
+    gap: 12px;
+}
+
+.stack-input {
+    max-width: 377px;
+}
+
+.stack-btn:last-child {
+    margin: 0 0 0 68px;
+}
+
+.stack-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 48px 0 0 0;
+}

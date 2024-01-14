@@ -117,12 +117,14 @@ export const SortingPage: React.FC = () => {
             className={`${style["column-container"]}`}
         >
           {initArray!.map((item) => (
-          <li key={uuidv4()}>
-            <Column
-              index={item.item}
-              state={item.state}
-              extraClass={`${style["array-column"]}`}
-            />
+          <li
+              key={uuidv4()}
+          >
+                <Column
+                  index={item.item}
+                  state={item.state}
+                  extraClass={`${style["array-column"]}`}
+                />
           </li>
           ))}
         </ul>

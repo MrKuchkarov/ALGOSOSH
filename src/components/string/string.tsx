@@ -7,6 +7,7 @@ import {Circle} from "../ui/circle/circle";
 import {TCircleItem} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
 import {reverseArray} from "./reverse-string";
+import { v4 as uuidv4 } from 'uuid';
 export const ArrayReverseComponent: React.FC = () => {
   const [array, setArray] = useState<TCircleItem[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
@@ -57,12 +58,14 @@ export const ArrayReverseComponent: React.FC = () => {
         />
       </form>
         <ul className={`${style["list-string"]}`}>
-            {array?.map((char: TCircleItem, index: number) =>
-                <li key={index}>
-                    <Circle
-                        letter={char.item}
-                        state={char.state}
-                    />
+            {array?.map((char: TCircleItem) =>
+                <li
+                    key={uuidv4()}
+                >
+                      <Circle
+                          letter={char.item}
+                          state={char.state}
+                      />
                 </li>
             )}
         </ul>

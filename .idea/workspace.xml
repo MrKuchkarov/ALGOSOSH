@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/stack-page/stack-page.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sorting-page/bubble-sort.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sorting-page/bubble-sort.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sorting-page/selection-sort.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sorting-page/selection-sort.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fibonacci-page/fibonacci-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fibonacci-page/fibonacci-page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/sorting-page/sorting-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sorting-page/sorting-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stack-page/stack-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stack-page/stack-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/string/string.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/string/string.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="TypeScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -108,7 +110,8 @@
       <workItem from="1705054537725" duration="4807000" />
       <workItem from="1705070460876" duration="10452000" />
       <workItem from="1705124597190" duration="11656000" />
-      <workItem from="1705155808868" duration="8231000" />
+      <workItem from="1705155808868" duration="8593000" />
+      <workItem from="1705218168230" duration="2038000" />
     </task>
     <servers />
   </component>

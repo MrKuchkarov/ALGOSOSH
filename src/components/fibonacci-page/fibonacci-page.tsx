@@ -7,7 +7,7 @@ import {Circle} from "../ui/circle/circle";
 import {getFibonacciNumbers} from "./fibonacci";
 import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
-
+import { v4 as uuidv4 } from 'uuid';
 export const FibonacciPage: React.FC = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
@@ -66,11 +66,13 @@ export const FibonacciPage: React.FC = () => {
       </form>
       <ul className={`${style["list-string"]}`}>
         {numbers?.map((number, index) =>
-            <li key={index}>
-              <Circle
-                  letter={number.toString()}
-                  tail={index.toString()}
-              />
+            <li
+                key={uuidv4()}
+            >
+                  <Circle
+                      letter={number.toString()}
+                      tail={index.toString()}
+                  />
             </li>
         )}
       </ul>
