@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FormEvent, useState} from "react";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import style from "./stack-page.module.css";
 import {Input} from "../ui/input/input";
@@ -14,6 +14,21 @@ const [isAdding, setIsAdding] = useState<boolean>(false);
 const [isCleaning, setIsCleaning] = useState<boolean>(false);
 const [isRemoving, setIsRemoving] = useState<boolean>(false);
 const [isReversed, setIsReversed] = useState<boolean>(false);
+
+const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+
+};
+
+const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
+
+};
+const handleRemoveButton = () => {
+
+};
+
+const handleClearButton = () => {
+
+};
 
   return (
     <SolutionLayout title="Стек">
@@ -45,6 +60,7 @@ const [isReversed, setIsReversed] = useState<boolean>(false);
           text="Очистить"
           extraClass={`${style["stack-btn"]}`}
           // disabled={!array.length || isActive}
+          // onClick={handleClearButton}
         />
       </form>
       <ul
