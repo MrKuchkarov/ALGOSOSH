@@ -15,11 +15,17 @@
 
 .stack-list {
     display: flex;
-    max-width: 368px;
+    justify-content: center;
+    max-width: 600px;
     max-height: 140px;
+    flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
-    margin: 48px 0 0 0;
-    gap: 16px;
+    margin: 70px auto 0;
+    gap: 70px 16px;
+}
 
+.notification {
+    margin: 130px 0;
+    color: darkorchid;
 }

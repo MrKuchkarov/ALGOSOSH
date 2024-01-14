@@ -11,55 +11,56 @@ import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 import {Stack} from "./stack";
 export const StackPage: React.FC = () => {
-    const [stack] = useState(new Stack<TCircleItem>());
+    const [stack] = useState(() => new Stack<TCircleItem>());
     const [array, setArray] = useState<TCircleItem[]>([]);
     const [inputValue, setInputValue] = useState<string>("");
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isAdding, setIsAdding] = useState<boolean>(false);
     const [isCleaning, setIsCleaning] = useState<boolean>(false);
     const [isRemoving, setIsRemoving] = useState<boolean>(false);
-    const [isReversed, setIsReversed] = useState<boolean>(false);
+    const stackSize = stack.getSize();
+    const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsActive(true);
+        setIsAdding(true);
+        if (inputValue && stackSize < 12) {
+            stack.push({ item: inputValue, state: ElementStates.Changing });
+            setInputValue("");
+            setArray([...stack.getItems()]);
+            await delay(SHORT_DELAY_IN_MS);
+            stack.peak().state = ElementStates.Default;
+            setArray([...stack.getItems()]);
+        } else if (stackSize >= 12) {
+            console.warn("Стек переполнен. Нельзя добавить более 12 элементов.");
+            }
+        setIsAdding(false);
+        setIsActive(false);
+    };
 
-const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsActive(true);
-    setIsAdding(true);
-    if (inputValue) {
-        stack.push({item: inputValue, state: ElementStates.Changing});
-        setInputValue("");
+    const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
+        setInputValue(e.currentTarget.value)
+    };
+    const handleRemoveButton = async () => {
+        setIsActive(true);
+        setIsRemoving(true);
+        stack.peak().state = ElementStates.Changing;
         setArray([...stack.getItems()]);
         await delay(SHORT_DELAY_IN_MS);
-        stack.peak().state = ElementStates.Default;
+        stack.pop();
         setArray([...stack.getItems()]);
-    }
-    setIsAdding(false);
-    setIsActive(false);
-};
+        setIsActive(false);
+        setIsRemoving(false);
+    };
 
-const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-    setInputValue(e.currentTarget.value)
-};
-const handleRemoveButton = async () => {
-    setIsActive(true);
-    setIsRemoving(true);
-    stack.peak().state = ElementStates.Changing;
-    setArray([...stack.getItems()]);
-    await delay(SHORT_DELAY_IN_MS);
-    stack.pop();
-    setArray([...stack.getItems()]);
-    setIsAdding(false);
-    setIsActive(false);
-};
-
-const handleClearButton = async () => {
-    setIsActive(true);
-    setIsCleaning(true);
-    await delay(SHORT_DELAY_IN_MS);
-    stack.clear();
-    setArray([...stack.getItems()]);
-    setIsCleaning(false);
-    setIsActive(false);
-};
+    const handleClearButton = async () => {
+        setIsActive(true);
+        setIsCleaning(true);
+        await delay(SHORT_DELAY_IN_MS);
+        stack.clear();
+        setArray([...stack.getItems()]);
+        setIsCleaning(false);
+        setIsActive(false);
+    };
 
   return (
     <SolutionLayout title="Стек">
@@ -106,18 +107,23 @@ const handleClearButton = async () => {
         >
           <Circle
               letter={item.item}
-              tail={item.toString()}
+              tail={index.toString()}
               state={item.state}
               head={array.length - 1 === index ? "top" : ""}
           />
         </li>
         )}
       </ul>
-      {isReversed && (
-          <p className={`${style["notification"]} text_type_h3`}>
-            Числа Фибоначчи вычеслены
-          </p>
-      )}
+        {stackSize > 0 && (
+            <p className={`${style["notification"]} text_type_h3`}>
+                {stackSize === 12
+                    ? "В стеке 12 элементов. Стек переполнен."
+                    : `В стеке ${stackSize} ${stackSize === 1
+                        ? 'элемент'
+                        : `${stackSize > 1 && stackSize < 5 ? 'элемента' : 'элементов'}`}`
+                }
+            </p>
+        )}
     </SolutionLayout>
   );
 };
