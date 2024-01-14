@@ -2,7 +2,6 @@
     display: flex;
     margin: 0 auto;
     max-width: 830px;
-    align-items: center;
     gap: 12px;
 }
 
@@ -15,7 +14,12 @@
 }
 
 .stack-list {
+    display: flex;
+    max-width: 368px;
+    max-height: 140px;
     list-style-type: none;
     padding: 0;
     margin: 48px 0 0 0;
+    gap: 16px;
+
 }

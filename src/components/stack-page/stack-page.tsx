@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import style from "./stack-page.module.css";
 import {Input} from "../ui/input/input";
 import {Button} from "../ui/button/button";
 import {Circle} from "../ui/circle/circle";
 import { v4 as uuidv4 } from 'uuid';
+import {TCircleItem} from "../../types/types";
 export const StackPage: React.FC = () => {
+const [array, setArray] = useState<TCircleItem[]>([]);
+const [inputValue, setInputValue] = useState<string>("");
+const [isActive, setIsActive] = useState<boolean>(false);
+const [isAdding, setIsAdding] = useState<boolean>(false);
+const [isCleaning, setIsCleaning] = useState<boolean>(false);
+const [isRemoving, setIsRemoving] = useState<boolean>(false);
+const [isReversed, setIsReversed] = useState<boolean>(false);
 
   return (
     <SolutionLayout title="Стек">
@@ -53,6 +61,11 @@ export const StackPage: React.FC = () => {
         {/*</li>*/}
         {/*)}*/}
       </ul>
+      {isReversed && (
+          <p className={`${style["notification"]} text_type_h3`}>
+            Числа Фибоначчи вычеслены
+          </p>
+      )}
     </SolutionLayout>
   );
 };
