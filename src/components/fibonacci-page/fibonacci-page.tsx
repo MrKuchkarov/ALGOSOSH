@@ -17,15 +17,15 @@ export const FibonacciPage: React.FC = () => {
     const calculateFibonacci = async (value: string) => {
         setIsActive(true);
 
-        const memoizedNumbers = getFibonacciNumbers(parseInt(value));
-        for (let i = 0; i < memoizedNumbers.length; i++) {
+        const fibonacciNumbers = getFibonacciNumbers(parseInt(value));
+        for (let i = 0; i < fibonacciNumbers.length; i++) {
             await delay(SHORT_DELAY_IN_MS);
-            setNumbers(memoizedNumbers.slice(0, i + 1));
+            setNumbers(fibonacciNumbers.slice(0, i + 1));
         }
         setIsActive(false);
     };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputValue.length !== 0) {
         setIsCalculated(false);
@@ -49,7 +49,7 @@ export const FibonacciPage: React.FC = () => {
     <SolutionLayout title="Последовательность Фибоначчи">
       <form
           className={`${style["container"]}`}
-          onSubmit={handleSubmit}
+          onSubmit={handleFormSubmit}
       >
         <Input
             placeholder="Введите текст"
