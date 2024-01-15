@@ -11,54 +11,54 @@ import {selectSortAscending, selectSortDescending} from "./selection-sort";
 import {bubbleSortAscending, bubbleSortDescending} from "./bubble-sort";
 import { v4 as uuidv4 } from 'uuid';
 export const SortingPage: React.FC = () => {
-  const [initArray, setInitArray] = useState<TArrayItem[]>([]);
+  const [initialArray, setInitialArray] = useState<TArrayItem[]>([]);
   const [sortDirection, setSortDirection] = useState<Direction>();
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [radioBtnValue, setRadioBtnValue] = useState<string>(SortName.select);
+  const [selectedSortType, setSelectedSortType] = useState<string>(SortName.select);
   const [isSortFinished, setIsSortFinished] = useState<boolean>(false);
   const [notificationText, setNotificationText] = useState<string>("");
 
   useEffect(() => {
-    setInitArray(randomArray());
+    setInitialArray(randomArray());
   }, []);
 
   const generateRandomArray = () => {
     setIsSortFinished(false);
-    setInitArray(randomArray());
+    setInitialArray(randomArray());
   };
 
-  const handleRadioBtnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setRadioBtnValue(e.target.value);
+  const handleRadioButtonChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSelectedSortType(e.target.value);
   };
-  const handleSortBtnClick = (value: Direction) => {
+  const handleSortButtonClick = (value: Direction) => {
     setSortDirection(value);
-    switch (radioBtnValue) {
+    switch (selectedSortType) {
       case SortName.select:
         return value === Direction.Ascending
-            ? selectSortAscending(initArray, setInitArray, setIsActive, setIsSortFinished)
-            : selectSortDescending(initArray, setInitArray, setIsActive, setIsSortFinished);
+            ? selectSortAscending(initialArray, setInitialArray, setIsActive, setIsSortFinished)
+            : selectSortDescending(initialArray, setInitialArray, setIsActive, setIsSortFinished);
       case SortName.bubble:
         return value === Direction.Descending
-            ? bubbleSortAscending(initArray, setInitArray, setIsActive, setIsSortFinished)
-            : bubbleSortDescending(initArray, setInitArray, setIsActive, setIsSortFinished);
+            ? bubbleSortAscending(initialArray, setInitialArray, setIsActive, setIsSortFinished)
+            : bubbleSortDescending(initialArray, setInitialArray, setIsActive, setIsSortFinished);
       default:
     }
   }
-  const handleSortAscending = () => handleSortBtnClick(Direction.Ascending);
-  const handleSortDescending = () => handleSortBtnClick(Direction.Descending);
+  const handleSortAscendingClick = () => handleSortButtonClick(Direction.Ascending);
+  const handleSortDescendingClick = () => handleSortButtonClick(Direction.Descending);
 
   useEffect(() => {
     // Checking for the completion of sorting and setting the corresponding text
     if (isSortFinished) {
       const sortType =
-          radioBtnValue === SortName.select ? "отсортирован выбором" : "отсортирован пузырьком";
+          selectedSortType === SortName.select ? "отсортирован выбором" : "отсортирован пузырьком";
       const sortOrder = sortDirection === Direction.Ascending ? "по возрастанию" : "по убыванию";
 
       setNotificationText(`Массив ${sortType} ${sortOrder}`);
     } else {
       setNotificationText(""); // If the array is not sorted, I clear the text
     }
-  }, [isSortFinished, sortDirection, radioBtnValue]);
+  }, [isSortFinished, sortDirection, selectedSortType]);
 
   return (
     <SolutionLayout title="Сортировка массива">
@@ -73,16 +73,16 @@ export const SortingPage: React.FC = () => {
           >
             <RadioInput
               label="Выбор"
-              onChange={handleRadioBtnChange}
+              onChange={handleRadioButtonChange}
               value={SortName.select}
-              checked={radioBtnValue === SortName.select}
+              checked={selectedSortType === SortName.select}
               disabled={isActive}
             />
             <RadioInput
               label="Пузырёк"
-              onChange={handleRadioBtnChange}
+              onChange={handleRadioButtonChange}
               value={SortName.bubble}
-              checked={radioBtnValue === SortName.bubble}
+              checked={selectedSortType === SortName.bubble}
               disabled={isActive}
             />
           </div>
@@ -95,7 +95,7 @@ export const SortingPage: React.FC = () => {
               extraClass={`${style["sort-btn"]}`}
               isLoader={sortDirection === Direction.Ascending && isActive}
               disabled={isActive}
-              onClick={handleSortAscending}
+              onClick={handleSortAscendingClick}
             />
             <Button
               text="По убыванию"
@@ -103,7 +103,7 @@ export const SortingPage: React.FC = () => {
               extraClass={`${style["sort-btn"]}`}
               isLoader={sortDirection === Direction.Descending && isActive}
               disabled={isActive}
-              onClick={handleSortDescending}
+              onClick={handleSortDescendingClick}
             />
             <Button
               text="Новый массив"
@@ -116,7 +116,7 @@ export const SortingPage: React.FC = () => {
         <ul
             className={`${style["column-container"]}`}
         >
-          {initArray!.map((item) => (
+          {initialArray!.map((item) => (
           <li
               key={uuidv4()}
           >
