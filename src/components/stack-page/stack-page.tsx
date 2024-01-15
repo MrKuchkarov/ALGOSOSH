@@ -21,40 +21,45 @@ export const StackPage: React.FC = () => {
     const stackSize = stack.getSize();
     const stackItems = stack.getItems();
 
+    // I limited the stack to 12 elements, because when drawing on the screen, more than 12 elements (Circle) do not fit
     const handleOperation = async (operationType: "add" | "remove" | "clear") => {
         setIsActive(true);
-        if (operationType === "add" && inputValue && stackSize < 12) {
-            setIsActive(true);
-            setIsAdding(true);
-            stack.push({ item: inputValue, state: ElementStates.Changing });
-            setInputValue("");
-            setArray([...stackItems]);
-            await delay(SHORT_DELAY_IN_MS);
-            stack.peak().state = ElementStates.Default;
-            setArray([...stackItems]);
-            setIsActive(false);
-            setIsAdding(false);
-        } else if (operationType === "add" && stack.getSize() >= 12) {
-            console.warn("Стек переполнен. Нельзя добавить более 12 элементов.");
-        } else if (operationType === "remove") {
-            setIsActive(true);
-            setIsRemoving(true);
-            stack.peak().state = ElementStates.Changing;
-            setArray([...stackItems]);
-            await delay(SHORT_DELAY_IN_MS);
-            stack.pop();
-            setArray([...stackItems]);
-            setIsActive(false);
-            setIsRemoving(false);
-        } else if (operationType === "clear") {
-            setIsActive(true);
-            setIsCleaning(true);
-            await delay(SHORT_DELAY_IN_MS);
-            stack.clear();
-            setArray([...stackItems]);
-            setIsActive(false);
-            setIsCleaning(false);
+
+        switch (operationType) {
+            case "add":
+                if (inputValue && stackSize < 12) {
+                    setIsAdding(true);
+                    stack.push({ item: inputValue, state: ElementStates.Changing });
+                    setInputValue("");
+                    setArray([...stackItems]);
+                    await delay(SHORT_DELAY_IN_MS);
+                    stack.peak().state = ElementStates.Default;
+                    setArray([...stackItems]);
+                    setIsAdding(false);
+                } else if (stackSize >= 12) {
+                    console.warn("Стек переполнен. Нельзя добавить более 12 элементов.");
+                }
+                break;
+            case "remove":
+                setIsRemoving(true);
+                stack.peak().state = ElementStates.Changing;
+                setArray([...stackItems]);
+                await delay(SHORT_DELAY_IN_MS);
+                stack.pop();
+                setArray([...stackItems]);
+                setIsRemoving(false);
+                break;
+            case "clear":
+                setIsCleaning(true);
+                await delay(SHORT_DELAY_IN_MS);
+                stack.clear();
+                setArray([...stackItems]);
+                setIsCleaning(false);
+                break;
+            default:
+                break;
         }
+
         setIsActive(false);
     };
 
@@ -144,45 +149,3 @@ export const StackPage: React.FC = () => {
 };
 
 
-// const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
-//     setIsActive(true);
-//     setIsAdding(true);
-//     if (inputValue && stackSize < 12) {
-//         stack.push({ item: inputValue, state: ElementStates.Changing });
-//         setInputValue("");
-//         setArray([...stackItems]);
-//         await delay(SHORT_DELAY_IN_MS);
-//         stack.peak().state = ElementStates.Default;
-//         setArray([...stackItems]);
-//     } else if (stackSize >= 12) {
-//         console.warn("Стек переполнен. Нельзя добавить более 12 элементов.");
-//         }
-//     setIsAdding(false);
-//     setIsActive(false);
-// };
-//
-// const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-//     setInputValue(e.currentTarget.value)
-// };
-// const handleRemoveButton = async () => {
-//     setIsActive(true);
-//     setIsRemoving(true);
-//     stack.peak().state = ElementStates.Changing;
-//     setArray([...stackItems]);
-//     await delay(SHORT_DELAY_IN_MS);
-//     stack.pop();
-//     setArray([...stackItems]);
-//     setIsActive(false);
-//     setIsRemoving(false);
-// };
-//
-// const handleClearButton = async () => {
-//     setIsActive(true);
-//     setIsCleaning(true);
-//     await delay(SHORT_DELAY_IN_MS);
-//     stack.clear();
-//     setArray([...stackItems]);
-//     setIsCleaning(false);
-//     setIsActive(false);
-// };
