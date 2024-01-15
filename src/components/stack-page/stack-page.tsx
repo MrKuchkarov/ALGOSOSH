@@ -18,7 +18,7 @@ export const StackPage: React.FC = () => {
     const [isAdding, setIsAdding] = useState<boolean>(false);
     const [isCleaning, setIsCleaning] = useState<boolean>(false);
     const [isRemoving, setIsRemoving] = useState<boolean>(false);
-    const stackSize = stack.getSize();
+    const stackLength = stack.getSize();
     const stackItems = stack.getItems();
 
     // I limited the stack to 12 elements, because when drawing on the screen, more than 12 elements (Circle) do not fit
@@ -27,7 +27,7 @@ export const StackPage: React.FC = () => {
 
         switch (operationType) {
             case "add":
-                if (inputValue && stackSize < 12) {
+                if (inputValue && stackLength < 12) {
                     setIsAdding(true);
                     stack.push({ item: inputValue, state: ElementStates.Changing });
                     setInputValue("");
@@ -36,7 +36,7 @@ export const StackPage: React.FC = () => {
                     stack.peak().state = ElementStates.Default;
                     setArray([...stackItems]);
                     setIsAdding(false);
-                } else if (stackSize >= 12) {
+                } else if (stackLength >= 12) {
                     console.warn("Стек переполнен. Нельзя добавить более 12 элементов.");
                 }
                 break;
@@ -68,15 +68,15 @@ export const StackPage: React.FC = () => {
         await handleOperation("add");
     };
 
-    const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
+    const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
         setInputValue(e.currentTarget.value)
     };
 
-    const handleRemoveButton = async () => {
+    const handleRemoveButtonClick = async () => {
         await handleOperation("remove");
     };
 
-    const handleClearButton = async () => {
+    const handleClearButtonClick = async () => {
         await handleOperation("clear");
         setArray([]);
     };
@@ -94,7 +94,7 @@ export const StackPage: React.FC = () => {
             isLimitText={true}
             maxLength={4}
             value={inputValue}
-            onChange={handleInputChange}
+            onChange={handleInputValueChange}
         />
         <Button
           text="Добавить"
@@ -106,7 +106,7 @@ export const StackPage: React.FC = () => {
         <Button
           text="Удалить"
           extraClass={`${style["stack-btn"]}`}
-          onClick={handleRemoveButton}
+          onClick={handleRemoveButtonClick}
           disabled={!array.length || isActive}
           isLoader={isRemoving}
         />
@@ -114,7 +114,7 @@ export const StackPage: React.FC = () => {
           text="Очистить"
           extraClass={`${style["stack-btn"]}`}
           disabled={!array.length || isActive}
-          onClick={handleClearButton}
+          onClick={handleClearButtonClick}
           isLoader={isCleaning}
         />
       </form>
@@ -134,13 +134,13 @@ export const StackPage: React.FC = () => {
         </li>
         )}
       </ul>
-        {stackSize > 0 && (
+        {stackLength > 0 && (
             <p className={`${style["notification"]} text_type_h3`}>
-                {stackSize === 12
+                {stackLength === 12
                     ? "В стеке 12 элементов. Стек переполнен."
-                    : `В стеке ${stackSize} ${stackSize === 1
+                    : `В стеке ${stackLength} ${stackLength === 1
                         ? 'элемент'
-                        : `${stackSize > 1 && stackSize < 5 ? 'элемента' : 'элементов'}`}`
+                        : `${stackLength > 1 && stackLength < 5 ? 'элемента' : 'элементов'}`}`
                 }
             </p>
         )}

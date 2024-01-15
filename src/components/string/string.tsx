@@ -6,22 +6,22 @@ import {Button} from "../ui/button/button";
 import {Circle} from "../ui/circle/circle";
 import {TCircleItem} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
-import {reverseArray} from "./reverse-string";
+import {reverseStringArray} from "./reverse-string";
 import { v4 as uuidv4 } from 'uuid';
-export const ArrayReverseComponent: React.FC = () => {
+export const StringReverseComponent: React.FC = () => {
   const [array, setArray] = useState<TCircleItem[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isReversed, setIsReversed] = useState<boolean>(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleStringReverse = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const symbols = inputValue.split('').map(item => ({
+    const stringSymbols = inputValue.split('').map(item => ({
       item,
       state: ElementStates.Default
     }));
     setIsReversed(false); // Resetting the state upon new input
-      reverseArray(symbols, setArray, setIsActive)
+      reverseStringArray(stringSymbols, setArray, setIsActive)
         .then(() => {
           setIsReversed(true); // Setting the state upon completion of the operation
           setInputValue("");
@@ -41,7 +41,7 @@ export const ArrayReverseComponent: React.FC = () => {
     <SolutionLayout title="Строка">
       <form
           className={`${style["container"]}`}
-          onSubmit={handleSubmit}
+          onSubmit={handleStringReverse}
       >
         <Input
           placeholder="Введите строку"
@@ -58,13 +58,13 @@ export const ArrayReverseComponent: React.FC = () => {
         />
       </form>
         <ul className={`${style["list-string"]}`}>
-            {array?.map((char: TCircleItem) =>
+            {array?.map((item: TCircleItem) =>
                 <li
                     key={uuidv4()}
                 >
                       <Circle
-                          letter={char.item}
-                          state={char.state}
+                          letter={item.item}
+                          state={item.state}
                       />
                 </li>
             )}
@@ -81,7 +81,7 @@ export const ArrayReverseComponent: React.FC = () => {
 // The provided code consists of a React component named ArrayReverseComponent that facilitates the reversal of a string.
 // Let's break down the code into its key components:
 
-// ArrayReverseComponent:
+// StringReverseComponent:
 //    - This is a functional React component that utilizes the state hook to manage the state of the array,
 //      input value, the activity status of the reversal operation, and whether the string is reversed or not.
 //    - The component is wrapped in a SolutionLayout component, which is likely a higher-level component defining the layout structure.
@@ -89,7 +89,7 @@ export const ArrayReverseComponent: React.FC = () => {
 //    - The list of reversed characters is rendered using the Circle component within a ul element.
 //    - A notification is displayed when the string is successfully reversed.
 //
-//     Function reverseArray:
+//     Function reverseStringArray:
 //    - This function is responsible for asynchronously reversing the array of characters.
 //    - It accepts the array of characters, the setArray function for updating the state,
 //      and the setActive function for managing the activity status.
@@ -102,7 +102,7 @@ export const ArrayReverseComponent: React.FC = () => {
 //    - The setActive state is set to false once the reversal operation is complete.
 //
 //     Event Handlers:
-//    - handleSubmit: Handles the form submission event, preventing the default form behavior.
+//    - handleStringReverse: Handles the form submission event, preventing the default form behavior.
 //      It converts the input string into an array of characters with initial states,
 //      initiates the reversal operation, and updates states accordingly.
 //    - handleInputChange: Handles changes in the input field, updating the inputValue state.

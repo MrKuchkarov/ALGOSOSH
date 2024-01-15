@@ -4,7 +4,7 @@ import { FibonacciPage } from "../fibonacci-page/fibonacci-page";
 import { ListPage } from "../list-page/list-page";
 import { MainPage } from "../main-page/main-page";
 import { QueuePage } from "../queue-page/queue-page";
-import {ArrayReverseComponent} from "../string/string";
+import {StringReverseComponent} from "../string/string";
 import { SortingPage } from "../sorting-page/sorting-page";
 import { StackPage } from "../stack-page/stack-page";
 
@@ -20,7 +20,7 @@ function App() {
             <MainPage />
           </Route>
           <Route path="/recursion">
-            <ArrayReverseComponent />
+            <StringReverseComponent />
           </Route>
           <Route path="/fibonacci">
             <FibonacciPage />

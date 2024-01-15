@@ -5,7 +5,7 @@ import {DELAY_IN_MS} from "../../constants/delays";
 import {swap} from "../../utils/swap";
 import {delay} from "../../utils/delay";
 
-export const reverseArray = async (
+export const reverseStringArray = async (
     array: TCircleItem[],
     setArray:  Dispatch<SetStateAction<TCircleItem[]>>,
     setActive: Dispatch<SetStateAction<boolean>>

@@ -12,18 +12,18 @@ import {bubbleSortAscending, bubbleSortDescending} from "./bubble-sort";
 import { v4 as uuidv4 } from 'uuid';
 export const SortingPage: React.FC = () => {
   const [initArray, setInitArray] = useState<TArrayItem[]>([]);
-  const [sort, setSort] = useState<Direction>();
+  const [sortDirection, setSortDirection] = useState<Direction>();
   const [isActive, setIsActive] = useState<boolean>(false);
   const [radioBtnValue, setRadioBtnValue] = useState<string>(SortName.select);
-  const [isReversed, setIsReversed] = useState<boolean>(false);
+  const [isSortFinished, setIsSortFinished] = useState<boolean>(false);
   const [notificationText, setNotificationText] = useState<string>("");
 
   useEffect(() => {
     setInitArray(randomArray());
   }, []);
 
-  const getRandomArray = () => {
-    setIsReversed(false);
+  const generateRandomArray = () => {
+    setIsSortFinished(false);
     setInitArray(randomArray());
   };
 
@@ -31,16 +31,16 @@ export const SortingPage: React.FC = () => {
     setRadioBtnValue(e.target.value);
   };
   const handleSortBtnClick = (value: Direction) => {
-    setSort(value);
+    setSortDirection(value);
     switch (radioBtnValue) {
       case SortName.select:
         return value === Direction.Ascending
-            ? selectSortAscending(initArray, setInitArray, setIsActive, setIsReversed)
-            : selectSortDescending(initArray, setInitArray, setIsActive, setIsReversed);
+            ? selectSortAscending(initArray, setInitArray, setIsActive, setIsSortFinished)
+            : selectSortDescending(initArray, setInitArray, setIsActive, setIsSortFinished);
       case SortName.bubble:
         return value === Direction.Descending
-            ? bubbleSortAscending(initArray, setInitArray, setIsActive, setIsReversed)
-            : bubbleSortDescending(initArray, setInitArray, setIsActive, setIsReversed);
+            ? bubbleSortAscending(initArray, setInitArray, setIsActive, setIsSortFinished)
+            : bubbleSortDescending(initArray, setInitArray, setIsActive, setIsSortFinished);
       default:
     }
   }
@@ -49,16 +49,16 @@ export const SortingPage: React.FC = () => {
 
   useEffect(() => {
     // Checking for the completion of sorting and setting the corresponding text
-    if (isReversed) {
+    if (isSortFinished) {
       const sortType =
           radioBtnValue === SortName.select ? "отсортирован выбором" : "отсортирован пузырьком";
-      const sortOrder = sort === Direction.Ascending ? "по возрастанию" : "по убыванию";
+      const sortOrder = sortDirection === Direction.Ascending ? "по возрастанию" : "по убыванию";
 
       setNotificationText(`Массив ${sortType} ${sortOrder}`);
     } else {
       setNotificationText(""); // If the array is not sorted, I clear the text
     }
-  }, [isReversed, sort, radioBtnValue]);
+  }, [isSortFinished, sortDirection, radioBtnValue]);
 
   return (
     <SolutionLayout title="Сортировка массива">
@@ -93,7 +93,7 @@ export const SortingPage: React.FC = () => {
               text="По возрастанию"
               sorting={Direction.Ascending}
               extraClass={`${style["sort-btn"]}`}
-              isLoader={sort === Direction.Ascending && isActive}
+              isLoader={sortDirection === Direction.Ascending && isActive}
               disabled={isActive}
               onClick={handleSortAscending}
             />
@@ -101,7 +101,7 @@ export const SortingPage: React.FC = () => {
               text="По убыванию"
               sorting={Direction.Descending}
               extraClass={`${style["sort-btn"]}`}
-              isLoader={sort === Direction.Descending && isActive}
+              isLoader={sortDirection === Direction.Descending && isActive}
               disabled={isActive}
               onClick={handleSortDescending}
             />
@@ -109,7 +109,7 @@ export const SortingPage: React.FC = () => {
               text="Новый массив"
               extraClass={`${style["sort-btn"]}`}
               disabled={isActive}
-              onClick={getRandomArray}
+              onClick={generateRandomArray}
             />
           </div>
         </div>
@@ -151,10 +151,10 @@ export const SortingPage: React.FC = () => {
 //     - bubbleSortAscending and bubbleSortDescending: Implementation of the bubble sort algorithm (ascending and descending).
 //     - selectSortAscending and selectSortDescending: Implementation of the selection sort algorithm (ascending and descending).
 //     - Each of these functions employs asynchronous logic to visualize sorting steps by
-//     changing the states of array elements using state hooks setArray, setActive, and setIsReversed.
+//     changing the states of array elements using state hooks setArray, setActive, and setIsSortFinished.
 
 //    Event Handlers:
-//     - getRandomArray: Generates a new random array and resets the reversed sorting flag.
+//     - generateRandomArray: Generates a new random array and resets the reversed sorting flag.
 //     - handleRadioBtnChange: Handles changes in the selected sorting algorithm.
 //     - handleSortBtnClick: Handles the click event of the sorting buttons and calls the corresponding sorting function.
 

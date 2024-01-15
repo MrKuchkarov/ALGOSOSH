@@ -12,7 +12,7 @@ export const FibonacciPage: React.FC = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [isReversed, setIsReversed] = useState<boolean>(false);
+  const [isCalculated, setIsCalculated] = useState<boolean>(false);
 
     const calculateFibonacci = async (value: string) => {
         setIsActive(true);
@@ -28,10 +28,10 @@ export const FibonacciPage: React.FC = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputValue.length !== 0) {
-      setIsReversed(false);
+        setIsCalculated(false);
       calculateFibonacci(inputValue)
           .then(() => {
-            setIsReversed(true);
+              setIsCalculated(true);
           })
           .catch(error => {
             console.error("An error occurred:", error);
@@ -42,7 +42,7 @@ export const FibonacciPage: React.FC = () => {
     setInputValue(e.currentTarget.value)
     }
 
-    const isDisabledButton = (value: string) =>
+    const shouldDisableButton = (value: string) =>
         !value || parseInt(value) > 19 || parseInt(value) < 1;
 
   return (
@@ -61,7 +61,7 @@ export const FibonacciPage: React.FC = () => {
         <Button
             text="Расчитать"
             type="submit"
-            disabled={isDisabledButton(inputValue)}
+            disabled={shouldDisableButton(inputValue)}
             isLoader={isActive}
         />
       </form>
@@ -77,7 +77,7 @@ export const FibonacciPage: React.FC = () => {
             </li>
         )}
       </ul>
-      {isReversed && (
+      {isCalculated && (
           <p className={`${style["notification"]} text_type_h3`}>
             Числа Фибоначчи вычеслены
           </p>
