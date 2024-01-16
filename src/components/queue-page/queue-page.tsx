@@ -3,7 +3,7 @@ import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import {Input} from "../ui/input/input";
 import {Button} from "../ui/button/button";
 import {Simulate} from "react-dom/test-utils";
-import style from "../stack-page/stack-page.module.css";
+import style from "./queue-page.module.css";
 import {v4 as uuidv4} from "uuid";
 import {Circle} from "../ui/circle/circle";
 
@@ -61,15 +61,6 @@ export const QueuePage: React.FC = () => {
         {/*        </li>*/}
         {/*    )}*/}
         {/*</ul>*/}
-        <ul className={`${style["queue-list"]}`}>
-            <Circle />
-            <Circle />
-            <Circle />
-            <Circle />
-            <Circle />
-            <Circle />
-            <Circle />
-        </ul>
     </SolutionLayout>
   );
 };
