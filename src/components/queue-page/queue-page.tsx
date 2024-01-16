@@ -2,13 +2,14 @@ import React, {FormEvent, useState} from "react";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import {Input} from "../ui/input/input";
 import {Button} from "../ui/button/button";
-import {Simulate} from "react-dom/test-utils";
 import style from "./queue-page.module.css";
 import {v4 as uuidv4} from "uuid";
 import {Circle} from "../ui/circle/circle";
 import {ElementStates} from "../../types/element-states";
 import {Queue} from "./queue";
-import {TQueueItem} from "../../types/types";
+import {position, TQueueItem} from "../../types/types";
+import {delay} from "../../utils/delay";
+import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 
 const empty = Array.from({length: 7}, () => ({
     item: '',
@@ -29,15 +30,55 @@ const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
 
 const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setActive(true);
+    setAdding(true);
+    queue.enqueue({
+        item: inputValue,
+        state: ElementStates.Default});
+    setQueue(queue);
+    array[queue.getTail() - 1] = {
+        item: "",
+        state: ElementStates.Changing};
+    setArray([...array]);
+    await delay(SHORT_DELAY_IN_MS);
+    array[queue.getTail() - 1] = {item: inputValue, state: ElementStates.Default};
+    setArray([...array]);
+    setActive(false);
+    setAdding(false);
 };
 
 const handleRemoveButtonClick = async () => {
-
+    setActive(true);
+    setRemoving(true);
+    queue.dequeue();
+    setQueue(queue);
+    array[queue.getHead() - 1] = {
+        item: array[queue.getHead() - 1].item,
+        state: ElementStates.Changing
+    };
+    setArray([...array]);
+    await delay(SHORT_DELAY_IN_MS);
+    array[queue.getHead() - 1] = {
+        item: "",
+        state: ElementStates.Default};
+    setArray([...array]);
+    setActive(false);
+    setRemoving(false);
 };
 
 const handleClearButtonClick = () => {
-
+    setActive(true);
+    setClearing(true);
+    queue.clear();
+    setQueue(queue);
+    setArray(Array.from({length: 7}, () => ({
+        item: "",
+        state: ElementStates.Default
+    })));
+    setActive(false);
+    setClearing(false);
 };
+
   return (
     <SolutionLayout title="Очередь">
       <form
@@ -85,8 +126,8 @@ const handleClearButtonClick = () => {
                         letter={item.item}
                         state={item.state}
                         index={index}
-                        // head={}
-                        // tail={}
+                        head={index === queue.getHead() && !queue.isEmpty() ? position.head : ""}
+                        tail={index === queue.getTail() - 1 && !queue.isEmpty() ? position.tail : ""}
                     />
                 </li>
             )}
