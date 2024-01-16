@@ -155,8 +155,8 @@ export const SortingPage: React.FC = () => {
 
 //    Event Handlers:
 //     - generateRandomArray: Generates a new random array and resets the reversed sorting flag.
-//     - handleRadioBtnChange: Handles changes in the selected sorting algorithm.
-//     - handleSortBtnClick: Handles the click event of the sorting buttons and calls the corresponding sorting function.
+//     - handleRadioButtonChange: Handles changes in the selected sorting algorithm.
+//     - handleSortButtonClick: Handles the click event of the sorting buttons and calls the corresponding sorting function.
 
 //    Rendering:
 //     - Visualizes the component using child components, styles, and data about the state of array elements.
@@ -169,7 +169,5 @@ export const SortingPage: React.FC = () => {
 //     The sorting logic is encapsulated in separate functions, promoting better code maintainability and readability.
 //
 //
-
-
 
 

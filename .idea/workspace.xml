@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/queue-page/queue-page.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fibonacci-page/fibonacci-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fibonacci-page/fibonacci-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/queue-page/queue-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/queue-page/queue-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sorting-page/sorting-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sorting-page/sorting-page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +112,9 @@
       <workItem from="1705218168230" duration="16335000" />
       <workItem from="1705297486264" duration="5858000" />
       <workItem from="1705318919008" duration="720000" />
+      <workItem from="1705332446212" duration="2000" />
+      <workItem from="1705332473136" duration="231000" />
+      <workItem from="1705380410334" duration="1416000" />
     </task>
     <servers />
   </component>
