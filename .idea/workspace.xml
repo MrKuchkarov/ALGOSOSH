@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/list-page/list-class.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/list-page/list-page.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/list-page/list-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list-page/list-page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/queue-page/queue-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/queue-page/queue-page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/queue-page/queue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/queue-page/queue.ts" afterDir="false" />
     </list>
@@ -114,6 +117,7 @@
       <workItem from="1705332446212" duration="2000" />
       <workItem from="1705332473136" duration="231000" />
       <workItem from="1705380410334" duration="10939000" />
+      <workItem from="1705410738809" duration="7420000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,28 @@
+.list-page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    align-items: center;
+
+}
+
+.adding-container {
+    display: flex;
+    gap: 12px;
+}
+
+.list-page-input {
+    max-width: 204px;
+}
+
+.list-page-button {
+    width: 354px;
+    height: 60px;
+}
+
+.list-circle {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+}
