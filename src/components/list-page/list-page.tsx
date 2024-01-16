@@ -1,4 +1,4 @@
-import React, {FormEvent} from "react";
+import React, {FormEvent, useState} from "react";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import {Input} from "../ui/input/input";
 import {Button} from "../ui/button/button";
@@ -6,8 +6,21 @@ import style from "./list-page.module.css";
 import {Circle} from "../ui/circle/circle";
 import {ArrowIcon} from "../ui/icons/arrow-icon";
 import {ElementColors} from "../../types/types";
+import {ElementStates} from "../../types/element-states";
 
 export const ListPage: React.FC = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [inputIndex, setInputIndex] = useState("");
+  const [tempValue, setTempValue] = useState("");
+  const [inputValueIndex, setInputValeuIndex] = useState<number>();
+  const [isActive, setIsActive] = useState(false);
+  const [isAddingToHead, setIsAddingToHead] = useState(false);
+  const [isAddingToTail, setIsAddingToTail] = useState(false);
+  const [isRemoveFromHead, setIsRemoveFromHead] = useState(false);
+  const [isRemoveFromTail, setIsRemoveFromTail] = useState(false);
+  const [isInsertByIndex, setSsInsertByIndex] = useState(false);
+  const [isRemoveByIndex, setIsRemoveByIndex] = useState(false);
+
 
   const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
 
@@ -60,33 +73,33 @@ export const ListPage: React.FC = () => {
           <Input
               placeholder="Введите значение"
               extraClass={`${style["list-page-input"]}`}
-              // onChange={handleInputValueChange}
-              // value={inputValue}
+              onChange={handleInputValueChange}
+              value={inputValue}
               maxLength={4}
               isLimitText={true}
           />
           <Button
               text="Добавить в head"
-              // onClick={prepend}
-              // isLoader={isAddingToHead}
-              // disable={!inputValue}
+              onClick={prepend}
+              isLoader={isAddingToHead}
+              disabled={!inputValue}
           />
           <Button
               text="Добавить в tail"
-              // onClick={append}
-              // isLoader={isAddingToTail}
-              // disable={!inputValue}
+              onClick={append}
+              isLoader={isAddingToTail}
+              disabled={!inputValue}
           />
           <Button
               text="Удалить из head"
-              // onClick={shift}
-              // isLoader={isRemoveFromHead}
-              // disable={!list.getSize}
+              onClick={shift}
+              isLoader={isRemoveFromHead}
+              // disabled={!list.getSize}
           />
           <Button
               text="Удалить из tail"
-              // onClick={pop}
-              // isLoader={isRemoveFromTail}
+              onClick={pop}
+              isLoader={isRemoveFromTail}
               // disable={!list.getSize}
           />
         </div>
@@ -96,21 +109,21 @@ export const ListPage: React.FC = () => {
           <Input
               placeholder="Введите значение"
               extraClass={`${style["list-page-input"]}`}
-              // onChange={handleInputIndexChange}
-              // value={inputValue}
+              onChange={handleInputIndexChange}
+              value={inputValue}
           />
           <Button
               text="Добавить по индексу"
               extraClass={`${style["list-page-button"]}`}
-              // onClick={addByIndex}
-              // isLoader={isInsertByIndex}
+              onClick={addByIndex}
+              isLoader={isInsertByIndex}
               // disabled={!inputIndex || parseInt(inputIndex) > list.getSize - 1}
           />
           <Button
               text="Удалить по индексу"
               extraClass={`${style["list-page-button"]}`}
-              // onClick={removeByIndex}
-              // isLoader={isRemoveByIndex}
+              onClick={removeByIndex}
+              isLoader={isRemoveByIndex}
               // disabled={!inputIndex || parseInt(inputIndex) > list.getSize - 1}
           />
         </div>
@@ -120,15 +133,15 @@ export const ListPage: React.FC = () => {
           <li>
             <Circle
                 isSmall={true}
-                // extraClass={`${style["list-circle-top"]}`}
-                // letter={inputValue}
-                // state={ElementStates.Changing}
+                extraClass={`${style["list-circle-top"]}`}
+                letter={inputValue}
+                state={ElementStates.Changing}
             />
             <Circle
                 isSmall={true}
-                // extraClass={`${style["list-circle-bottom"]}`}
-                // letter={tempValue}
-                // state={ElementStates.Changing}
+                extraClass={`${style["list-circle-bottom"]}`}
+                letter={tempValue}
+                state={ElementStates.Changing}
             />
             <Circle
                 // index={index}
