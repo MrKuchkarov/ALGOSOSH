@@ -22,7 +22,6 @@ export class Queue<T> implements TQueue<T> {
         if (this.length >= this.size) {
             throw new Error("Maximum length exceeded");
         }
-
         this.container[this.tail % this.size] = item;
         this.tail++;
         this.length++;
@@ -33,7 +32,7 @@ export class Queue<T> implements TQueue<T> {
             throw new Error("No elements in the queue");
         }
 
-        delete this.container[this.head % this.size];
+        this.container[this.head % this.size] = null;
         this.head++;
         this.length--;
     };
@@ -51,10 +50,18 @@ export class Queue<T> implements TQueue<T> {
 
         return this.container[this.head % this.size];
     };
+    peek = (): T | null => {
+        if (this.isEmpty()) {
+            throw new Error("No elements in the queue");
+        }
+
+        return this.container[this.head % this.size];
+    };
 
     isEmpty = () => this.length === 0;
     getHead = () => this.head;
     getTail = () => this.tail;
     getItems = () => this.container;
     getLength = () => this.length;
+    getSize = () => this.container.length;
 }
