@@ -14,3 +14,7 @@ export type TArrayItem = {
     item: number;
     state: ElementStates;
 }
+
+export type TQueueItem = {
+    head?: string;
+}
