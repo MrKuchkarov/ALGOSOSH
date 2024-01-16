@@ -24,12 +24,25 @@ const [isAdding, setAdding] = useState(false);
 const [isRemoving, setRemoving] = useState(false);
 const [isClearing, setClearing] = useState(false);
 const [notification, setNotification] = useState<string | null>(null);
+
 const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value);
 };
 const showNotification = (message: string) => {
     setNotification(message);
     setTimeout(() => setNotification(null), 2000);
+};
+const updateArrayForAdding = () => {
+    array[queue.getTail() - 1] = {
+        item: "",
+        state: ElementStates.Changing };
+    setArray([...array]);
+    delay(SHORT_DELAY_IN_MS).then(() => {
+        array[queue.getTail() - 1] = {
+            item: inputValue,
+            state: ElementStates.Default };
+        setArray([...array]);
+    });
 };
 const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,18 +59,27 @@ const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
         item: inputValue,
         state: ElementStates.Default});
     setQueue(queue);
-    array[queue.getTail() - 1] = {
-        item: "",
-        state: ElementStates.Changing};
+
+    updateArrayForAdding();
+
     setArray([...array]);
-    await delay(SHORT_DELAY_IN_MS);
-    array[queue.getTail() - 1] = {item: inputValue, state: ElementStates.Default};
-    setArray([...array]);
+    setInputValue("");
     setActive(false);
     setAdding(false);
     showNotification(`Добавлен элемент в очередь: ${inputValue}`);
 };
-
+    const updateArrayForRemoving = () => {
+        array[queue.getHead() - 1] = {
+            item: array[queue.getHead() - 1].item,
+            state: ElementStates.Changing };
+        setArray([...array]);
+        delay(SHORT_DELAY_IN_MS).then(() => {
+            array[queue.getHead() - 1] = {
+                item: "",
+                state: ElementStates.Default };
+            setArray([...array]);
+        });
+    };
     const handleRemoveButtonClick = async () => {
         setActive(true);
         setRemoving(true);
@@ -71,16 +93,9 @@ const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
         const removedItem = queue.peek();
         queue.dequeue();
         setQueue(queue);
-        array[queue.getHead() - 1] = {
-            item: array[queue.getHead() - 1].item,
-            state: ElementStates.Changing
-        };
-        setArray([...array]);
-        await delay(SHORT_DELAY_IN_MS);
-        array[queue.getHead() - 1] = {
-            item: "",
-            state: ElementStates.Default
-        };
+
+        updateArrayForRemoving();
+
         setArray([...array]);
         setActive(false);
         setRemoving(false);
@@ -158,3 +173,62 @@ const handleClearButtonClick = () => {
     </SolutionLayout>
   );
 };
+
+
+// const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
+//     setInputValue(e.currentTarget.value);
+// }
+//
+// const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     setActive(true);
+//     setAdding(true);
+//     queue.enqueue({item: inputValue, state: ElementStates.Default});
+//     setQueue(queue);
+//     array[queue.getTail() - 1] = {item: '', state: ElementStates.Changing};
+//     setArray([...array]);
+//     await delay(SHORT_DELAY_IN_MS);
+//     array[queue.getTail() - 1] = {
+//         item: inputValue,
+//         state: ElementStates.Changing
+//     };
+//     setArray([...array]);
+//     array[queue.getTail() - 1] = {
+//         item: inputValue,
+//         state: ElementStates.Default
+//     };
+//     setArray([...array]);
+//     setInputValue('');
+//     setActive(false);
+//     setAdding(false);
+// }
+//
+// const handleRemoveButtonClick = async () => {
+//     setActive(true);
+//     setRemoving(true);
+//     queue.dequeue();
+//     setQueue(queue);
+//     array[queue.getHead() - 1] = {
+//         item: array[queue.getHead() - 1].item,
+//         state: ElementStates.Changing
+//     };
+//     setArray([...array]);
+//     await delay(SHORT_DELAY_IN_MS);
+//     array[queue.getHead() - 1] = {item: '', state: ElementStates.Default};
+//     setArray([...array]);
+//     setActive(false);
+//     setRemoving(false);
+// }
+//
+// const handleClearButtonClick = () => {
+//     setActive(true);
+//     setClearing(true);
+//     queue.clear();
+//     setQueue(queue);
+//     setArray(Array.from({length: 7}, () => ({
+//         item: '',
+//         state: ElementStates.Default
+//     })));
+//     setActive(false);
+//     setClearing(false);
+// }
