@@ -5,7 +5,7 @@ import {Button} from "../ui/button/button";
 import style from "./list-page.module.css";
 import {Circle} from "../ui/circle/circle";
 import {ArrowIcon} from "../ui/icons/arrow-icon";
-import {ElementColors, TCircleItem} from "../../types/types";
+import {ElementColors, position, TCircleItem} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
 import {ListClass} from "./list-class";
 import {delay} from "../../utils/delay";
@@ -147,12 +147,22 @@ export const ListPage: React.FC = () => {
 
   };
 
-  const showHead = () => {
-
+  const showHead = (index: number): string => {
+    if (index === 0 && (!isAddingToHead || !isInsertByIndex)) {
+      return position.head;
+    } else if (index === 0 && isInsertByIndex && inputValueIndex !== 0) {
+      return position.head
+    }
+    return "";
   };
 
-  const showTail = () => {
-
+  const showTail = (index: number): string => {
+    if (index === arrayWithState.length - 1 && (!isRemoveFromTail || !isRemoveByIndex)) {
+      return position.tail;
+    } else if (index === arrayWithState.length - 1 && isRemoveByIndex) {
+      return "";
+    }
+    return "";
   };
 
   return (
@@ -223,30 +233,38 @@ export const ListPage: React.FC = () => {
         <ul
             className={`${style["list-circle"]}`}
         >
+          {arrayWithState.map((item, index) => (
           <li>
+            {isActive && (isAddingToHead || isAddingToTail || isInsertByIndex)
+                && index === inputValueIndex && (
+                <Circle
+                    isSmall={true}
+                    extraClass={`${style["list-circle-top"]}`}
+                    letter={inputValue}
+                    state={ElementStates.Changing}
+                />
+              )}
+            {isActive && (isRemoveFromHead || isRemoveFromTail || isRemoveByIndex)
+                && index === inputValueIndex && (
+                  <Circle
+                      isSmall={true}
+                      extraClass={`${style["list-circle-bottom"]}`}
+                      letter={tempValue}
+                      state={ElementStates.Changing}
+                  />
+                )}
             <Circle
-                isSmall={true}
-                extraClass={`${style["list-circle-top"]}`}
-                letter={inputValue}
-                state={ElementStates.Changing}
-            />
-            <Circle
-                isSmall={true}
-                extraClass={`${style["list-circle-bottom"]}`}
-                letter={tempValue}
-                state={ElementStates.Changing}
-            />
-            <Circle
-                // index={index}
-                // head={(isAddingToHead || isInsertByIndex) ? '' : showHead(index)}
-                // tail={isRemoveFromTail || isRemoveByIndex ? '' : showTail(index)}
-                // letter={item.item}
-                // state={item.state}
+                index={index}
+                head={(isAddingToHead || isInsertByIndex) ? "" : showHead(index)}
+                tail={isRemoveFromTail || isRemoveByIndex ? "" : showTail(index)}
+                letter={item.item}
+                state={item.state}
             />
             <ArrowIcon
                 fill={ElementColors.Default}
             />
           </li>
+          ))}
         </ul>
       </form>
     </SolutionLayout>
