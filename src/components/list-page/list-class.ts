@@ -10,7 +10,7 @@ export class Node<T> {
     }
 }
 
-type TListClass<T> = {
+type TChainList<T> = {
     prepend: (element: T) => void;
     append: (element: T) => void;
     insertByIndex: (element: T, position: number) => void;
@@ -20,7 +20,7 @@ type TListClass<T> = {
     isEmpty: () => boolean;
     print: () => void;
 }
-export class ListClass<T> implements TListClass<T> {
+export class ChainList<T> implements TChainList<T> {
     private head: Node<T> | null;
     private tail: Node<T> | null;
     private size: number;
@@ -42,8 +42,7 @@ export class ListClass<T> implements TListClass<T> {
 
     insertByIndex(element: T, index: number) {
         if (index < 0 || index > this.size) {
-            console.log('Enter a valid index');
-            return;
+            throw new Error('Enter a valid index');
         } else {
             if (index === 0) {
                 this.prepend(element);
@@ -62,10 +61,10 @@ export class ListClass<T> implements TListClass<T> {
     }
 
     removeByIndex(index: number) {
-        if (index < 0 || index > this.size) {
-            console.log('Enter a valid index');
-            return;
+        if (index < 0 || index >= this.size) {
+            throw new Error("Enter a valid index");
         }
+
         let currentNode = this.head;
         if (index === 0 && currentNode) {
             this.head = currentNode.next;
@@ -87,7 +86,9 @@ export class ListClass<T> implements TListClass<T> {
     }
 
     shift() {
-        if (!this.head) return null;
+        if (!this.head) {
+            throw new Error("List is empty");
+        }
         let head = this.head;
         if (head.next) {
             this.head = head.next;
@@ -99,7 +100,9 @@ export class ListClass<T> implements TListClass<T> {
     }
 
     pop() {
-        if (!this.size) return null;
+        if (this.size === 0) {
+            throw new Error("List is empty");
+        }
 
         let current = this.head;
         let prev = null;
@@ -149,20 +152,24 @@ export class ListClass<T> implements TListClass<T> {
         return this.size;
     };
 
+    // метод getArrayWithState использует метод toArray, который создает массив значений из списка,
+    // и затем применяет map для добавления состояния к каждому элементу.
     getArrayWithState() {
+        return this.toArray().map(item => ({
+            item: item,
+            state: ElementStates.Default
+        }));
+    }
+
+    toArray() {
         const result: T[] = [];
         let current = this.head;
         while (current) {
             result.push(current.value);
             current = current.next;
         }
-
-        return [...result].map(item => ({
-            item: item,
-            state: ElementStates.Default
-        }));
-
-    };
+        return result;
+    }
 
     print () {
         let curr = this.head;
