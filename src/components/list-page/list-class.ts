@@ -24,8 +24,7 @@ export class ListClass<T> implements TListClass<T> {
     private head: Node<T> | null;
     private tail: Node<T> | null;
     private size: number;
-
-    private initailArray(items: T[]) {
+    private initialArray(items: T[]) {
         items.forEach(item => this.append(item));
     }
 
@@ -35,7 +34,7 @@ export class ListClass<T> implements TListClass<T> {
         this.size = 0;
 
         if (items?.length) {
-            this.initailArray(items)
+            this.initialArray(items);
         }
     }
 
@@ -43,7 +42,7 @@ export class ListClass<T> implements TListClass<T> {
 
     insertByIndex(element: T, index: number) {
         if (index < 0 || index > this.size) {
-            console.log("Enter a valid index");
+            console.log('Enter a valid index');
             return;
         } else {
             if (index === 0) {
@@ -60,11 +59,11 @@ export class ListClass<T> implements TListClass<T> {
             }
             this.size++;
         }
-    };
+    }
 
     removeByIndex(index: number) {
         if (index < 0 || index > this.size) {
-            console.log("Enter a valid index");
+            console.log('Enter a valid index');
             return;
         }
         let currentNode = this.head;
@@ -79,17 +78,17 @@ export class ListClass<T> implements TListClass<T> {
                 currentNode = currentNode.next;
                 currentIndex++;
             }
+
             if (prevNode && currentNode) {
                 prevNode.next = currentNode.next;
             }
         }
         this.size--;
-    };
+    }
 
-    shift () {
+    shift() {
         if (!this.head) return null;
         let head = this.head;
-
         if (head.next) {
             this.head = head.next;
         } else {
@@ -97,10 +96,11 @@ export class ListClass<T> implements TListClass<T> {
         }
         this.size--;
         return head ? head.value : null;
-    };
+    }
 
-    pop () {
+    pop() {
         if (!this.size) return null;
+
         let current = this.head;
         let prev = null;
         let currentIndex = 0;
@@ -110,17 +110,18 @@ export class ListClass<T> implements TListClass<T> {
             current = current.next;
             currentIndex++;
         }
+
         if (prev && current) {
             prev.next = current.next;
         }
+
         this.size--;
 
         return current ? current.value : null;
-    };
+    }
 
-    prepend (element: T) {
+    prepend(element: T): void {
         const node = new Node(element);
-
         if (!this.head) {
             this.head = node;
             this.tail = node;
@@ -129,37 +130,38 @@ export class ListClass<T> implements TListClass<T> {
             this.head = node;
         }
         this.size++;
-    };
+    }
 
-    append (element: T) {
+    append(element: T) {
         const node = new Node(element);
-
         if (!this.head || !this.tail) {
             this.head = node;
             this.tail = node;
-            this.size++
+            this.size++;
             return this;
         }
         this.tail.next = node;
         this.tail = node;
         this.size++;
-    };
+    }
 
     getSize () {
         return this.size;
     };
 
-    getArrayWithState () {
+    getArrayWithState() {
         const result: T[] = [];
         let current = this.head;
         while (current) {
             result.push(current.value);
             current = current.next;
         }
+
         return [...result].map(item => ({
             item: item,
             state: ElementStates.Default
         }));
+
     };
 
     print () {

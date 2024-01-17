@@ -27,7 +27,8 @@ export const ListPage: React.FC = () => {
   const initialValues = useMemo(() => ['0', '34', '8', '1'], []);
   const listClass = useMemo(() => new ListClass<string>(initialValues),
       [initialValues]);
-  const [arrayWithState, setArrayWithState] = useState<TCircleItem[]>(listClass.getArrayWithState);
+  const [arrayWithState, setArrayWithState] = useState<TCircleItem[]>(listClass.getArrayWithState());
+
   const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value);
   };
@@ -39,7 +40,7 @@ export const ListPage: React.FC = () => {
   const prepend = async () => {
     if (inputValue) {
       setIsActive(true);
-      setIsAddingToTail(true);
+      setIsAddingToHead(true);
       setInputValueIndex(0);
 
       await delay(SHORT_DELAY_IN_MS);
@@ -93,7 +94,7 @@ export const ListPage: React.FC = () => {
   };
 
   const pop = async () => {
-    if (listClass.getSize()) {
+    if (listClass.getSize) {
       const arrayWithState = listClass.getArrayWithState();
       setTempValue(arrayWithState[arrayWithState.length - 1].item);
       setIsActive(true);
@@ -128,7 +129,7 @@ export const ListPage: React.FC = () => {
       }
     }
     setIsInsertByIndex(false);
-    setInputValueIndex(parseInt(""));
+    setInputValueIndex(undefined);
     listClass.insertByIndex(inputValue, numericIndex);
     const newArrayWithState = listClass.getArrayWithState();
     newArrayWithState[numericIndex].state = ElementStates.Modified;
@@ -144,25 +145,47 @@ export const ListPage: React.FC = () => {
   };
 
   const removeByIndex = async () => {
+    const numericIndex = parseInt(inputIndex);
+    if (isNaN(numericIndex) || numericIndex >= listClass.getSize()) return;
 
+    setIsActive(true);
+    const arrayWithState = listClass.getArrayWithState();
+    for (let i = 0; i < numericIndex; i++) {
+      await delay(SHORT_DELAY_IN_MS);
+      arrayWithState[i].state = ElementStates.Changing;
+      setArrayWithState([...arrayWithState]);
+    }
+    await delay(SHORT_DELAY_IN_MS);
+    setTempValue(arrayWithState[numericIndex].item);
+    arrayWithState[numericIndex].item = '';
+    setIsRemoveByIndex(true);
+    arrayWithState[numericIndex].state = ElementStates.Default;
+    setInputValueIndex(numericIndex);
+
+    await delay(SHORT_DELAY_IN_MS);
+    listClass.removeByIndex(numericIndex);
+    setArrayWithState(listClass.getArrayWithState());
+    setIsRemoveByIndex(false);
+    setIsActive(false);
+    setInputIndex("");
   };
 
-  const showHead = (index: number): string => {
+  const showHead = (index: number): string | undefined => {
     if (index === 0 && (!isAddingToHead || !isInsertByIndex)) {
       return position.head;
     } else if (index === 0 && isInsertByIndex && inputValueIndex !== 0) {
-      return position.head
+      return position.head;
     }
-    return "";
+    return undefined;
   };
 
-  const showTail = (index: number): string => {
+  const showTail = (index: number): string | undefined => {
     if (index === arrayWithState.length - 1 && (!isRemoveFromTail || !isRemoveByIndex)) {
       return position.tail;
     } else if (index === arrayWithState.length - 1 && isRemoveByIndex) {
-      return "";
+      return undefined;
     }
-    return "";
+    return undefined;
   };
 
   return (
@@ -213,7 +236,7 @@ export const ListPage: React.FC = () => {
               placeholder="Введите значение"
               extraClass={`${style["list-page-input"]}`}
               onChange={handleInputIndexChange}
-              value={inputValue}
+              value={inputIndex}
           />
           <Button
               text="Добавить по индексу"
@@ -234,7 +257,10 @@ export const ListPage: React.FC = () => {
             className={`${style["list-circle"]}`}
         >
           {arrayWithState.map((item, index) => (
-          <li>
+          <li
+              key={index}
+              className={`${style["list-items"]}`}
+          >
             {isActive && (isAddingToHead || isAddingToTail || isInsertByIndex)
                 && index === inputValueIndex && (
                 <Circle
@@ -260,9 +286,11 @@ export const ListPage: React.FC = () => {
                 letter={item.item}
                 state={item.state}
             />
-            <ArrowIcon
-                fill={ElementColors.Default}
-            />
+            {arrayWithState.length - 1 !== index && (
+                <ArrowIcon
+                    fill={ElementColors.Default}
+                />
+                )}
           </li>
           ))}
         </ul>

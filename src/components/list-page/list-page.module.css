@@ -21,8 +21,28 @@
 }
 
 .list-circle {
-    display: flex;
-    justify-content: center;
     list-style-type: none;
+    display: flex;
     padding: 0;
+    margin: 80px 0 0 0;
+}
+
+.list-items {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: 16px;
+    position: relative;
+}
+
+.list-circle-top {
+    position: absolute;
+    top: -75px;
+    left: 13px;
+}
+
+.list-circle-bottom {
+    position: absolute;
+    top: 120px;
+    left: 13px;
 }
