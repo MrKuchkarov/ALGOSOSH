@@ -1,18 +1,21 @@
-import React, {FormEvent, useState} from "react";
+import React, {FormEvent, useMemo, useState} from "react";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import {Input} from "../ui/input/input";
 import {Button} from "../ui/button/button";
 import style from "./list-page.module.css";
 import {Circle} from "../ui/circle/circle";
 import {ArrowIcon} from "../ui/icons/arrow-icon";
-import {ElementColors} from "../../types/types";
+import {ElementColors, TCircleItem} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
+import {ListClass} from "./list-class";
+import {delay} from "../../utils/delay";
+import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 
 export const ListPage: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [inputIndex, setInputIndex] = useState("");
   const [tempValue, setTempValue] = useState("");
-  const [inputValueIndex, setInputValeuIndex] = useState<number>();
+  const [inputValueIndex, setInputValueIndex] = useState<number>();
   const [isActive, setIsActive] = useState(false);
   const [isAddingToHead, setIsAddingToHead] = useState(false);
   const [isAddingToTail, setIsAddingToTail] = useState(false);
@@ -21,17 +24,37 @@ export const ListPage: React.FC = () => {
   const [isInsertByIndex, setSsInsertByIndex] = useState(false);
   const [isRemoveByIndex, setIsRemoveByIndex] = useState(false);
 
-
+  const initialValues = useMemo(() => ['0', '34', '8', '1'], []);
+  const listClass = useMemo(() => new ListClass<string>(initialValues),
+      [initialValues]);
+  const [arrayWithState, setArrayWithState] = useState<TCircleItem[]>(listClass.getArrayWithState);
   const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
-
+    setInputValue(e.currentTarget.value);
   };
 
   const handleInputIndexChange = (e: FormEvent<HTMLInputElement>) => {
-
+    setInputIndex(e.currentTarget.value);
   };
 
   const prepend = async () => {
+    if (inputValue) {
+      setIsActive(true);
+      setIsAddingToTail(true);
+      setInputValueIndex(0);
 
+      await delay(SHORT_DELAY_IN_MS);
+      listClass.prepend(inputValue);
+      setIsAddingToHead(false);
+
+      const arrayWithState = listClass.getArrayWithState();
+      setArrayWithState(arrayWithState);
+
+      await delay(SHORT_DELAY_IN_MS);
+      arrayWithState[0].state = ElementStates.Default;
+      setArrayWithState(arrayWithState);
+    }
+    setInputValue("");
+    setIsActive(false);
   };
 
   const append = async () => {
@@ -94,13 +117,13 @@ export const ListPage: React.FC = () => {
               text="Удалить из head"
               onClick={shift}
               isLoader={isRemoveFromHead}
-              // disabled={!list.getSize}
+              disabled={!listClass.getSize}
           />
           <Button
               text="Удалить из tail"
               onClick={pop}
               isLoader={isRemoveFromTail}
-              // disable={!list.getSize}
+              disabled={!listClass.getSize}
           />
         </div>
         <div
@@ -117,14 +140,14 @@ export const ListPage: React.FC = () => {
               extraClass={`${style["list-page-button"]}`}
               onClick={addByIndex}
               isLoader={isInsertByIndex}
-              // disabled={!inputIndex || parseInt(inputIndex) > list.getSize - 1}
+              disabled={!inputIndex || parseInt(inputIndex) > listClass.getSize() - 1}
           />
           <Button
               text="Удалить по индексу"
               extraClass={`${style["list-page-button"]}`}
               onClick={removeByIndex}
               isLoader={isRemoveByIndex}
-              // disabled={!inputIndex || parseInt(inputIndex) > list.getSize - 1}
+              disabled={!inputIndex || parseInt(inputIndex) > listClass.getSize() - 1}
           />
         </div>
         <ul
