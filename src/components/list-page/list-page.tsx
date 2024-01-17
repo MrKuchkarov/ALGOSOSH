@@ -93,7 +93,21 @@ export const ListPage: React.FC = () => {
   };
 
   const pop = async () => {
+      if (listClass.getSize()) {
+        const arrayWithState = listClass.getArrayWithState();
+        setTempValue(arrayWithState[arrayWithState.length - 1].item);
+        setIsActive(true);
+        setIsRemoveFromTail(true);
+        setInputValueIndex(listClass.getSize() - 1);
 
+        arrayWithState[arrayWithState.length - 1].item = '';
+        setArrayWithState(arrayWithState);
+        await delay(SHORT_DELAY_IN_MS);
+
+        listClass.pop();
+        setIsRemoveFromTail(false);
+        setArrayWithState(listClass.getArrayWithState());
+      }
   };
 
   const addByIndex = async () => {
