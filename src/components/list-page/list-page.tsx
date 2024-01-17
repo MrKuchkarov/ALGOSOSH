@@ -1,5 +1,5 @@
 import React, {FormEvent, useMemo, useState} from "react";
-import { SolutionLayout } from "../ui/solution-layout/solution-layout";
+import {SolutionLayout} from "../ui/solution-layout/solution-layout";
 import {Input} from "../ui/input/input";
 import {Button} from "../ui/button/button";
 import style from "./list-page.module.css";
@@ -58,7 +58,22 @@ export const ListPage: React.FC = () => {
   };
 
   const append = async () => {
+    if (inputValue) {
+      setIsActive(true);
+      setIsAddingToTail(true);
+      setInputValueIndex(listClass.getSize() - 1);
 
+      await delay(SHORT_DELAY_IN_MS);
+      listClass.append(inputValue);
+      setIsAddingToTail(false);
+      const arrayWithState = listClass.getArrayWithState();
+      arrayWithState[arrayWithState.length - 1].state = ElementStates.Modified;
+      setArrayWithState(arrayWithState);
+      await delay(SHORT_DELAY_IN_MS);
+
+      arrayWithState[arrayWithState.length - 1].state = ElementStates.Default;
+      setArrayWithState(arrayWithState);
+    }
   };
 
   const shift = async () => {
