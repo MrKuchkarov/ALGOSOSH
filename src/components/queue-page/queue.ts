@@ -8,7 +8,7 @@ type TQueue<T> = {
     getTail: () => number;
 }
 export class Queue<T> implements TQueue<T> {
-    private container: (T | null)[] = [];
+    private readonly container: (T | null)[] = [];
     private head = 0;
     private tail = 0;
     private readonly size: number = 0;

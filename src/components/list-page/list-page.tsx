@@ -7,7 +7,7 @@ import {Circle} from "../ui/circle/circle";
 import {ArrowIcon} from "../ui/icons/arrow-icon";
 import {ElementColors, position, TCircleItem} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
-import {ChainList} from "./list-class";
+import {LinkedList} from "./list-class";
 import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 
@@ -21,7 +21,7 @@ export const ListPage: React.FC = () => {
   const [notification, setNotification] = useState<string | null>(null);
 
   const initialListValues = useMemo(() => ["0", "34", "8", "1"], []);
-  const linkedList = useMemo(() => new ChainList<string>(initialListValues),
+  const linkedList = useMemo(() => new LinkedList<string>(initialListValues),
       [initialListValues]);
   const [arrayWithState, setArrayWithState] = useState<TCircleItem[]>(linkedList.getArrayWithState());
 

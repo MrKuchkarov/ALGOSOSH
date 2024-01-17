@@ -121,21 +121,27 @@ export const StackPage: React.FC = () => {
       <ul
           className={`${style["stack-list"]}`}
       >
-        {array.map((item, index) =>
-        <li
-          key={uuidv4()}
-        >
-          <Circle
-              letter={item.item}
-              tail={index.toString()}
-              state={item.state}
-              head={array.length - 1 === index ? "top" : ""}
-          />
-        </li>
+          {array.length > 0 ? (
+              array.map((item, index) => (
+                  <li key={uuidv4()}>
+                      <Circle
+                          letter={item.item}
+                          tail={index.toString()}
+                          state={item.state}
+                          head={array.length - 1 === index ? "top" : ""}
+                      />
+                  </li>
+              ))
+          ) : (
+              <li>
+                  <p className={`${style["empty-stack-message"]} text_type_h3`}>
+                      Стек пустой
+                  </p>
+              </li>
         )}
       </ul>
         {stackLength > 0 && (
-            <p className={`${style["notification"]} text_type_h3`}>
+            <p className={`${style["length-stack-message"]} text_type_h3`}>
                 {stackLength === 12
                     ? "В стеке 12 элементов. Стек переполнен."
                     : `В стеке ${stackLength} ${stackLength === 1

@@ -1,16 +1,16 @@
 import {ElementStates} from "../../types/element-states";
 
-export class Node<T> {
+export class LinkedListNode<T> {
     value: T
-    next: Node<T> | null
+    next: LinkedListNode<T> | null
 
-    constructor(value: T, next?: Node<T> | null) {
+    constructor(value: T, next?: LinkedListNode<T> | null) {
         this.value = value;
         this.next = (next === undefined ? null : next);
     }
 }
 
-type TChainList<T> = {
+type TLinkedList<T> = {
     prepend: (element: T) => void;
     append: (element: T) => void;
     insertByIndex: (element: T, position: number) => void;
@@ -20,9 +20,9 @@ type TChainList<T> = {
     isEmpty: () => boolean;
     print: () => void;
 }
-export class ChainList<T> implements TChainList<T> {
-    private head: Node<T> | null;
-    private tail: Node<T> | null;
+export class LinkedList<T> implements TLinkedList<T> {
+    private head: LinkedListNode<T> | null;
+    private tail: LinkedListNode<T> | null;
     private size: number;
     private initialArray(items: T[]) {
         items.forEach(item => this.append(item));
@@ -42,12 +42,12 @@ export class ChainList<T> implements TChainList<T> {
 
     insertByIndex(element: T, index: number) {
         if (index < 0 || index > this.size) {
-            throw new Error('Enter a valid index');
+            throw new Error("Enter a valid index");
         } else {
             if (index === 0) {
                 this.prepend(element);
             } else {
-                const node = new Node(element);
+                const node = new LinkedListNode(element);
                 let curr: any = this.head;
 
                 for (let i = 0; i < index - 1; i++) {
@@ -124,7 +124,7 @@ export class ChainList<T> implements TChainList<T> {
     }
 
     prepend(element: T): void {
-        const node = new Node(element);
+        const node = new LinkedListNode(element);
         if (!this.head) {
             this.head = node;
             this.tail = node;
@@ -136,7 +136,7 @@ export class ChainList<T> implements TChainList<T> {
     }
 
     append(element: T) {
-        const node = new Node(element);
+        const node = new LinkedListNode(element);
         if (!this.head || !this.tail) {
             this.head = node;
             this.tail = node;

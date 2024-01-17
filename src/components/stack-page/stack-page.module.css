@@ -25,7 +25,13 @@
     gap: 70px 16px;
 }
 
-.notification {
+.length-stack-message {
     margin: 130px 0;
-    color: darkorchid;
+    color: #5f27cd;
+}
+
+.empty-stack-message {
+    margin: 210px 0;
+    /*color: var(--text-color-primary);*/
+    color: #5f27cd;
 }
