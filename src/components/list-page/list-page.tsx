@@ -77,7 +77,19 @@ export const ListPage: React.FC = () => {
   };
 
   const shift = async () => {
-
+    if (listClass.getSize()) {
+      const arrayWithState = listClass.getArrayWithState();
+      setIsActive(true);
+      setIsRemoveFromHead(true);
+      setInputValueIndex(0);
+      arrayWithState[0].item = "";
+      setArrayWithState(arrayWithState);
+      await delay(SHORT_DELAY_IN_MS);
+      listClass.shift();
+      setIsRemoveFromHead(false);
+      setArrayWithState(listClass.getArrayWithState());
+    }
+    setIsActive(false);
   };
 
   const pop = async () => {
