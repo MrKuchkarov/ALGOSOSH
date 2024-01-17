@@ -46,3 +46,8 @@
     top: 120px;
     left: 13px;
 }
+
+.notification {
+    margin: 25px 0;
+    color: darkorchid;
+}

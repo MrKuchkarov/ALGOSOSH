@@ -18,13 +18,17 @@ export const ListPage: React.FC = () => {
   const [inputValueIndex, setInputValueIndex] = useState<number>();
   const [isActive, setIsActive] = useState(false);
   const [currentAction, setCurrentAction] = useState<string | null>(null);
-
+  const [notification, setNotification] = useState<string | null>(null);
 
   const initialListValues = useMemo(() => ["0", "34", "8", "1"], []);
   const linkedList = useMemo(() => new ChainList<string>(initialListValues),
       [initialListValues]);
   const [arrayWithState, setArrayWithState] = useState<TCircleItem[]>(linkedList.getArrayWithState());
 
+  const showNotification = (message: string) => {
+    setNotification(message);
+    setTimeout(() => setNotification(null), 2000);
+  };
   const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value || "");
   };
@@ -58,6 +62,7 @@ export const ListPage: React.FC = () => {
       await delay(SHORT_DELAY_IN_MS);
       arrayWithState[0].state = ElementStates.Default;
       setArrayWithState(arrayWithState);
+      showNotification("Элемент добавлен в начало списка");
     }
     setInputValue("");
     setIsActive(false);
@@ -78,6 +83,7 @@ export const ListPage: React.FC = () => {
 
       arrayWithState[arrayWithState.length - 1].state = ElementStates.Default;
       setArrayWithState(arrayWithState);
+      showNotification("Элемент добавлен в конец списка");
     }
     setInputValue("");
   };
@@ -93,6 +99,7 @@ export const ListPage: React.FC = () => {
       linkedList.shift();
       endAction();
       setArrayWithState(linkedList.getArrayWithState());
+      showNotification("Элемент удалён из начала списка");
     }
     setIsActive(false);
   };
@@ -111,6 +118,7 @@ export const ListPage: React.FC = () => {
       linkedList.pop();
       endAction();
       setArrayWithState(linkedList.getArrayWithState());
+      showNotification("Элемент удален с конца списка");
     }
     setIsActive(false);
 };
@@ -128,6 +136,7 @@ export const ListPage: React.FC = () => {
       if (i < numericIndex) {
         arrayWithState[i].state = ElementStates.Changing;
         setArrayWithState(arrayWithState);
+
       }
     }
     setInputValueIndex(undefined);
@@ -139,7 +148,7 @@ export const ListPage: React.FC = () => {
     await delay(SHORT_DELAY_IN_MS);
     newArrayWithState[numericIndex].state = ElementStates.Default;
     setArrayWithState(newArrayWithState);
-
+    showNotification("Элемент добавлен по индексу");
     endAction();
     setIsActive(false);
     setInputValue("");
@@ -161,7 +170,7 @@ export const ListPage: React.FC = () => {
     await delay(SHORT_DELAY_IN_MS);
     setTemporaryValue(arrayWithState[numericIndex].item);
     arrayWithState[numericIndex].item = "";
-
+    showNotification("Элемент удалён по индексу");
     arrayWithState[numericIndex].state = ElementStates.Default;
     setInputValueIndex(numericIndex);
 
@@ -308,6 +317,7 @@ export const ListPage: React.FC = () => {
           </li>
           ))}
         </ul>
+        <p className={`${style["notification"]} text_type_h3`}>{notification}</p>
       </form>
     </SolutionLayout>
   );
