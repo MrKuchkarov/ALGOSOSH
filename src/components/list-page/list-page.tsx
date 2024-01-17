@@ -21,7 +21,7 @@ export const ListPage: React.FC = () => {
   const [isAddingToTail, setIsAddingToTail] = useState(false);
   const [isRemoveFromHead, setIsRemoveFromHead] = useState(false);
   const [isRemoveFromTail, setIsRemoveFromTail] = useState(false);
-  const [isInsertByIndex, setSsInsertByIndex] = useState(false);
+  const [isInsertByIndex, setIsInsertByIndex] = useState(false);
   const [isRemoveByIndex, setIsRemoveByIndex] = useState(false);
 
   const initialValues = useMemo(() => ['0', '34', '8', '1'], []);
@@ -93,25 +93,54 @@ export const ListPage: React.FC = () => {
   };
 
   const pop = async () => {
-      if (listClass.getSize()) {
-        const arrayWithState = listClass.getArrayWithState();
-        setTempValue(arrayWithState[arrayWithState.length - 1].item);
-        setIsActive(true);
-        setIsRemoveFromTail(true);
-        setInputValueIndex(listClass.getSize() - 1);
+    if (listClass.getSize()) {
+      const arrayWithState = listClass.getArrayWithState();
+      setTempValue(arrayWithState[arrayWithState.length - 1].item);
+      setIsActive(true);
+      setIsRemoveFromTail(true);
+      setInputValueIndex(listClass.getSize() - 1);
 
-        arrayWithState[arrayWithState.length - 1].item = '';
-        setArrayWithState(arrayWithState);
-        await delay(SHORT_DELAY_IN_MS);
+      arrayWithState[arrayWithState.length - 1].item = '';
+      setArrayWithState(arrayWithState);
+      await delay(SHORT_DELAY_IN_MS);
 
-        listClass.pop();
-        setIsRemoveFromTail(false);
-        setArrayWithState(listClass.getArrayWithState());
-      }
-  };
+      listClass.pop();
+      setIsRemoveFromTail(false);
+      setArrayWithState(listClass.getArrayWithState());
+    }
+    setIsActive(false);
+};
 
   const addByIndex = async () => {
+    const numericIndex = parseInt(inputIndex);
+    if (numericIndex > listClass.getSize()) return;
 
+    setIsActive(true);
+    setIsInsertByIndex(true);
+
+    const arrayWithState = listClass.getArrayWithState();
+    for (let i = 0; i < numericIndex; i++) {
+      setInputValueIndex(i);
+      await delay(SHORT_DELAY_IN_MS);
+      if (i < numericIndex) {
+        arrayWithState[i].state = ElementStates.Changing;
+        setArrayWithState(arrayWithState);
+      }
+    }
+    setIsInsertByIndex(false);
+    setInputValueIndex(parseInt(""));
+    listClass.insertByIndex(inputValue, numericIndex);
+    const newArrayWithState = listClass.getArrayWithState();
+    newArrayWithState[numericIndex].state = ElementStates.Modified;
+
+    setArrayWithState(newArrayWithState);
+    await delay(SHORT_DELAY_IN_MS);
+    newArrayWithState[numericIndex].state = ElementStates.Default;
+    setArrayWithState(newArrayWithState);
+
+    setIsActive(false);
+    setInputValue("");
+    setInputIndex("");
   };
 
   const removeByIndex = async () => {
