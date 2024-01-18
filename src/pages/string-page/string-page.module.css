@@ -1,0 +1,24 @@
+.container {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.input-string-page {
+    max-width: 377px;
+    max-height: 86px;
+}
+
+.list-string-page {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    gap: 16px;
+    margin: 120px 0 0 0;
+}
+
+.notification {
+    margin: 80px 0;
+    color: #5f27cd;
+}
