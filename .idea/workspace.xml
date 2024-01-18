@@ -6,19 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fibonacci-page/utils/fibonacci.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/list-page/list-class.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list-page/utils/list-class.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/list-page/list-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list-page/list-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/queue-page/queue-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/queue-page/queue-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/queue-page/queue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/queue-page/utils/queue.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/sorting-page/bubble-sort.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sorting-page/utils/bubble-sort.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/sorting-page/selection-sort.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sorting-page/utils/selection-sort.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/stack-page/stack-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stack-page/stack-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/stack-page/stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stack-page/utils/stack.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/string-page/reverse-string.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/string-page/utils/reverse-string.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/string-page/string-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/string-page/string-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/list-page/utils/list-class.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list-page/utils/list-class.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +94,15 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/string-page/utils" />
+      <recent name="$PROJECT_DIR$/src/pages/stack-page/utils" />
+      <recent name="$PROJECT_DIR$/src/pages/sorting-page/utils" />
+      <recent name="$PROJECT_DIR$/src/pages/queue-page/utils" />
+      <recent name="$PROJECT_DIR$/src/pages/list-page/utils" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -133,7 +130,8 @@
       <workItem from="1705504456499" duration="9318000" />
       <workItem from="1705574182546" duration="3874000" />
       <workItem from="1705578895985" duration="112000" />
-      <workItem from="1705594335772" duration="3975000" />
+      <workItem from="1705594335772" duration="4748000" />
+      <workItem from="1705600087552" duration="347000" />
     </task>
     <servers />
   </component>

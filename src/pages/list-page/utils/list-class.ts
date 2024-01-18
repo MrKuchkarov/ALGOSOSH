@@ -50,13 +50,18 @@ export class LinkedList<T> implements TLinkedList<T> {
                 this.prepend(element);
             } else {
                 const node = new LinkedListNode(element);
-                let curr: any = this.head;
+                let curr = this.head;
 
-                for (let i = 0; i < index - 1; i++) {
+                for (let i = 0; i < index - 1 && curr; i++) {
                     curr = curr.next;
                 }
-                node.next = curr.next;
-                curr.next = node;
+                if (curr) {
+                    node.next = curr.next;
+                    curr.next = node;
+                } else {
+                    throw new Error("The index is out of range");
+                }
+
             }
             this.size++;
         }
