@@ -99,7 +99,7 @@ export const ListPage: React.FC = () => {
       linkedList.shift();
       endAction();
       setArrayWithState(linkedList.getArrayWithState());
-      showNotification("Элемент удалён из начала списка");
+      showNotification("Элемент удалён из начало списка");
     }
     setIsActive(false);
   };

@@ -1,15 +1,18 @@
-export const getFibonacciNumbers = (n: number, memo: number[] = []): number[] => {
-    if (memo[n] !== undefined) {
-        return memo.slice(0, n + 1);
+export const getFibonacciNumbers = (n: number, memoizedResults: number[] = []): number[] => {
+    if (!Number.isInteger(n) || n <= 0) {
+        throw new Error("n должно быть положительным целым числом");
+    }
+    if (memoizedResults[n] !== undefined) {
+        return memoizedResults.slice(0, n + 1);
     }
 
-    const getResult: number[] = [1, 1];
+    const fibonacciSequence: number[] = [1, 1];
     for (let i = 2; i <= n; i++) {
-        getResult.push(getResult[i - 1] + getResult[i - 2]);
+        fibonacciSequence.push(fibonacciSequence[i - 1] + fibonacciSequence[i - 2]);
     }
 
-    memo[n] = getResult[getResult.length - 1];
-    return getResult;
+    memoizedResults[n] = fibonacciSequence[fibonacciSequence.length - 1];
+    return fibonacciSequence;
 };
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
-import { Link } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 import styles from "./main-page.module.css";
 
@@ -22,24 +22,24 @@ export const MainPage: React.FC<MainPageProps> = ({ extraClass = "" }) => {
         </p>
       </div>
       <div className={styles.cards_box}>
-        <Link className={styles.link} to="/iterative">
+        <NavLink className={styles.link} to="/iterative">
           <div className={`${styles.card} ${styles.string}`} />
-        </Link>
-        <Link className={styles.link} to="/fibonacci">
+        </NavLink>
+        <NavLink className={styles.link} to="/fibonacci">
           <div className={`${styles.card} ${styles.fibonacci}`} />
-        </Link>
-        <Link className={styles.link} to="/sorting">
+        </NavLink>
+        <NavLink className={styles.link} to="/sorting">
           <div className={`${styles.card} ${styles.arr}`} />
-        </Link>
-        <Link className={styles.link} to="/stack">
+        </NavLink>
+        <NavLink className={styles.link} to="/stack">
           <div className={`${styles.card} ${styles.stack}`} />
-        </Link>
-        <Link className={styles.link} to="/queue">
+        </NavLink>
+        <NavLink className={styles.link} to="/queue">
           <div className={`${styles.card} ${styles.queue}`} />
-        </Link>
-        <Link className={styles.link} to="/list">
+        </NavLink>
+        <NavLink className={styles.link} to="/list">
           <div className={`${styles.card} ${styles.list}`} />
-        </Link>
+        </NavLink>
       </div>
       <Marquee className={styles.ticker} gradient={false} speed={200}>
         <p
