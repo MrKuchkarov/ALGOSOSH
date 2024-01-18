@@ -157,7 +157,7 @@ const handleClearButtonClick = () => {
         >
             {array.map((item, index) =>
                 <li
-                    key={uuidv4()}
+                    key={index}
                 >
                     <Circle
                         letter={item.item}

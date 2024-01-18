@@ -116,9 +116,9 @@ export const SortingPage: React.FC = () => {
         <ul
             className={`${styles["column-container"]}`}
         >
-          {initialArray!.map((item) => (
+          {initialArray!.map((item, index) => (
           <li
-              key={uuidv4()}
+              key={index}
           >
                 <Column
                   index={item.item}

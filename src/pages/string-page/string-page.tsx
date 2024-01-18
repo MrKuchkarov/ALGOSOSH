@@ -16,7 +16,7 @@ export const StringReversePage: React.FC = () => {
 
   const handleStringReverse = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const stringSymbols = inputValue.split('').map(item => ({
+    const stringSymbols = inputValue.split("").map(item => ({
       item,
       state: ElementStates.Default
     }));
@@ -33,7 +33,6 @@ export const StringReversePage: React.FC = () => {
       setInputValue("");
     } catch (error) {
       console.error("An error occurred:", error);
-      // Обработка ошибки при необходимости
     }
   };
 

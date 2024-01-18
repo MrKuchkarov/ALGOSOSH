@@ -2,7 +2,7 @@ import {TArrayItem} from "../../types/types";
 import {Dispatch, SetStateAction} from "react";
 import {ElementStates} from "../../types/element-states";
 import {delay} from "../../utils/delay";
-import {DELAY_IN_MS} from "../../constants/delays";
+import {DELAY_IN_MS, SHORT_DELAY_IN_MS} from "../../constants/delays";
 import {swap} from "../../utils/swap";
 
 const bubbleSort = async (

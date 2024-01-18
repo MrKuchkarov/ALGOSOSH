@@ -4,7 +4,6 @@ import styles from "./stack-page.module.css";
 import {Input} from "../../components/ui/input/input";
 import {Button} from "../../components/ui/button/button";
 import {Circle} from "../../components/ui/circle/circle";
-import { v4 as uuidv4 } from 'uuid';
 import {TCircleItem} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
 import {delay} from "../../utils/delay";
@@ -123,7 +122,7 @@ export const StackPage: React.FC = () => {
       >
           {array.length > 0 ? (
               array.map((item, index) => (
-                  <li key={uuidv4()}>
+                  <li key={index}>
                       <Circle
                           letter={item.item}
                           tail={index.toString()}

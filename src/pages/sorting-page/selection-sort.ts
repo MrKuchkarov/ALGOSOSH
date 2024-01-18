@@ -2,7 +2,7 @@ import {TArrayItem} from "../../types/types";
 import {Dispatch, SetStateAction} from "react";
 import {ElementStates} from "../../types/element-states";
 import {delay} from "../../utils/delay";
-import {SHORT_DELAY_IN_MS} from "../../constants/delays";
+import {DELAY_IN_MS, SHORT_DELAY_IN_MS} from "../../constants/delays";
 import {swap} from "../../utils/swap";
 
 export const selectSort = async (
@@ -21,7 +21,7 @@ export const selectSort = async (
             array[i].state = ElementStates.Changing;
             array[j].state = ElementStates.Changing;
             setArray([...array]);
-            await delay(SHORT_DELAY_IN_MS);
+            await delay(DELAY_IN_MS);
 
             if (compare(array[j].item, array[indexToCompare].item)) {
                 indexToCompare = j;

@@ -12,7 +12,6 @@ type TReverseStringArrayParams = {
 
 type TReverseStringArrayResult = {
     newArray: TCircleItem[];
-    isComplete: boolean;
 }
 
 export const reverseStringArray = async (
@@ -39,5 +38,5 @@ export const reverseStringArray = async (
     }
 
     setActive(false);
-    return { newArray, isComplete: true };
+    return { newArray };
 };
