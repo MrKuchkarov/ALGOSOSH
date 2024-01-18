@@ -13,7 +13,7 @@ export const FibonacciPage: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isCalculated, setIsCalculated] = useState<boolean>(false);
-
+  const numbersFib = numbers.map((number, index) => ({ value: number, _id: uuidv4(), index }));
     const calculateFibonacci = async (value: string) => {
         setIsActive(true);
 
@@ -67,13 +67,13 @@ export const FibonacciPage: React.FC = () => {
         />
       </form>
       <ul className={`${styles["list-fibonacci"]}`}>
-        {numbers?.map((number, index) =>
+        {numbersFib?.map((number) =>
             <li
-                key={uuidv4()}
+                key={number._id}
             >
                   <Circle
-                      letter={number.toString()}
-                      tail={index.toString()}
+                      letter={number.value.toString()}
+                      tail={number.index.toString()}
                   />
             </li>
         )}
