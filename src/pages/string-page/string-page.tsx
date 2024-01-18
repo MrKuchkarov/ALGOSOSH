@@ -6,7 +6,7 @@ import {Button} from "../../components/ui/button/button";
 import {Circle} from "../../components/ui/circle/circle";
 import {TCircleItem} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
-import {reverseStringArray} from "./reverse-string";
+import {reverseStringArray} from "./utils/reverse-string";
 import {delay} from "../../utils/delay";
 export const StringReversePage: React.FC = () => {
   const [array, setArray] = useState<TCircleItem[]>([]);

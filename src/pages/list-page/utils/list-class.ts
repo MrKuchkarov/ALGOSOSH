@@ -1,4 +1,4 @@
-import {ElementStates} from "../../types/element-states";
+import {ElementStates} from "../../../types/element-states";
 
 export class LinkedListNode<T> {
     value: T

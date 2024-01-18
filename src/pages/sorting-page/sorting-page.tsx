@@ -7,9 +7,9 @@ import {Direction} from "../../types/direction";
 import {SortName, TArrayItem} from "../../types/types";
 import {Column} from "../../components/ui/column/column";
 import {randomArray} from "../../utils/randomArray";
-import {selectSortAscending, selectSortDescending} from "./selection-sort";
+import {selectSortAscending, selectSortDescending} from "./utils/selection-sort";
 import {delay} from "../../utils/delay";
-import {bubbleSortAscending, bubbleSortDescending} from "./bubble-sort";
+import {bubbleSortAscending, bubbleSortDescending} from "./utils/bubble-sort";
 export const SortingPage: React.FC = () => {
   const [initialArray, setInitialArray] = useState<TArrayItem[]>([]);
   const [sortDirection, setSortDirection] = useState<Direction>();

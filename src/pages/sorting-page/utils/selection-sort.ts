@@ -1,9 +1,9 @@
-import { TArrayItem } from "../../types/types";
+import { TArrayItem } from "../../../types/types";
 import { Dispatch, SetStateAction } from "react";
-import { ElementStates } from "../../types/element-states";
-import { swap } from "../../utils/swap";
-import {SHORT_DELAY_IN_MS} from "../../constants/delays";
-import {delay} from "../../utils/delay";
+import { ElementStates } from "../../../types/element-states";
+import { swap } from "../../../utils/swap";
+import {SHORT_DELAY_IN_MS} from "../../../constants/delays";
+import {delay} from "../../../utils/delay";
 
 export const selectSort = async (
     array: TArrayItem[],

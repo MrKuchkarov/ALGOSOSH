@@ -1,7 +1,7 @@
-import {TCircleItem} from "../../types/types";
-import {ElementStates} from "../../types/element-states";
-import {DELAY_IN_MS} from "../../constants/delays";
-import {swap} from "../../utils/swap";
+import {TCircleItem} from "../../../types/types";
+import {ElementStates} from "../../../types/element-states";
+import {DELAY_IN_MS} from "../../../constants/delays";
+import {swap} from "../../../utils/swap";
 
 type TReverseStringArrayParams = {
     array: TCircleItem[];

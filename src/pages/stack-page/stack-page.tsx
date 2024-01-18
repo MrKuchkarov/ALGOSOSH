@@ -8,7 +8,7 @@ import {TCircleItem} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
 import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
-import {Stack} from "./stack";
+import {Stack} from "./utils/stack";
 export const StackPage: React.FC = () => {
     const [stack] = useState(() => new Stack<TCircleItem>());
     const [array, setArray] = useState<TCircleItem[]>([]);

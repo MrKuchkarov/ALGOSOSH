@@ -4,7 +4,7 @@ import {Input} from "../../components/ui/input/input";
 import {Button} from "../../components/ui/button/button";
 import styles from "./fibonacci-page.module.css";
 import {Circle} from "../../components/ui/circle/circle";
-import {getFibonacciNumbers} from "./fibonacci";
+import {getFibonacciNumbers} from "./utils/fibonacci";
 import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 import { v4 as uuidv4 } from 'uuid';

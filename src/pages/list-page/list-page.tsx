@@ -7,7 +7,7 @@ import {Circle} from "../../components/ui/circle/circle";
 import {ArrowIcon} from "../../components/ui/icons/arrow-icon";
 import {ElementColors, position, TCircleItem} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
-import {LinkedList} from "./list-class";
+import {LinkedList} from "./utils/list-class";
 import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 

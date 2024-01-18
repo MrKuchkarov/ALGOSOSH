@@ -5,7 +5,7 @@ import {Button} from "../../components/ui/button/button";
 import styles from "./queue-page.module.css";
 import {Circle} from "../../components/ui/circle/circle";
 import {ElementStates} from "../../types/element-states";
-import {Queue} from "./queue";
+import {Queue} from "./utils/queue";
 import {position, TQueueItem} from "../../types/types";
 import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
