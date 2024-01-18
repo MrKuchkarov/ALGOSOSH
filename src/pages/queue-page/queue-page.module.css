@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.queue-input {
+    max-width: 377px;
+}
+.queue-btn:last-child {
+    margin: 0 0 0 68px;
+}
+
+.queue-list {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 70px 0 0 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.notification {
+    margin: 100px 0;
+    color: #5f27cd;
+}

@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    margin: 0 auto;
+    max-width: 830px;
+    gap: 12px;
+}
+
+.stack-input {
+    max-width: 377px;
+}
+
+.stack-btn:last-child {
+    margin: 0 0 0 68px;
+}
+
+.stack-list {
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    max-height: 140px;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 70px auto 0;
+    gap: 70px 16px;
+}
+
+.length-stack-message {
+    margin: 130px 0;
+    color: #5f27cd;
+}
+
+.empty-stack-message {
+    margin: 210px 0;
+    /*color: var(--text-color-primary);*/
+    color: #5f27cd;
+}
