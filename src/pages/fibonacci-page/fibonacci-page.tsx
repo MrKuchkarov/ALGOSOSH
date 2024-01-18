@@ -27,7 +27,7 @@ export const FibonacciPage: React.FC = () => {
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (inputValue.length !== 0) {
+    if (/^\d+$/.test(inputValue)) {
         setIsCalculated(false);
       calculateFibonacci(inputValue)
           .then(() => {
@@ -39,11 +39,11 @@ export const FibonacciPage: React.FC = () => {
     }
   };
     const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-    setInputValue(e.currentTarget.value)
+    setInputValue(e.currentTarget.value);
     }
 
     const shouldDisableButton = (value: string) =>
-        !value || parseInt(value) > 19 || parseInt(value) < 1;
+        !/^\d+$/.test(value) || parseInt(value) > 19 || parseInt(value) < 1;
 
   return (
     <SolutionLayout title="Последовательность Фибоначчи">
@@ -55,8 +55,9 @@ export const FibonacciPage: React.FC = () => {
             placeholder="Введите текст"
             extraClass={`${styles["input-fibonacci"]}`}
             isLimitText={true}
-            maxLength={19}
+            max={19}
             onChange={handleInputChange}
+            type={"numbers"}
         />
         <Button
             text="Расчитать"
