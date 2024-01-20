@@ -57,7 +57,7 @@ export const FibonacciPage: React.FC = () => {
             isLimitText={true}
             max={19}
             onChange={handleInputChange}
-            type="numbers"
+            type="tel"
         />
         <Button
             text="Расчитать"

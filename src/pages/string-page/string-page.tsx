@@ -8,15 +8,18 @@ import {TCircleItem} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
 import {reverseStringArray} from "./utils/reverse-string";
 import {delay} from "../../utils/delay";
+import {useForm} from "../../hooks/useForm";
 export const StringReversePage: React.FC = () => {
+  const {values, handleChange, setValues} = useForm({
+    inputValue: "",
+  });
   const [array, setArray] = useState<TCircleItem[]>([]);
-  const [inputValue, setInputValue] = useState<string>("");
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isReversed, setIsReversed] = useState<boolean>(false);
 
   const handleStringReverse = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const stringSymbols = inputValue.split("").map(item => ({
+    const stringSymbols = values.inputValue.split("").map(item => ({
       item,
       state: ElementStates.Default
     }));
@@ -30,15 +33,11 @@ export const StringReversePage: React.FC = () => {
       });
 
       setIsReversed(true);
-      setInputValue("");
+      setValues({ inputValue: "" });
     } catch (error) {
       console.error("An error occurred:", error);
     }
   };
-
-    const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-        setInputValue(e.currentTarget.value);
-    }
 
   return (
     <SolutionLayout title="Строка">
@@ -51,12 +50,14 @@ export const StringReversePage: React.FC = () => {
           extraClass={`${styles["input-string-page"]}`}
           isLimitText={true}
           maxLength={11}
-          onChange={handleInputChange}
+          onChange={handleChange}
+          value={values.inputValue}
+          name="inputValue"
         />
         <Button
             text="Развернуть"
             type="submit"
-            disabled={!inputValue}
+            disabled={!values.inputValue}
             isLoader={isActive}
         />
       </form>
