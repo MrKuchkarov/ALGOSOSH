@@ -8,9 +8,10 @@ import {getFibonacciNumbers} from "./utils/fibonacci";
 import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 import { v4 as uuidv4 } from 'uuid';
+import {useForm} from "../../hooks/useForm";
 export const FibonacciPage: React.FC = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
-  const [inputValue, setInputValue] = useState<string>("");
+  const {values, handleChange, setValues} = useForm({inputValues: ""});
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isCalculated, setIsCalculated] = useState<boolean>(false);
   const numbersFib = numbers.map((number, index) => ({ value: number, _id: uuidv4(), index }));
@@ -27,9 +28,9 @@ export const FibonacciPage: React.FC = () => {
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (/^\d+$/.test(inputValue)) {
+    if (/^\d+$/.test(values.inputValue)) {
         setIsCalculated(false);
-      calculateFibonacci(inputValue)
+      calculateFibonacci(values.inputValue)
           .then(() => {
               setIsCalculated(true);
           })
@@ -38,9 +39,6 @@ export const FibonacciPage: React.FC = () => {
           });
     }
   };
-    const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-    setInputValue(e.currentTarget.value);
-    }
 
     const shouldDisableButton = (value: string) =>
         !/^\d+$/.test(value) || parseInt(value) > 19 || parseInt(value) < 1;
@@ -56,13 +54,15 @@ export const FibonacciPage: React.FC = () => {
             extraClass={`${styles["input-fibonacci"]}`}
             isLimitText={true}
             max={19}
-            onChange={handleInputChange}
+            onChange={handleChange}
             type="tel"
+            value={values.inputValue}
+            name="inputValue"
         />
         <Button
             text="Расчитать"
             type="submit"
-            disabled={shouldDisableButton(inputValue)}
+            disabled={shouldDisableButton(values.inputValue)}
             isLoader={isActive}
         />
       </form>

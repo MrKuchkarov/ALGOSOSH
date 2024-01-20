@@ -9,10 +9,13 @@ import {ElementStates} from "../../types/element-states";
 import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 import {Stack} from "./utils/stack";
+import {useForm} from "../../hooks/useForm";
 export const StackPage: React.FC = () => {
+    const {values, handleChange, setValues} = useForm({
+        inputValue: "",
+    });
     const [stack] = useState(() => new Stack<TCircleItem>());
     const [array, setArray] = useState<TCircleItem[]>([]);
-    const [inputValue, setInputValue] = useState<string>("");
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isAdding, setIsAdding] = useState<boolean>(false);
     const [isCleaning, setIsCleaning] = useState<boolean>(false);
@@ -26,10 +29,10 @@ export const StackPage: React.FC = () => {
 
         switch (operationType) {
             case "add":
-                if (inputValue && stackLength < 12) {
+                if (values.inputValue && stackLength < 12) {
                     setIsAdding(true);
-                    stack.push({ item: inputValue, state: ElementStates.Changing });
-                    setInputValue("");
+                    stack.push({ item: values.inputValue, state: ElementStates.Changing });
+                    setValues({inputValue: ""});
                     setArray([...stackItems]);
                     await delay(SHORT_DELAY_IN_MS);
                     stack.peak().state = ElementStates.Default;
@@ -67,9 +70,6 @@ export const StackPage: React.FC = () => {
         await handleOperation("add");
     };
 
-    const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
-        setInputValue(e.currentTarget.value)
-    };
 
     const handleRemoveButtonClick = async () => {
         await handleOperation("remove");
@@ -92,14 +92,15 @@ export const StackPage: React.FC = () => {
             extraClass={`${styles["stack-input"]}`}
             isLimitText={true}
             maxLength={4}
-            value={inputValue}
-            onChange={handleInputValueChange}
+            value={values.inputValue}
+            onChange={handleChange}
+            name="inputValue"
         />
         <Button
           text="Добавить"
           extraClass={`${styles["stack-btn"]}`}
           type="submit"
-          disabled={!inputValue || isActive}
+          disabled={!values.inputValue || isActive}
           isLoader={isAdding}
         />
         <Button

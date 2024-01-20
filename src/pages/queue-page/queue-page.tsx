@@ -9,6 +9,7 @@ import {Queue} from "./utils/queue";
 import {position, TQueueItem} from "../../types/types";
 import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
+import {useForm} from "../../hooks/useForm";
 
 const empty = Array.from({length: 7}, () => ({
     item: '',
@@ -16,7 +17,9 @@ const empty = Array.from({length: 7}, () => ({
 }));
 export const QueuePage: React.FC = () => {
 const [array, setArray] = useState(empty);
-const [inputValue, setInputValue] = useState("");
+const {values, handleChange, setValues} = useForm({
+        inputValue: "",
+    });
 const [queue, setQueue] = useState(new Queue<TQueueItem>(7));
 const [isActive, setActive] = useState(false);
 const [isAdding, setAdding] = useState(false);
@@ -24,9 +27,6 @@ const [isRemoving, setRemoving] = useState(false);
 const [isClearing, setClearing] = useState(false);
 const [notification, setNotification] = useState<string | null>(null);
 
-const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
-    setInputValue(e.currentTarget.value);
-};
 const showNotification = (message: string) => {
     setNotification(message);
     setTimeout(() => setNotification(null), 2000);
@@ -38,7 +38,7 @@ const updateArrayForAdding = () => {
     setArray([...array]);
     delay(SHORT_DELAY_IN_MS).then(() => {
         array[queue.getTail() - 1] = {
-            item: inputValue,
+            item: values.inputValue,
             state: ElementStates.Default };
         setArray([...array]);
     });
@@ -55,17 +55,17 @@ const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
         return;
     }
     queue.enqueue({
-        item: inputValue,
+        item: values.inputValue,
         state: ElementStates.Default});
     setQueue(queue);
 
     updateArrayForAdding();
 
     setArray([...array]);
-    setInputValue("");
+    setValues({inputValue: ""});
     setActive(false);
     setAdding(false);
-    showNotification(`Добавлен элемент в очередь: ${inputValue}`);
+    showNotification(`Добавлен элемент в очередь: ${values.inputValue}`);
 };
     const updateArrayForRemoving = () => {
         array[queue.getHead() - 1] = {
@@ -123,17 +123,18 @@ const handleClearButtonClick = () => {
       >
         <Input
             placeholder="Введите текст"
-            onChange={handleInputValueChange}
+            onChange={handleChange}
             extraClass={`${styles["queue-input"]}`}
             maxLength={4}
             isLimitText={true}
-            value={inputValue}
+            value={values.inputValue}
+            name="inputValue"
         />
         <Button
           text="Добавить"
           type={"submit"}
           extraClass={`${styles["queue-btn"]}`}
-          disabled={!inputValue || isActive}
+          disabled={!values.inputValue || isActive}
           isLoader={isAdding}
         />
         <Button

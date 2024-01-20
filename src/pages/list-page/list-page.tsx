@@ -10,9 +10,10 @@ import {ElementStates} from "../../types/element-states";
 import {LinkedList} from "./utils/list-class";
 import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
+import {useForm} from "../../hooks/useForm";
 
 export const ListPage: React.FC = () => {
-  const [inputValue, setInputValue] = useState("");
+  const {values, handleChange, setValues} = useForm({inputValue: ""});
   const [inputIndex, setInputIndex] = useState("");
   const [temporaryValue, setTemporaryValue] = useState("");
   const [inputValueIndex, setInputValueIndex] = useState<number>();
@@ -34,10 +35,6 @@ export const ListPage: React.FC = () => {
     setNotification(message);
     setTimeout(() => setNotification(null), 2000);
   };
-  // Обработчики изменения введенных значений
-  const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
-    setInputValue(e.currentTarget.value || "");
-  };
 
   const handleInputIndexChange = (e: FormEvent<HTMLInputElement>) => {
     setInputIndex(e.currentTarget.value || "");
@@ -55,12 +52,12 @@ export const ListPage: React.FC = () => {
   };
 
   const prepend = async () => {
-    if (inputValue) {
+    if (values.inputValue) {
       startAction("addingToHead");
       setInputValueIndex(0);
 
       await delay(SHORT_DELAY_IN_MS);
-      linkedList.prepend(inputValue);
+      linkedList.prepend(values.inputValue);
       endAction();
 
       const arrayWithState = linkedList.getArrayWithState();
@@ -71,17 +68,17 @@ export const ListPage: React.FC = () => {
       setArrayWithState(arrayWithState);
       showNotification("Элемент добавлен в начало списка");
     }
-    setInputValue("");
+    setValues({inputValue: ""});
     setIsActive(false);
   };
 
   const append = async () => {
-    if (inputValue) {
+    if (values.inputValue) {
       startAction("addingToTail");
       setInputValueIndex(linkedList.getSize() - 1);
 
       await delay(SHORT_DELAY_IN_MS);
-      linkedList.append(inputValue);
+      linkedList.append(values.inputValue);
       endAction();
       const arrayWithState = linkedList.getArrayWithState();
       arrayWithState[arrayWithState.length - 1].state = ElementStates.Modified;
@@ -92,7 +89,7 @@ export const ListPage: React.FC = () => {
       setArrayWithState(arrayWithState);
       showNotification("Элемент добавлен в конец списка");
     }
-    setInputValue("");
+    setValues({inputValue: ""});
   };
 
   const shift = async () => {
@@ -146,7 +143,7 @@ export const ListPage: React.FC = () => {
       }
     }
     setInputValueIndex(undefined);
-    linkedList.insertByIndex(inputValue, numericIndex);
+    linkedList.insertByIndex(values.inputValue, numericIndex);
     const newArrayWithState = linkedList.getArrayWithState();
     newArrayWithState[numericIndex].state = ElementStates.Modified;
 
@@ -157,7 +154,7 @@ export const ListPage: React.FC = () => {
     showNotification("Элемент добавлен по индексу");
     endAction();
     setIsActive(false);
-    setInputValue("");
+    setValues({inputValue: ""});
     setInputIndex("");
   };
 
@@ -215,22 +212,24 @@ export const ListPage: React.FC = () => {
           <Input
               placeholder="Введите значение"
               extraClass={`${styles["list-page-input"]}`}
-              onChange={handleInputValueChange}
-              value={inputValue}
+              onChange={handleChange}
+              value={values.inputValue}
               maxLength={4}
               isLimitText={true}
+
+              name="inputValue"
           />
           <Button
               text="Добавить в head"
               onClick={prepend}
               isLoader={currentAction === "addingToHead"}
-              disabled={!inputValue}
+              disabled={!values.inputValue}
           />
           <Button
               text="Добавить в tail"
               onClick={append}
               isLoader={currentAction === "addingToTail"}
-              disabled={!inputValue}
+              disabled={!values.inputValue}
           />
           <Button
               text="Удалить из head"
@@ -286,7 +285,7 @@ export const ListPage: React.FC = () => {
                 <Circle
                     isSmall={true}
                     extraClass={`${styles["list-circle-top"]}`}
-                    letter={inputValue}
+                    letter={values.inputValue}
                     state={ElementStates.Changing}
                 />
               )}
