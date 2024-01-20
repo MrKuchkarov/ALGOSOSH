@@ -19,16 +19,22 @@ export const ListPage: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
   const [currentAction, setCurrentAction] = useState<string | null>(null);
   const [notification, setNotification] = useState<string | null>(null);
-
+  // Инициализация связанного списка
   const initialListValues = useMemo(() => ["0", "34", "8", "1"], []);
   const linkedList = useMemo(() => new LinkedList<string>(initialListValues),
       [initialListValues]);
+  // Получение массива с текущим состоянием элементов списка
   const [arrayWithState, setArrayWithState] = useState<TCircleItem[]>(linkedList.getArrayWithState());
+  // Вычисление числового индекса из строки inputIndex и проверка его валидности
+  const numericIndex = parseInt(inputIndex);
+  const isValidIndex = !isNaN(numericIndex) && numericIndex >= 0 && numericIndex <= linkedList.getSize() - 1;
 
+  // Функция для отображения уведомления с последующим скрытием
   const showNotification = (message: string) => {
     setNotification(message);
     setTimeout(() => setNotification(null), 2000);
   };
+  // Обработчики изменения введенных значений
   const handleInputValueChange = (e: FormEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value || "");
   };
@@ -37,6 +43,7 @@ export const ListPage: React.FC = () => {
     setInputIndex(e.currentTarget.value || "");
   };
 
+  // Функции начала и завершения операции для визуализации
   const startAction = (action: string) => {
     setIsActive(true);
     setCurrentAction(action);
@@ -124,7 +131,6 @@ export const ListPage: React.FC = () => {
 };
 
   const addByIndex = async () => {
-    const numericIndex = parseInt(inputIndex);
     if (numericIndex > linkedList.getSize()) return;
 
     startAction("insertByIndex");
@@ -156,7 +162,6 @@ export const ListPage: React.FC = () => {
   };
 
   const removeByIndex = async () => {
-    const numericIndex = parseInt(inputIndex);
     if (isNaN(numericIndex) || numericIndex >= linkedList.getSize()) return;
 
     startAction("removeByIndex");
@@ -254,14 +259,14 @@ export const ListPage: React.FC = () => {
               extraClass={`${styles["list-page-button"]}`}
               onClick={addByIndex}
               isLoader={currentAction === "insertByIndex"}
-              disabled={!inputIndex || parseInt(inputIndex) > linkedList.getSize() - 1}
+              disabled={!inputIndex || !isValidIndex}
           />
           <Button
               text="Удалить по индексу"
               extraClass={`${styles["list-page-button"]}`}
               onClick={removeByIndex}
               isLoader={currentAction === "removeByIndex"}
-              disabled={!inputIndex || parseInt(inputIndex) > linkedList.getSize() - 1}
+              disabled={!inputIndex || !isValidIndex}
           />
         </div>
         <ul
