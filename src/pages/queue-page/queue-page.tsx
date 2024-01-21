@@ -36,13 +36,9 @@ const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setActive(true);
     setIsAdding(true);
-    queue.enqueue({
-        item: values.inputValue,
-        state: ElementStates.Default});
+    queue.enqueue({item: values.inputValue, state: ElementStates.Default});
     setQueue(queue);
-    array[queue.getTail() - 1] = {
-        item: "",
-        state: ElementStates.Changing};
+    array[queue.getTail() - 1] = {item: "", state: ElementStates.Changing};
     setArray([...array]);
     await delay(SHORT_DELAY_IN_MS);
     array[queue.getTail() - 1] = {
@@ -55,10 +51,10 @@ const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
         state: ElementStates.Default
     };
     setArray([...array]);
-    setValues({inputValue: ""})
+    setValues({inputValue: ""});
     setActive(false);
     setIsAdding(false);
-    showNotification(`Добавлен элемент в очередь: ${values.inputValue}`);
+    showNotification(`Элемент ${values.inputValue} добавлен в очередь`)
 }
 
 const handleRemoveButtonClick = async () => {
@@ -72,9 +68,7 @@ const handleRemoveButtonClick = async () => {
     };
     setArray([...array]);
     await delay(SHORT_DELAY_IN_MS);
-    array[queue.getHead() - 1] = {
-        item: "",
-        state: ElementStates.Default};
+    array[queue.getHead() - 1] = {item: "", state: ElementStates.Default};
     setArray([...array]);
     setActive(false);
     setRemoving(false);
@@ -86,101 +80,12 @@ const handleClearButtonClick = () => {
     queue.clear();
     setQueue(queue);
     setArray(Array.from({length: 7}, () => ({
-        item: "",
+        item: '',
         state: ElementStates.Default
     })));
     setActive(false);
     setClearing(false);
 }
-
-
-
-// const updateArrayForAdding = () => {
-//     array[queue.getTail() - 1] = {
-//         item: "",
-//         state: ElementStates.Changing };
-//     setArray([...array]);
-//     delay(SHORT_DELAY_IN_MS).then(() => {
-//         array[queue.getTail() - 1] = {
-//             item: values.inputValue,
-//             state: ElementStates.Default };
-//         setArray([...array]);
-//     });
-// };
-//
-//
-// const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
-//     setActive(true);
-//     setIsAdding(true);
-//     if (queue.getLength() >= queue.getSize()) {
-//         // Максимальная длина достигнута, выводим предупреждение и завершаем функцию
-//         setNotification("Максимальная длина достигнута");
-//         setActive(false);
-//         setIsAdding(false);
-//         return;
-//     }
-//     queue.enqueue({
-//         item: values.inputValue,
-//         state: ElementStates.Default});
-//     setQueue(queue);
-//
-//     updateArrayForAdding();
-//
-//     setArray([...array]);
-//     setValues({inputValue: ""});
-//     setActive(false);
-//     setIsAdding(false);
-//     showNotification(`Добавлен элемент в очередь: ${values.inputValue}`);
-// };
-//     const updateArrayForRemoving = () => {
-//         array[queue.getHead() - 1] = {
-//             item: array[queue.getHead() - 1].item,
-//             state: ElementStates.Changing };
-//         setArray([...array]);
-//         delay(SHORT_DELAY_IN_MS).then(() => {
-//             array[queue.getHead() - 1] = {
-//                 item: "",
-//                 state: ElementStates.Default };
-//             setArray([...array]);
-//         });
-//     };
-//     const handleRemoveButtonClick = async () => {
-//         setActive(true);
-//         setRemoving(true);
-//
-//         if (queue.isEmpty()) {
-//             // Очередь пуста
-//             console.warn("No elements in the queue");
-//             setActive(false);
-//             setRemoving(false);
-//             return;
-//         }
-//         const removedItem = queue.peak();
-//         queue.dequeue();
-//         setQueue(queue);
-//
-//         updateArrayForRemoving();
-//
-//         setArray([...array]);
-//         setActive(false);
-//         setRemoving(false);
-//         showNotification(`Элемент удален из очереди: ${removedItem?.item}`);
-//     };
-//
-//
-// const handleClearButtonClick = () => {
-//     setActive(true);
-//     setClearing(true);
-//     queue.clear();
-//     setQueue(queue);
-//     setArray(Array.from({length: 7}, () => ({
-//         item: "",
-//         state: ElementStates.Default
-//     })));
-//     setActive(false);
-//     setClearing(false);
-// };
 
   return (
     <SolutionLayout title="Очередь">
@@ -240,3 +145,7 @@ const handleClearButtonClick = () => {
     </SolutionLayout>
   );
 };
+
+
+
+
