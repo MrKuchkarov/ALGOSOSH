@@ -252,7 +252,7 @@ export const ListPage: React.FC = () => {
               extraClass={`${styles["list-page-input"]}`}
               onChange={handleInputIndexChange}
               value={inputIndex}
-              type="tel"
+              type="number"
           />
           <Button
               text="Добавить по индексу"

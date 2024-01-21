@@ -43,6 +43,33 @@ export const FibonacciPage: React.FC = () => {
     const shouldDisableButton = (value: string) =>
         !/^\d+$/.test(value) || parseInt(value) > 19 || parseInt(value) < 1;
 
+
+    // const calculateFibonacci = async (value: string) => {
+    //     setIsActive(true);
+    //
+    //     const fibonacciNumbers = getFibonacciNumbers(parseInt(value));
+    //     for (let i = 0; i < fibonacciNumbers.length; i++) {
+    //         await delay(SHORT_DELAY_IN_MS);
+    //         setNumbers(fibonacciNumbers.slice(0, i + 1));
+    //     }
+    //     setIsActive(false);
+    // };
+    //
+    // const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //     if (values.inputValue.length !== 0) {
+    //         setIsCalculated(false);
+    //         calculateFibonacci(values.inputValue)
+    //             .then(() => {
+    //                 setIsCalculated(true);
+    //             })
+    //             .catch(error => {
+    //                 console.error("An error occurred:", error);
+    //             });
+    //     }
+    // };
+    // const shouldDisableButton = (value: string) =>
+    //     !value || parseInt(value) > 19 || parseInt(value) < 1;
   return (
     <SolutionLayout title="Последовательность Фибоначчи">
       <form
@@ -55,7 +82,7 @@ export const FibonacciPage: React.FC = () => {
             isLimitText={true}
             max={19}
             onChange={handleChange}
-            type="tel"
+            type="number"
             value={values.inputValue}
             name="inputValue"
         />
