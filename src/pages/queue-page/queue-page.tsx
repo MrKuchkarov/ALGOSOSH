@@ -108,6 +108,8 @@ const handleClearButtonClick = () => {
             extraClass={`${styles["queue-btn"]}`}
             disabled={!values.inputValue || isActive}
             isLoader={isAdding}
+            sizes="small"
+
         />
         <Button
             text="Удалить"
@@ -115,6 +117,7 @@ const handleClearButtonClick = () => {
             extraClass={`${styles["queue-btn"]}`}
             disabled={queue.isEmpty() || isActive}
             isLoader={isRemoving}
+            sizes="small"
         />
         <Button
             text="Очистить"
@@ -122,6 +125,7 @@ const handleClearButtonClick = () => {
             extraClass={`${styles["queue-btn"]}`}
             disabled={queue.isEmpty() || isActive}
             isLoader={isClearing}
+            sizes="small"
         />
       </form>
         <ul

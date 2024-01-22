@@ -98,7 +98,7 @@ export const SortingPage: React.FC = () => {
               isLoader={sortDirection === Direction.Ascending && isActive}
               disabled={isActive}
               onClick={handleSortAscendingClick}
-              linkedList="small"
+              sizes="medium"
             />
             <Button
               text="По убыванию"
@@ -107,14 +107,14 @@ export const SortingPage: React.FC = () => {
               isLoader={sortDirection === Direction.Descending && isActive}
               disabled={isActive}
               onClick={handleSortDescendingClick}
-              linkedList="small"
+              sizes="medium"
             />
             <Button
               text="Новый массив"
               extraClass={`${styles["sort-btn"]}`}
               disabled={isActive}
               onClick={generateRandomArray}
-              linkedList="small"
+              sizes="medium"
             />
           </div>
         </div>

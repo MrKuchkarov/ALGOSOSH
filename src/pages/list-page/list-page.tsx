@@ -223,28 +223,28 @@ export const ListPage: React.FC = () => {
               onClick={prepend}
               isLoader={currentAction === "addingToHead"}
               disabled={!values.inputValue}
-              linkedList="small"
+              sizes="medium"
           />
           <Button
               text="Добавить в tail"
               onClick={append}
               isLoader={currentAction === "addingToTail"}
               disabled={!values.inputValue}
-              linkedList="small"
+              sizes="medium"
           />
           <Button
               text="Удалить из head"
               onClick={shift}
               isLoader={currentAction === "removeFromHead"}
               disabled={!linkedList.getSize}
-              linkedList="small"
+              sizes="medium"
           />
           <Button
               text="Удалить из tail"
               onClick={pop}
               isLoader={currentAction === "removeFromTail"}
               disabled={!linkedList.getSize}
-              linkedList="small"
+              sizes="medium"
           />
         </div>
         <div
@@ -262,14 +262,14 @@ export const ListPage: React.FC = () => {
               onClick={addByIndex}
               isLoader={currentAction === "insertByIndex"}
               disabled={!inputIndex || !isValidIndex}
-              linkedList="big"
+              sizes="big"
           />
           <Button
               text="Удалить по индексу"
               onClick={removeByIndex}
               isLoader={currentAction === "removeByIndex"}
               disabled={!inputIndex || !isValidIndex}
-              linkedList="big"
+              sizes="big"
           />
         </div>
         <ul

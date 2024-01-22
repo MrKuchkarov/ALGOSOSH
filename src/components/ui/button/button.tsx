@@ -9,7 +9,7 @@ interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   text?: string;
   type?: "button" | "submit" | "reset";
   sorting?: Direction;
-  linkedList?: "small" | "big";
+  sizes?: "small" | "medium" | "big";
   isLoader?: boolean;
   extraClass?: string;
 }
@@ -20,7 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   type = "button",
   isLoader = false,
   sorting,
-  linkedList,
+  sizes,
   disabled,
   ...rest
 }) => {
@@ -28,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({
     sorting === Direction.Ascending ? <AscendingIcon /> : <DescendingIcon />;
   const className = `text text_type_button text_color_primary ${
     styles.button
-  } ${linkedList && styles[linkedList]} ${
+  } ${sizes && styles[sizes]} ${
     isLoader && styles.loader
   } ${extraClass}`;
 

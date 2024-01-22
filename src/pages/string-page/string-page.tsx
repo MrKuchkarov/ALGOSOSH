@@ -61,7 +61,7 @@ export const StringReversePage: React.FC = () => {
             type="submit"
             disabled={!values.inputValue}
             isLoader={isActive}
-            linkedList="small"
+            sizes="medium"
         />
       </form>
         <ul className={`${styles["list-string-page"]}`}>

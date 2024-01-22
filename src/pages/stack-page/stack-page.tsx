@@ -102,6 +102,7 @@ export const StackPage: React.FC = () => {
             type="submit"
             disabled={!values.inputValue || isActive}
             isLoader={isAdding}
+            sizes="small"
         />
         <Button
             text="Удалить"
@@ -109,6 +110,7 @@ export const StackPage: React.FC = () => {
             onClick={handleRemoveButtonClick}
             disabled={!array.length || isActive}
             isLoader={isRemoving}
+            sizes="small"
         />
         <Button
             text="Очистить"
@@ -116,6 +118,7 @@ export const StackPage: React.FC = () => {
             disabled={!array.length || isActive}
             onClick={handleClearButtonClick}
             isLoader={isCleaning}
+            sizes="small"
         />
       </form>
       <ul
