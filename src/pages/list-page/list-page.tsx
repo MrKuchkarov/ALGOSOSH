@@ -213,7 +213,7 @@ export const ListPage: React.FC = () => {
               placeholder="Введите значение"
               extraClass={`${styles["list-page-input"]}`}
               onChange={handleChange}
-              value={values.inputValue}
+              value={values.inputValue || ""}
               maxLength={4}
               isLimitText={true}
 
@@ -251,7 +251,7 @@ export const ListPage: React.FC = () => {
               placeholder="Введите значение"
               extraClass={`${styles["list-page-input"]}`}
               onChange={handleInputIndexChange}
-              value={inputIndex}
+              value={inputIndex || ""}
               type="number"
           />
           <Button

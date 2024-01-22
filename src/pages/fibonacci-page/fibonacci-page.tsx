@@ -7,14 +7,14 @@ import {Circle} from "../../components/ui/circle/circle";
 import {getFibonacciNumbers} from "./utils/fibonacci";
 import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
-import { v4 as uuidv4 } from 'uuid';
 import {useForm} from "../../hooks/useForm";
+import {nanoid} from "nanoid";
 export const FibonacciPage: React.FC = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
   const {values, handleChange, setValues} = useForm({inputValues: ""});
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isCalculated, setIsCalculated] = useState<boolean>(false);
-  const numbersFib = numbers.map((number, index) => ({ value: number, _id: uuidv4(), index }));
+  const numbersFib = numbers.map((number, index) => ({ value: number, _id: nanoid(7), index }));
     const calculateFibonacci = async (value: string) => {
         setIsActive(true);
 
@@ -83,7 +83,7 @@ export const FibonacciPage: React.FC = () => {
             max={19}
             onChange={handleChange}
             type="number"
-            value={values.inputValue}
+            value={values.inputValue || ""}
             name="inputValue"
         />
         <Button

@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/list-page/list-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list-page/list-page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/queue-page/queue-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/queue-page/queue-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/stack-page/stack-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stack-page/stack-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/string-page/string-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/string-page/string-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +141,9 @@
       <workItem from="1705751530867" duration="5253000" />
       <workItem from="1705779335805" duration="3299000" />
       <workItem from="1705807589998" duration="3466000" />
-      <workItem from="1705838489251" duration="3641000" />
+      <workItem from="1705838489251" duration="4117000" />
+      <workItem from="1705861952936" duration="633000" />
+      <workItem from="1705903749382" duration="1766000" />
     </task>
     <servers />
   </component>

@@ -9,6 +9,7 @@ import {ElementStates} from "../../types/element-states";
 import {reverseStringArray} from "./utils/reverse-string";
 import {delay} from "../../utils/delay";
 import {useForm} from "../../hooks/useForm";
+import {nanoid} from "nanoid";
 export const StringReversePage: React.FC = () => {
   const {values, handleChange, setValues} = useForm({
     inputValue: "",
@@ -20,6 +21,7 @@ export const StringReversePage: React.FC = () => {
   const handleStringReverse = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const stringSymbols = values.inputValue.split("").map(item => ({
+      _id: nanoid(7),
       item,
       state: ElementStates.Default
     }));
@@ -51,7 +53,7 @@ export const StringReversePage: React.FC = () => {
           isLimitText={true}
           maxLength={11}
           onChange={handleChange}
-          value={values.inputValue}
+          value={values.inputValue || ""}
           name="inputValue"
         />
         <Button
@@ -64,7 +66,7 @@ export const StringReversePage: React.FC = () => {
         <ul className={`${styles["list-string-page"]}`}>
             {array?.map((item: TCircleItem, index) =>
                 <li
-                    key={index}
+                    key={item._id}
                 >
                       <Circle
                           letter={item.item}

@@ -99,7 +99,7 @@ const handleClearButtonClick = () => {
             extraClass={`${styles["queue-input"]}`}
             maxLength={4}
             isLimitText={true}
-            value={values.inputValue}
+            value={values.inputValue || ""}
             name="inputValue"
         />
         <Button

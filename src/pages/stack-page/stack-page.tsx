@@ -92,7 +92,7 @@ export const StackPage: React.FC = () => {
             extraClass={`${styles["stack-input"]}`}
             isLimitText={true}
             maxLength={4}
-            value={values.inputValue}
+            value={values.inputValue || ""}
             onChange={handleChange}
             name="inputValue"
         />

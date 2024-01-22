@@ -1,6 +1,7 @@
 import {ElementStates} from "./element-states";
 
 export type TCircleItem = {
+    _id?: string
     item: string;
     state: ElementStates;
 }
