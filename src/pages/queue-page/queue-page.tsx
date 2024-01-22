@@ -1,4 +1,4 @@
-import React, {FormEvent, useState} from "react";
+import React, {FormEvent, useEffect, useRef, useState} from "react";
 import { SolutionLayout } from "../../components/ui/solution-layout/solution-layout";
 import {Input} from "../../components/ui/input/input";
 import {Button} from "../../components/ui/button/button";
@@ -12,7 +12,7 @@ import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 import {useForm} from "../../hooks/useForm";
 
 const empty = Array.from({length: 7}, () => ({
-    item: '',
+    item: "",
     state: ElementStates.Default
 }));
 export const QueuePage: React.FC = () => {
@@ -27,35 +27,60 @@ const [isRemoving, setRemoving] = useState(false);
 const [isClearing, setClearing] = useState(false);
 const [notification, setNotification] = useState<string | null>(null);
 
+const isMounted = useRef(true);
+
+useEffect(() => {
+    return () => {
+        // Устанавливаю значение isMounted в false при размонтировании компонента
+        isMounted.current = false;
+    };
+}, []);
 const showNotification = (message: string) => {
     setNotification(message);
-    setTimeout(() => setNotification(null), 2000);
+    setTimeout(() => {
+        if (isMounted.current) {
+            // Проверяю, что компонент все еще смонтирован перед обновлением состояния
+            setNotification(null);
+        }
+    }, 2000);
 };
 
 const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setActive(true);
     setIsAdding(true);
-    queue.enqueue({item: values.inputValue, state: ElementStates.Default});
-    setQueue(queue);
-    array[queue.getTail() - 1] = {item: "", state: ElementStates.Changing};
-    setArray([...array]);
-    await delay(SHORT_DELAY_IN_MS);
-    array[queue.getTail() - 1] = {
-        item: values.inputValue,
-        state: ElementStates.Changing
-    };
-    setArray([...array]);
-    array[queue.getTail() - 1] = {
-        item: values.inputValue,
-        state: ElementStates.Default
-    };
-    setArray([...array]);
-    setValues({inputValue: ""});
-    setActive(false);
-    setIsAdding(false);
-    showNotification(`Элемент ${values.inputValue} добавлен в очередь`)
+
+    try {
+        queue.enqueue({item: values.inputValue, state: ElementStates.Default});
+        setQueue(queue);
+        array[queue.getTail() - 1] = {
+            item: "",
+            state: ElementStates.Changing
+        };
+        setArray([...array]);
+        await delay(SHORT_DELAY_IN_MS);
+        array[queue.getTail() - 1] = {
+            item: values.inputValue,
+            state: ElementStates.Changing
+        };
+        setArray([...array]);
+        array[queue.getTail() - 1] = {
+            item: values.inputValue,
+            state: ElementStates.Default
+        };
+        setArray([...array]);
+        setValues({inputValue: ""});
+        setActive(false);
+        setIsAdding(false);
+        showNotification(`Элемент ${values.inputValue} добавлен в очередь`);
+    } catch (error) {
+        console.warn((error as Error).message);
+        showNotification("Очередь переполнена. Невозможно добавить элемент.");
+        setActive(false);
+        setIsAdding(false);
+    }
 }
+
 
 const handleRemoveButtonClick = async () => {
     setActive(true);
@@ -80,7 +105,7 @@ const handleClearButtonClick = () => {
     queue.clear();
     setQueue(queue);
     setArray(Array.from({length: 7}, () => ({
-        item: '',
+        item: "",
         state: ElementStates.Default
     })));
     setActive(false);
