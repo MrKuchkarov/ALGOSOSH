@@ -91,6 +91,7 @@ export const FibonacciPage: React.FC = () => {
             type="submit"
             disabled={shouldDisableButton(values.inputValue)}
             isLoader={isActive}
+            linkedList="small"
         />
       </form>
       <ul className={`${styles["list-fibonacci"]}`}>

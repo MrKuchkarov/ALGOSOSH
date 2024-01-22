@@ -216,7 +216,6 @@ export const ListPage: React.FC = () => {
               value={values.inputValue || ""}
               maxLength={4}
               isLimitText={true}
-
               name="inputValue"
           />
           <Button
@@ -224,24 +223,28 @@ export const ListPage: React.FC = () => {
               onClick={prepend}
               isLoader={currentAction === "addingToHead"}
               disabled={!values.inputValue}
+              linkedList="small"
           />
           <Button
               text="Добавить в tail"
               onClick={append}
               isLoader={currentAction === "addingToTail"}
               disabled={!values.inputValue}
+              linkedList="small"
           />
           <Button
               text="Удалить из head"
               onClick={shift}
               isLoader={currentAction === "removeFromHead"}
               disabled={!linkedList.getSize}
+              linkedList="small"
           />
           <Button
               text="Удалить из tail"
               onClick={pop}
               isLoader={currentAction === "removeFromTail"}
               disabled={!linkedList.getSize}
+              linkedList="small"
           />
         </div>
         <div
@@ -256,17 +259,17 @@ export const ListPage: React.FC = () => {
           />
           <Button
               text="Добавить по индексу"
-              extraClass={`${styles["list-page-button"]}`}
               onClick={addByIndex}
               isLoader={currentAction === "insertByIndex"}
               disabled={!inputIndex || !isValidIndex}
+              linkedList="big"
           />
           <Button
               text="Удалить по индексу"
-              extraClass={`${styles["list-page-button"]}`}
               onClick={removeByIndex}
               isLoader={currentAction === "removeByIndex"}
               disabled={!inputIndex || !isValidIndex}
+              linkedList="big"
           />
         </div>
         <ul

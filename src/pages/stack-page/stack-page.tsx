@@ -97,25 +97,25 @@ export const StackPage: React.FC = () => {
             name="inputValue"
         />
         <Button
-          text="Добавить"
-          extraClass={`${styles["stack-btn"]}`}
-          type="submit"
-          disabled={!values.inputValue || isActive}
-          isLoader={isAdding}
+            text="Добавить"
+            extraClass={`${styles["stack-btn"]}`}
+            type="submit"
+            disabled={!values.inputValue || isActive}
+            isLoader={isAdding}
         />
         <Button
-          text="Удалить"
-          extraClass={`${styles["stack-btn"]}`}
-          onClick={handleRemoveButtonClick}
-          disabled={!array.length || isActive}
-          isLoader={isRemoving}
+            text="Удалить"
+            extraClass={`${styles["stack-btn"]}`}
+            onClick={handleRemoveButtonClick}
+            disabled={!array.length || isActive}
+            isLoader={isRemoving}
         />
         <Button
-          text="Очистить"
-          extraClass={`${styles["stack-btn"]}`}
-          disabled={!array.length || isActive}
-          onClick={handleClearButtonClick}
-          isLoader={isCleaning}
+            text="Очистить"
+            extraClass={`${styles["stack-btn"]}`}
+            disabled={!array.length || isActive}
+            onClick={handleClearButtonClick}
+            isLoader={isCleaning}
         />
       </form>
       <ul

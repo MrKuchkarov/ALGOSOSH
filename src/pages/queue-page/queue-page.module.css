@@ -1,12 +1,14 @@
 .container {
     display: flex;
     justify-content: center;
+    width: 100%;
     gap: 12px;
 }
 
 .queue-input {
     max-width: 377px;
 }
+
 .queue-btn:last-child {
     margin: 0 0 0 68px;
 }

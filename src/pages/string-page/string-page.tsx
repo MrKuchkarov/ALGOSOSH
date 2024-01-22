@@ -48,19 +48,20 @@ export const StringReversePage: React.FC = () => {
           onSubmit={handleStringReverse}
       >
         <Input
-          placeholder="Введите строку"
-          extraClass={`${styles["input-string-page"]}`}
-          isLimitText={true}
-          maxLength={11}
-          onChange={handleChange}
-          value={values.inputValue || ""}
-          name="inputValue"
+            placeholder="Введите строку"
+            extraClass={`${styles["input-string-page"]}`}
+            isLimitText={true}
+            maxLength={11}
+           onChange={handleChange}
+            value={values.inputValue || ""}
+            name="inputValue"
         />
         <Button
             text="Развернуть"
             type="submit"
             disabled={!values.inputValue}
             isLoader={isActive}
+            linkedList="small"
         />
       </form>
         <ul className={`${styles["list-string-page"]}`}>

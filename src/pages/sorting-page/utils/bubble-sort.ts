@@ -1,7 +1,6 @@
 import { TArrayItem } from "../../../types/types";
 import { Dispatch, SetStateAction } from "react";
 import { ElementStates } from "../../../types/element-states";
-import { delay } from "../../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../../constants/delays";
 import { swap } from "../../../utils/swap";
 

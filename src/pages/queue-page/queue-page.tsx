@@ -103,25 +103,25 @@ const handleClearButtonClick = () => {
             name="inputValue"
         />
         <Button
-          text="Добавить"
-          type={"submit"}
-          extraClass={`${styles["queue-btn"]}`}
-          disabled={!values.inputValue || isActive}
-          isLoader={isAdding}
+            text="Добавить"
+            type={"submit"}
+            extraClass={`${styles["queue-btn"]}`}
+            disabled={!values.inputValue || isActive}
+            isLoader={isAdding}
         />
         <Button
-          text="Удалить"
-          onClick={handleRemoveButtonClick}
-          extraClass={`${styles["queue-btn"]}`}
-          disabled={queue.isEmpty() || isActive}
-          isLoader={isRemoving}
+            text="Удалить"
+            onClick={handleRemoveButtonClick}
+            extraClass={`${styles["queue-btn"]}`}
+            disabled={queue.isEmpty() || isActive}
+            isLoader={isRemoving}
         />
         <Button
-          text="Очистить"
-          onClick={handleClearButtonClick}
-          extraClass={`${styles["queue-btn"]}`}
-          disabled={queue.isEmpty() || isActive}
-          isLoader={isClearing}
+            text="Очистить"
+            onClick={handleClearButtonClick}
+            extraClass={`${styles["queue-btn"]}`}
+            disabled={queue.isEmpty() || isActive}
+            isLoader={isClearing}
         />
       </form>
         <ul

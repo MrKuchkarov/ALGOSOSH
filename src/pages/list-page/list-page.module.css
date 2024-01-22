@@ -15,11 +15,6 @@
     max-width: 204px;
 }
 
-.list-page-button {
-    width: 354px;
-    height: 60px;
-}
-
 .list-circle {
     list-style-type: none;
     display: flex;
