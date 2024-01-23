@@ -52,106 +52,131 @@ export const ListPage: React.FC = () => {
   };
 
   const prepend = async () => {
-    if (values.inputValue) {
-      startAction("addingToHead");
-      setInputValueIndex(0);
+    try {
+      if (values.inputValue) {
+        startAction("addingToHead");
+        setInputValueIndex(0);
 
-      await delay(SHORT_DELAY_IN_MS);
-      linkedList.prepend(values.inputValue);
-      endAction();
+        await delay(SHORT_DELAY_IN_MS);
+        linkedList.prepend(values.inputValue);
+        endAction();
 
-      const arrayWithState = linkedList.getArrayWithState();
-      setArrayWithState(arrayWithState);
+        const arrayWithState = linkedList.getArrayWithState();
+        setArrayWithState(arrayWithState);
 
-      await delay(SHORT_DELAY_IN_MS);
-      arrayWithState[0].state = ElementStates.Default;
-      setArrayWithState(arrayWithState);
-      showNotification("Элемент добавлен в начало списка");
+        await delay(SHORT_DELAY_IN_MS);
+        arrayWithState[0].state = ElementStates.Default;
+        setArrayWithState(arrayWithState);
+        showNotification("Элемент добавлен в начало списка");
+      }
+    } catch (error) {
+      console.warn("Ошибка в функции prepend:", error);
+      showNotification("Произошла ошибка при добавлении элемента в начало списка");
     }
     setValues({inputValue: ""});
     setIsActive(false);
   };
 
   const append = async () => {
-    if (values.inputValue) {
-      startAction("addingToTail");
-      setInputValueIndex(linkedList.getSize() - 1);
+    try {
+      if (values.inputValue) {
+        startAction("addingToTail");
+        setInputValueIndex(linkedList.getSize() - 1);
 
-      await delay(SHORT_DELAY_IN_MS);
-      linkedList.append(values.inputValue);
-      endAction();
-      const arrayWithState = linkedList.getArrayWithState();
-      arrayWithState[arrayWithState.length - 1].state = ElementStates.Modified;
-      setArrayWithState(arrayWithState);
-      await delay(SHORT_DELAY_IN_MS);
+        await delay(SHORT_DELAY_IN_MS);
+        linkedList.append(values.inputValue);
+        endAction();
+        const arrayWithState = linkedList.getArrayWithState();
+        arrayWithState[arrayWithState.length - 1].state = ElementStates.Modified;
+        setArrayWithState(arrayWithState);
+        await delay(SHORT_DELAY_IN_MS);
 
-      arrayWithState[arrayWithState.length - 1].state = ElementStates.Default;
-      setArrayWithState(arrayWithState);
-      showNotification("Элемент добавлен в конец списка");
+        arrayWithState[arrayWithState.length - 1].state = ElementStates.Default;
+        setArrayWithState(arrayWithState);
+        showNotification("Элемент добавлен в конец списка");
+      }
+    } catch (error) {
+      console.warn("Ошибка в функции append:", error);
+      showNotification("Произошла ошибка при добавлении элемента в конец списка");
     }
     setValues({inputValue: ""});
   };
 
   const shift = async () => {
-    if (linkedList.getSize()) {
-      const arrayWithState = linkedList.getArrayWithState();
-      startAction("removeFromHead");
-      setInputValueIndex(0);
-      arrayWithState[0].item = "";
-      setArrayWithState(arrayWithState);
-      await delay(SHORT_DELAY_IN_MS);
-      linkedList.shift();
-      endAction();
-      setArrayWithState(linkedList.getArrayWithState());
-      showNotification("Элемент удалён из начало списка");
+    try {
+      if (linkedList.getSize()) {
+        const arrayWithState = linkedList.getArrayWithState();
+        startAction("removeFromHead");
+        setInputValueIndex(0);
+        arrayWithState[0].item = "";
+        setArrayWithState(arrayWithState);
+        await delay(SHORT_DELAY_IN_MS);
+        linkedList.shift();
+        endAction();
+        setArrayWithState(linkedList.getArrayWithState());
+        showNotification("Элемент удалён из начало списка");
+      }
+    } catch (error) {
+      console.warn("Ошибка в функции shift:", error);
+      showNotification("Произошла ошибка при удалении элемента из начала списка");
     }
     setIsActive(false);
   };
 
   const pop = async () => {
-    if (linkedList.getSize) {
-      startAction("removeFromTail");
-      setInputValueIndex(linkedList.getSize() - 1);
-      const arrayWithState = linkedList.getArrayWithState();
-      setTemporaryValue(arrayWithState[arrayWithState.length - 1].item);
+    try {
+      if (linkedList.getSize) {
+        startAction("removeFromTail");
+        setInputValueIndex(linkedList.getSize() - 1);
+        const arrayWithState = linkedList.getArrayWithState();
+        setTemporaryValue(arrayWithState[arrayWithState.length - 1].item);
 
-      arrayWithState[arrayWithState.length - 1].item = "";
-      setArrayWithState(arrayWithState);
-      await delay(SHORT_DELAY_IN_MS);
+        arrayWithState[arrayWithState.length - 1].item = "";
+        setArrayWithState(arrayWithState);
+        await delay(SHORT_DELAY_IN_MS);
 
-      linkedList.pop();
-      endAction();
-      setArrayWithState(linkedList.getArrayWithState());
-      showNotification("Элемент удален с конца списка");
+        linkedList.pop();
+        endAction();
+        setArrayWithState(linkedList.getArrayWithState());
+        showNotification("Элемент удален с конца списка");
+      }
+    } catch (error) {
+      console.warn("Ошибка в функции pop:", error);
+      showNotification("Произошла ошибка при удалении элемента из конца списка");
     }
     setIsActive(false);
 };
 
   const addByIndex = async () => {
-    if (numericIndex > linkedList.getSize()) return;
+    try {
+      if (numericIndex > linkedList.getSize()) return;
 
-    startAction("insertByIndex");
+      startAction("insertByIndex");
 
-    const arrayWithState = linkedList.getArrayWithState();
-    for (let i = 0; i < numericIndex; i++) {
-      setInputValueIndex(i);
-      await delay(SHORT_DELAY_IN_MS);
-      if (i < numericIndex) {
-        arrayWithState[i].state = ElementStates.Changing;
-        setArrayWithState(arrayWithState);
+      const arrayWithState = linkedList.getArrayWithState();
+      for (let i = 0; i < numericIndex; i++) {
+        setInputValueIndex(i);
+        await delay(SHORT_DELAY_IN_MS);
+        if (i < numericIndex) {
+          arrayWithState[i].state = ElementStates.Changing;
+          setArrayWithState(arrayWithState);
 
+        }
       }
-    }
-    setInputValueIndex(undefined);
-    linkedList.insertByIndex(values.inputValue, numericIndex);
-    const newArrayWithState = linkedList.getArrayWithState();
-    newArrayWithState[numericIndex].state = ElementStates.Modified;
+      setInputValueIndex(undefined);
+      linkedList.insertByIndex(values.inputValue, numericIndex);
+      const newArrayWithState = linkedList.getArrayWithState();
+      newArrayWithState[numericIndex].state = ElementStates.Modified;
 
-    setArrayWithState(newArrayWithState);
-    await delay(SHORT_DELAY_IN_MS);
-    newArrayWithState[numericIndex].state = ElementStates.Default;
-    setArrayWithState(newArrayWithState);
-    showNotification("Элемент добавлен по индексу");
+      setArrayWithState(newArrayWithState);
+      await delay(SHORT_DELAY_IN_MS);
+      newArrayWithState[numericIndex].state = ElementStates.Default;
+      setArrayWithState(newArrayWithState);
+      showNotification("Элемент добавлен по индексу");
+    } catch (error) {
+      console.warn("Ошибка в функции addByIndex:", error);
+      showNotification("Произошла ошибка при добавлении элемента по индексу");
+    }
     endAction();
     setIsActive(false);
     setValues({inputValue: ""});
@@ -159,27 +184,32 @@ export const ListPage: React.FC = () => {
   };
 
   const removeByIndex = async () => {
-    if (isNaN(numericIndex) || numericIndex >= linkedList.getSize()) return;
+    try {
+      if (isNaN(numericIndex) || numericIndex >= linkedList.getSize()) return;
 
-    startAction("removeByIndex");
+      startAction("removeByIndex");
 
-    const arrayWithState = linkedList.getArrayWithState();
-    for (let i = 0; i < numericIndex; i++) {
+      const arrayWithState = linkedList.getArrayWithState();
+      for (let i = 0; i < numericIndex; i++) {
+        await delay(SHORT_DELAY_IN_MS);
+        arrayWithState[i].state = ElementStates.Changing;
+        setArrayWithState([...arrayWithState]);
+      }
       await delay(SHORT_DELAY_IN_MS);
-      arrayWithState[i].state = ElementStates.Changing;
-      setArrayWithState([...arrayWithState]);
-    }
-    await delay(SHORT_DELAY_IN_MS);
-    setTemporaryValue(arrayWithState[numericIndex].item);
-    arrayWithState[numericIndex].item = "";
-    showNotification("Элемент удалён по индексу");
-    arrayWithState[numericIndex].state = ElementStates.Default;
-    setInputValueIndex(numericIndex);
+      setTemporaryValue(arrayWithState[numericIndex].item);
+      arrayWithState[numericIndex].item = "";
+      showNotification("Элемент удалён по индексу");
+      arrayWithState[numericIndex].state = ElementStates.Default;
+      setInputValueIndex(numericIndex);
 
-    await delay(SHORT_DELAY_IN_MS);
-    linkedList.removeByIndex(numericIndex);
-    setArrayWithState(linkedList.getArrayWithState());
-    endAction();
+      await delay(SHORT_DELAY_IN_MS);
+      linkedList.removeByIndex(numericIndex);
+      setArrayWithState(linkedList.getArrayWithState());
+      endAction();
+    } catch (error) {
+      console.warn("Ошибка в функции removeByIndex:", error);
+      showNotification("Произошла ошибка при удаление элемента по индексу");
+    }
     setInputIndex("");
   };
 

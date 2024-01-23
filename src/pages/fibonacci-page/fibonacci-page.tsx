@@ -15,16 +15,16 @@ export const FibonacciPage: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isCalculated, setIsCalculated] = useState<boolean>(false);
   const numbersFib = numbers.map((number, index) => ({ value: number, _id: nanoid(7), index }));
-    const calculateFibonacci = async (value: string) => {
-        setIsActive(true);
+  const calculateFibonacci = async (value: string) => {
+    setIsActive(true);
 
-        const fibonacciNumbers = getFibonacciNumbers(parseInt(value));
-        for (let i = 0; i < fibonacciNumbers.length; i++) {
-            await delay(SHORT_DELAY_IN_MS);
-            setNumbers(fibonacciNumbers.slice(0, i + 1));
-        }
-        setIsActive(false);
-    };
+    const fibonacciNumbers = getFibonacciNumbers(parseInt(value));
+    for (let i = 0; i < fibonacciNumbers.length; i++) {
+        await delay(SHORT_DELAY_IN_MS);
+        setNumbers(fibonacciNumbers.slice(0, i + 1));
+    }
+    setIsActive(false);
+};
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,38 +38,11 @@ export const FibonacciPage: React.FC = () => {
             console.error("An error occurred:", error);
           });
     }
-  };
+    };
 
-    const shouldDisableButton = (value: string) =>
-        !/^\d+$/.test(value) || parseInt(value) > 19 || parseInt(value) < 1;
+  const shouldDisableButton = (value: string) =>
+    !/^\d+$/.test(value) || parseInt(value) > 19 || parseInt(value) < 1;
 
-
-    // const calculateFibonacci = async (value: string) => {
-    //     setIsActive(true);
-    //
-    //     const fibonacciNumbers = getFibonacciNumbers(parseInt(value));
-    //     for (let i = 0; i < fibonacciNumbers.length; i++) {
-    //         await delay(SHORT_DELAY_IN_MS);
-    //         setNumbers(fibonacciNumbers.slice(0, i + 1));
-    //     }
-    //     setIsActive(false);
-    // };
-    //
-    // const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-    //     if (values.inputValue.length !== 0) {
-    //         setIsCalculated(false);
-    //         calculateFibonacci(values.inputValue)
-    //             .then(() => {
-    //                 setIsCalculated(true);
-    //             })
-    //             .catch(error => {
-    //                 console.error("An error occurred:", error);
-    //             });
-    //     }
-    // };
-    // const shouldDisableButton = (value: string) =>
-    //     !value || parseInt(value) > 19 || parseInt(value) < 1;
   return (
     <SolutionLayout title="Последовательность Фибоначчи">
       <form
