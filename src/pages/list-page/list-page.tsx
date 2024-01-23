@@ -70,7 +70,7 @@ export const ListPage: React.FC = () => {
         showNotification("Элемент добавлен в начало списка");
       }
     } catch (error) {
-      console.warn("Ошибка в функции prepend:", error);
+      console.error("Ошибка в функции prepend:", error);
       showNotification("Произошла ошибка при добавлении элемента в начало списка");
     }
     setValues({inputValue: ""});
@@ -96,7 +96,7 @@ export const ListPage: React.FC = () => {
         showNotification("Элемент добавлен в конец списка");
       }
     } catch (error) {
-      console.warn("Ошибка в функции append:", error);
+      console.error("Ошибка в функции append:", error);
       showNotification("Произошла ошибка при добавлении элемента в конец списка");
     }
     setValues({inputValue: ""});
@@ -117,7 +117,7 @@ export const ListPage: React.FC = () => {
         showNotification("Элемент удалён из начало списка");
       }
     } catch (error) {
-      console.warn("Ошибка в функции shift:", error);
+      console.error("Ошибка в функции shift:", error);
       showNotification("Произошла ошибка при удалении элемента из начала списка");
     }
     setIsActive(false);
@@ -141,7 +141,7 @@ export const ListPage: React.FC = () => {
         showNotification("Элемент удален с конца списка");
       }
     } catch (error) {
-      console.warn("Ошибка в функции pop:", error);
+      console.error("Ошибка в функции pop:", error);
       showNotification("Произошла ошибка при удалении элемента из конца списка");
     }
     setIsActive(false);
@@ -174,7 +174,7 @@ export const ListPage: React.FC = () => {
       setArrayWithState(newArrayWithState);
       showNotification("Элемент добавлен по индексу");
     } catch (error) {
-      console.warn("Ошибка в функции addByIndex:", error);
+      console.error("Ошибка в функции addByIndex:", error);
       showNotification("Произошла ошибка при добавлении элемента по индексу");
     }
     endAction();
@@ -207,7 +207,7 @@ export const ListPage: React.FC = () => {
       setArrayWithState(linkedList.getArrayWithState());
       endAction();
     } catch (error) {
-      console.warn("Ошибка в функции removeByIndex:", error);
+      console.error("Ошибка в функции removeByIndex:", error);
       showNotification("Произошла ошибка при удаление элемента по индексу");
     }
     setInputIndex("");

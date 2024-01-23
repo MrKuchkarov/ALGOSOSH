@@ -76,6 +76,7 @@ const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
     } catch (error) {
         console.warn((error as Error).message);
         showNotification("Очередь переполнена. Невозможно добавить элемент.");
+    } finally {
         setActive(false);
         setIsAdding(false);
     }
@@ -85,32 +86,44 @@ const handleAddButton = async (e: FormEvent<HTMLFormElement>) => {
 const handleRemoveButtonClick = async () => {
     setActive(true);
     setRemoving(true);
-    queue.dequeue();
-    setQueue(queue);
-    array[queue.getHead() - 1] = {
-        item: array[queue.getHead() - 1].item,
-        state: ElementStates.Changing
-    };
-    setArray([...array]);
-    await delay(SHORT_DELAY_IN_MS);
-    array[queue.getHead() - 1] = {item: "", state: ElementStates.Default};
-    setArray([...array]);
-    setActive(false);
-    setRemoving(false);
-}
+    try {
+        queue.dequeue();
+        setQueue(queue);
+        array[queue.getHead() - 1] = {
+            item: array[queue.getHead() - 1].item,
+            state: ElementStates.Changing
+        };
+        setArray([...array]);
+        await delay(SHORT_DELAY_IN_MS);
+        array[queue.getHead() - 1] = {item: "", state: ElementStates.Default};
+        setArray([...array]);
+    } catch (error) {
+        console.error("Ошибка при удалении элемента из очереди:", error);
+        showNotification("Произошла ошибка при удалении элемента, невозможно удалить элемент.");
+    } finally {
+        setActive(false);
+        setRemoving(false);
+    }
+};
 
 const handleClearButtonClick = () => {
     setActive(true);
     setClearing(true);
-    queue.clear();
-    setQueue(queue);
-    setArray(Array.from({length: 7}, () => ({
-        item: "",
-        state: ElementStates.Default
-    })));
-    setActive(false);
-    setClearing(false);
-}
+    try {
+        queue.clear();
+        setQueue(queue);
+        setArray(Array.from({length: 7}, () => ({
+            item: "",
+            state: ElementStates.Default
+        })));
+    } catch (error) {
+        console.error("Ошибка при очистке очереди:", error);
+        showNotification("Произошла ошибка при очистке очереди, невозможно очистить очередь.");
+    } finally {
+        setActive(false);
+        setClearing(false);
+    }
+};
 
   return (
     <SolutionLayout title="Очередь">
