@@ -9,7 +9,7 @@
   padding: 18px 24px 19px 24px;
   transition: var(--common-transition);
   max-height: 60px;
-  min-width: 130px;
+  min-width: 100px;
 }
 
 .button:hover:enabled {
@@ -32,8 +32,11 @@
   width: 362px;
 }
 
-.small {
+.medium {
   width: 175px;
+}
+.small {
+  width: 121px;
 }
 
 .loader:disabled {

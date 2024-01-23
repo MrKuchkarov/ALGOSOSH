@@ -4,21 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="" />
+    <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/stack-page/stack-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stack-page/stack-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/randomArray.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/randomArray.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MrKuchkarov"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MrKuchkarov&quot;
   }
-}]]></component>
+}</component>
   <component name="GitToolBoxStore">
     <option name="recentBranches">
       <RecentBranches>
@@ -55,30 +69,43 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2aDvGPzXSbLPJwLSl5XCLNrY65R" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/mr.kuchkorov/Desktop/algososh",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;month-12/step-1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mr.kuchkorov/Desktop/algososh&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/algososh/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/string-page/utils" />
+      <recent name="$PROJECT_DIR$/src/pages/stack-page/utils" />
+      <recent name="$PROJECT_DIR$/src/pages/sorting-page/utils" />
+      <recent name="$PROJECT_DIR$/src/pages/queue-page/utils" />
+      <recent name="$PROJECT_DIR$/src/pages/list-page/utils" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -88,6 +115,37 @@
       <option name="presentableId" value="Default" />
       <updated>1703865867266</updated>
       <workItem from="1703865868302" duration="755000" />
+      <workItem from="1705054537725" duration="4807000" />
+      <workItem from="1705070460876" duration="10452000" />
+      <workItem from="1705124597190" duration="11656000" />
+      <workItem from="1705155808868" duration="8593000" />
+      <workItem from="1705218168230" duration="16335000" />
+      <workItem from="1705297486264" duration="5858000" />
+      <workItem from="1705318919008" duration="720000" />
+      <workItem from="1705332446212" duration="2000" />
+      <workItem from="1705332473136" duration="231000" />
+      <workItem from="1705380410334" duration="10939000" />
+      <workItem from="1705410738809" duration="8850000" />
+      <workItem from="1705463541703" duration="6153000" />
+      <workItem from="1705469829562" duration="5300000" />
+      <workItem from="1705475575631" duration="5241000" />
+      <workItem from="1705489377278" duration="1720000" />
+      <workItem from="1705504456499" duration="9318000" />
+      <workItem from="1705574182546" duration="3874000" />
+      <workItem from="1705578895985" duration="112000" />
+      <workItem from="1705594335772" duration="4748000" />
+      <workItem from="1705600087552" duration="5574000" />
+      <workItem from="1705684981527" duration="2206000" />
+      <workItem from="1705751530867" duration="5253000" />
+      <workItem from="1705779335805" duration="3299000" />
+      <workItem from="1705807589998" duration="3466000" />
+      <workItem from="1705838489251" duration="4117000" />
+      <workItem from="1705861952936" duration="633000" />
+      <workItem from="1705903749382" duration="1950000" />
+      <workItem from="1705912856539" duration="1896000" />
+      <workItem from="1705934293550" duration="5320000" />
+      <workItem from="1705984486966" duration="2616000" />
+      <workItem from="1705987877508" duration="1648000" />
     </task>
     <servers />
   </component>
