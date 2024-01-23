@@ -33,17 +33,20 @@ export const SortingPage: React.FC = () => {
 
   const handleSortButtonClick = async (value: Direction) => {
     setSortDirection(value);
-
-    switch (selectedSortType) {
-      case SortName.select:
-        return value === Direction.Ascending
-            ? selectSortAscending(initialArray, setInitialArray, setIsActive, setIsSortFinished, delay)
-            : selectSortDescending(initialArray, setInitialArray, setIsActive, setIsSortFinished, delay);
-      case SortName.bubble:
-        return value === Direction.Descending
-            ? bubbleSortAscending(initialArray, setInitialArray, setIsActive, setIsSortFinished, delay)
-            : bubbleSortDescending(initialArray, setInitialArray, setIsActive, setIsSortFinished, delay);
-      default:
+    try {
+      switch (selectedSortType) {
+        case SortName.select:
+          return value === Direction.Ascending
+              ? selectSortAscending(initialArray, setInitialArray, setIsActive, setIsSortFinished, delay)
+              : selectSortDescending(initialArray, setInitialArray, setIsActive, setIsSortFinished, delay);
+        case SortName.bubble:
+          return value === Direction.Descending
+              ? bubbleSortAscending(initialArray, setInitialArray, setIsActive, setIsSortFinished, delay)
+              : bubbleSortDescending(initialArray, setInitialArray, setIsActive, setIsSortFinished, delay);
+        default:
+      }
+    } catch (error) {
+      console.error("Ошибка при сортировке:", error);
     }
   };
   const handleSortAscendingClick = () => handleSortButtonClick(Direction.Ascending);
