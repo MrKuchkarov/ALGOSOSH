@@ -10,6 +10,7 @@ import {delay} from "../../utils/delay";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 import {Stack} from "./utils/stack";
 import {useForm} from "../../hooks/useForm";
+import {nanoid} from "nanoid";
 export const StackPage: React.FC = () => {
     const {values, handleChange, setValues} = useForm({
         inputValue: "",
@@ -31,7 +32,8 @@ export const StackPage: React.FC = () => {
             case "add":
                 if (values.inputValue && stackLength < 12) {
                     setIsAdding(true);
-                    stack.push({ item: values.inputValue, state: ElementStates.Changing });
+                    const newItem = { _id: nanoid(7), item: values.inputValue, state: ElementStates.Changing };
+                    stack.push(newItem);
                     setValues({inputValue: ""});
                     setArray([...stackItems]);
                     await delay(SHORT_DELAY_IN_MS);
@@ -126,7 +128,7 @@ export const StackPage: React.FC = () => {
       >
           {array.length > 0 ? (
               array.map((item, index) => (
-                  <li key={index}>
+                  <li key={item._id}>
                       <Circle
                           letter={item.item}
                           tail={index.toString()}

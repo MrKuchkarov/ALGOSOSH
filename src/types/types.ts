@@ -14,6 +14,7 @@ export enum SortName {
 export type TArrayItem = {
     item: number;
     state: ElementStates;
+    _id: string;
 }
 
 export type TQueueItem = TCircleItem & {
