@@ -65,7 +65,7 @@ export const StringReversePage: React.FC = () => {
         />
       </form>
         <ul className={`${styles["list-string-page"]}`}>
-            {array?.map((item: TCircleItem, index) =>
+            {array?.map((item: TCircleItem) =>
                 <li
                     key={item._id}
                 >
