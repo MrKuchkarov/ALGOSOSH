@@ -29,16 +29,13 @@ export const selectSort = async (
             if (compare(newArray[j].item, newArray[indexToCompare].item)) {
                 indexToCompare = j;
             }
-
             newArray[j].state = ElementStates.Default;
             setArray([...newArray]);
         }
-
         swap(newArray, i, indexToCompare);
         newArray[i].state = ElementStates.Modified;
         setArray([...newArray]);
     }
-
     newArray[newArray.length - 1].state = ElementStates.Modified;
     setArray([...newArray]);
     setActive(false);

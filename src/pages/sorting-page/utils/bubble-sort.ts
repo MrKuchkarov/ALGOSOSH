@@ -23,6 +23,7 @@ const bubbleSort = async (
             newArray[j + 1].state = ElementStates.Changing;
             setArray([...newArray]);
             await delayFunction(SHORT_DELAY_IN_MS);
+
             if (compare(newArray[j].item, newArray[j + 1].item)) {
                 swap(newArray, j, j + 1);
             }
@@ -31,7 +32,6 @@ const bubbleSort = async (
         newArray[newArray.length - i - 1].state = ElementStates.Modified;
         setArray([...newArray]);
     }
-
     setActive(false);
     setIsReversed(true);
 };
