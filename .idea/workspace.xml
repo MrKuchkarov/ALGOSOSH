@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/button/button.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/list-page/list-page.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list-page/list-page.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,8 +42,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1703866820" />
+                    <option name="branchName" value="month-13/step-1" />
+                    <option name="lastUsedInstant" value="1707809070" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -88,15 +85,15 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;month-12/step-1&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mr.kuchkorov/Desktop/algososh&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;month-13/step-1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/ALGOSOSH&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/algososh/node_modules/typescript/lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/ALGOSOSH/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -162,6 +159,9 @@
       <workItem from="1707568002972" duration="12000" />
       <workItem from="1707723679954" duration="674000" />
       <workItem from="1707756900457" duration="2259000" />
+      <workItem from="1707808668305" duration="1331000" />
+      <workItem from="1707810432061" duration="342000" />
+      <workItem from="1707810881682" duration="3490000" />
     </task>
     <servers />
   </component>
