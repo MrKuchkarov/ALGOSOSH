@@ -1,11 +1,12 @@
 import {render} from "@testing-library/react";
 import {Circle} from "./circle";
 import {ElementStates} from "../../../types/element-states";
+import {ReactElement} from "react";
 
 type CircleProps = {
     letter?: string;
-    head?: string | JSX.Element;
-    tail?: string | JSX.Element;
+    head?: string | ReactElement;
+    tail?: string | ReactElement;
     index?: number;
     isSmall?: boolean;
     state?: ElementStates;

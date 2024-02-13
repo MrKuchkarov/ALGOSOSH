@@ -95,7 +95,7 @@ exports[`Testing button component Button with text 1`] = `
   <p
     class="text undefined"
   >
-    test text
+    text test
   </p>
 </button>
 `;

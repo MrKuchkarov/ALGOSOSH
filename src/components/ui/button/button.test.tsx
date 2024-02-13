@@ -1,41 +1,47 @@
-import {fireEvent, render, screen, act} from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import { Button } from "./button";
 import { Direction } from "../../../types/direction";
 import React from "react";
+
+type ButtonProps = {
+    text?: string;
+    disabled?: boolean;
+    type?: "button" | "submit" | "reset";
+    sorting?: Direction;
+    sizes?: "small" | "medium" | "big";
+    isLoader?: boolean;
+}
 describe("Testing button component", () => {
-    it("Button with text", () => {
-        const { container } = render(<Button text="test text" />);
+    const testSnapshot = (props: ButtonProps) => {
+        const { container } = render(<Button {...props} />);
         expect(container.firstChild).toMatchSnapshot();
+    };
+    it("Button with text", () => {
+        testSnapshot({ text: "text test" })
     });
 
     it("Button without text", () => {
-        const { container } = render(<Button />);
-        expect(container.firstChild).toMatchSnapshot();
+        testSnapshot({ text: "" })
     });
 
     it("Button disabled", () => {
-        const { container } = render(<Button disabled />);
-        expect(container.firstChild).toMatchSnapshot();
+        testSnapshot({ disabled: true })
     });
 
     it("Button has loading", () => {
-        const { container } = render(<Button isLoader={true} />);
-        expect(container.firstChild).toMatchSnapshot();
+        testSnapshot({ isLoader: true })
     });
 
     it("Button has Ascending", () => {
-        const { container } = render(<Button sorting={Direction.Ascending}/>);
-        expect(container.firstChild).toMatchSnapshot();
+        testSnapshot({ sorting: Direction.Ascending })
     });
 
     it("Button has Descending", () => {
-        const { container } = render(<Button sorting={Direction.Descending}/>);
-        expect(container.firstChild).toMatchSnapshot();
+        testSnapshot({ sorting: Direction.Descending })
     });
 
     it("Button has sizes", () => {
-        const { container } = render(<Button sizes="small" />);
-        expect(container.firstChild).toMatchSnapshot();
+        testSnapshot({ sizes: "small" })
     });
 
     it("Callback should work correctly after click", () => {
