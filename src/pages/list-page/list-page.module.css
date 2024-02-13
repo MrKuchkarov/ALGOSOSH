@@ -46,3 +46,11 @@
     margin: 25px 0;
     color: #5f27cd;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}

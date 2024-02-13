@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/stack-page/stack-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stack-page/stack-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/randomArray.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/randomArray.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/list-page/list-page.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list-page/list-page.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +36,7 @@
   }
 }</component>
   <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
     <option name="recentBranches">
       <RecentBranches>
         <option name="branchesForRepo">
@@ -99,11 +102,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cypress" />
       <recent name="$PROJECT_DIR$/src/pages/string-page/utils" />
       <recent name="$PROJECT_DIR$/src/pages/stack-page/utils" />
       <recent name="$PROJECT_DIR$/src/pages/sorting-page/utils" />
       <recent name="$PROJECT_DIR$/src/pages/queue-page/utils" />
-      <recent name="$PROJECT_DIR$/src/pages/list-page/utils" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -145,7 +148,20 @@
       <workItem from="1705912856539" duration="1896000" />
       <workItem from="1705934293550" duration="5320000" />
       <workItem from="1705984486966" duration="2616000" />
-      <workItem from="1705987877508" duration="1648000" />
+      <workItem from="1705987877508" duration="2070000" />
+      <workItem from="1706001699898" duration="1147000" />
+      <workItem from="1706012170912" duration="1085000" />
+      <workItem from="1706262621230" duration="1611000" />
+      <workItem from="1706584307587" duration="1401000" />
+      <workItem from="1706678424276" duration="1202000" />
+      <workItem from="1707121700053" duration="33000" />
+      <workItem from="1707121742227" duration="1654000" />
+      <workItem from="1707242697903" duration="1682000" />
+      <workItem from="1707244390862" duration="1066000" />
+      <workItem from="1707563510016" duration="8000" />
+      <workItem from="1707568002972" duration="12000" />
+      <workItem from="1707723679954" duration="674000" />
+      <workItem from="1707756900457" duration="2259000" />
     </task>
     <servers />
   </component>
