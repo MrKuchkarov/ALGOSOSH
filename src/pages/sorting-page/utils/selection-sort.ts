@@ -17,6 +17,12 @@ export const selectSort = async (
     setIsReversed(false);
 
     const newArray = [...array]; // Создаем новый массив для изменений
+    if (newArray.length <= 1) {
+        // Если массив пустой или содержит только один элемент, завершаем выполнение функции
+        setActive(false);
+        setIsReversed(true);
+        return;
+    }
 
     for (let i = 0; i < newArray.length - 1; i++) {
         let indexToCompare = i;

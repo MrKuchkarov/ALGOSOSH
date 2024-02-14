@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/constants/testing.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/sorting-page/utils/selection-sort.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sorting-page/utils/selection-sort.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +164,9 @@
       <workItem from="1707810432061" duration="342000" />
       <workItem from="1707810881682" duration="3917000" />
       <workItem from="1707818496010" duration="1385000" />
-      <workItem from="1707835075834" duration="9681000" />
+      <workItem from="1707835075834" duration="9910000" />
+      <workItem from="1707855999804" duration="240000" />
+      <workItem from="1707890239241" duration="2314000" />
     </task>
     <servers />
   </component>
