@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/sorting-page/utils/bubble-sort.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sorting-page/utils/bubble-sort.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +91,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/ALGOSOSH/node_modules/react-scripts&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/ALGOSOSH/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -165,7 +166,25 @@
       <workItem from="1707835075834" duration="9910000" />
       <workItem from="1707855999804" duration="240000" />
       <workItem from="1707890239241" duration="3608000" />
-      <workItem from="1707898820696" duration="5527000" />
+      <workItem from="1707898820696" duration="5705000" />
+      <workItem from="1707932510133" duration="555000" />
+      <workItem from="1707933281739" duration="5000" />
+      <workItem from="1707933308643" duration="11000" />
+      <workItem from="1707933542101" duration="3000" />
+      <workItem from="1707933610365" duration="2000" />
+      <workItem from="1707933692525" duration="10000" />
+      <workItem from="1707934765016" duration="20000" />
+      <workItem from="1707934919264" duration="19000" />
+      <workItem from="1707938589759" duration="48000" />
+      <workItem from="1707938643566" duration="2000" />
+      <workItem from="1707938673324" duration="61000" />
+      <workItem from="1707938759640" duration="7000" />
+      <workItem from="1707938880807" duration="5000" />
+      <workItem from="1707938910417" duration="1000" />
+      <workItem from="1707939293776" duration="7000" />
+      <workItem from="1707939396515" duration="23000" />
+      <workItem from="1707939435762" duration="21000" />
+      <workItem from="1707939472501" duration="122000" />
     </task>
     <servers />
   </component>
