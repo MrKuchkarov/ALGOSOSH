@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/cypress/e2e/string.cy.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/routing.cy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/routing.cy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +66,10 @@
         <option name="url" value="git@github.com:yandex-praktikum/algososh.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/cypress/e2e/is-available.cy.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/cypress/e2e/routing.cy.ts" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -185,6 +191,7 @@
       <workItem from="1707939396515" duration="23000" />
       <workItem from="1707939435762" duration="21000" />
       <workItem from="1707939472501" duration="122000" />
+      <workItem from="1707985789487" duration="1000" />
     </task>
     <servers />
   </component>

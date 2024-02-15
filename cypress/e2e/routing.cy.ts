@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 import {TEST_URL} from "../../src/constants/testing"
 describe("App works correctly with routes", function() {
   before(function() {
