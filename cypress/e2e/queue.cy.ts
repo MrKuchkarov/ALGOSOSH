@@ -34,10 +34,10 @@ describe("queue", () => {
             .and("contain", "tail");
 
        addElements(values[1]);
-       cy.get("@circle").each((element, idx) => {
-           idx === 1 && expect(element.text()).to.contain(values[1]);
-           idx === 0 && expect(element.text()).to.contain("head");
-           idx === 1 && expect(element.text()).to.contain("tail");
+       cy.get("@circle").each((element, index) => {
+           index === 1 && expect(element.text()).to.contain(values[1]);
+           index === 0 && expect(element.text()).to.contain("head");
+           index === 1 && expect(element.text()).to.contain("tail");
        })
     });
 
@@ -46,9 +46,9 @@ describe("queue", () => {
         addElements(values[1])
         cy.get("[class*=circle_content").as("circle");
         removeElements(values[0]);
-        cy.get("@circle").each((element, idx) => {
-            idx === 0 && expect(element.text()).to.contain(values[0]);
-            if (idx === 1) {
+        cy.get("@circle").each((element, index) => {
+            index === 0 && expect(element.text()).to.contain(values[0]);
+            if (index === 1) {
                 expect(element.text()).to.contain(values[1]);
                 expect(element.text()).to.contain("tail");
             }
