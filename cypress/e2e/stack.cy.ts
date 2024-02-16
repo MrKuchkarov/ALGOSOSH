@@ -13,6 +13,7 @@ const removeElements = (value: string[]) => {
     cy.contains("button", "Удалить").click();
     cy.get("[class*=circle_changing]").contains(value);
     cy.get("[class*=circle_circle]").each((element, index) => {
+        //@ts-ignore
         if (index === length - 1) {
             expect(element.text()).to.contains(value);
         }
@@ -43,11 +44,11 @@ describe("stack", () => {
             })
         })
     });
+
     it("Element should be removing correctly", () => {
         value.forEach((item: string) => addElements(item));
         cy.get("[class*=circle_content]").as("circle");
         removeElements(value[2]);
-
         cy.get("@circle")
             .should("have.length", 2)
             .each((element, idx) => {
