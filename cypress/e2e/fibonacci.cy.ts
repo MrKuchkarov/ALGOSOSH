@@ -12,7 +12,7 @@ describe("fibonacci", () => {
         cy.get("input").type("3");
         cy.contains("Расчитать").click();
 
-        const expectedNumbers: number[] = [1, 1, 2, 3];
+        const expectedNumbers: any = [1, 1, 2, 3];
         cy.get("[class^=circle_circle]")
             .should("have.length", expectedNumbers.length)
             .each((el, index) => {
