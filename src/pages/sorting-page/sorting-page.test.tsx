@@ -4,7 +4,14 @@ import {
     arrayWithItems,
     resultArrayWithItemsAsc,
     arrayWithOneItem,
-    resultArrayWithItemsDesc
+    resultArrayWithItemsDesc,
+    arrayNegativeWithItems,
+    resultArrayWithNegativesAsc,
+    arrayWithOneNegativeItem,
+    resultArrayWithNegativesDesc,
+    resultMixedArrayAsc,
+    arrayMixedWithItems,
+    resultMixedArrayDesc
 } from "../../constants/testing";
 import {delay} from "../../utils/delay";
 
@@ -82,5 +89,78 @@ describe("Bubble sort descending", () => {
     it("Should be correct with items", async () => {
         await bubbleSortDescending(arrayWithItems, setArray, setActive, setIsReversed);
         expect(setArray).toHaveBeenLastCalledWith(resultArrayWithItemsAsc);
+    });
+})
+
+
+describe("Selection sort negative ascending", () => {
+    it("Should be correct with only one item", async () => {
+        await selectSortAscending(arrayWithOneNegativeItem, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenCalledTimes(0);
+    });
+    it("Should be correct with items", async () => {
+        await selectSortAscending(arrayNegativeWithItems, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenLastCalledWith(resultArrayWithNegativesAsc);
+    });
+});
+
+describe("Selection sort negative descending", () => {
+    it( "Should be correct with only one item", async () => {
+        await selectSortDescending(arrayWithOneNegativeItem, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenCalledTimes(0);
+    });
+    it("Should be correct with items", async () => {
+        await selectSortDescending(arrayNegativeWithItems, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenLastCalledWith(resultArrayWithNegativesDesc)
+    });
+});
+
+describe("Bubble sort negative ascending", () => {
+    it("Should be correct with only one item", async () => {
+        await bubbleSortAscending(arrayWithOneNegativeItem, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenCalledTimes(0);
+    });
+    it("Should be correct with items", async () => {
+        await bubbleSortAscending(arrayNegativeWithItems, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenLastCalledWith(resultArrayWithNegativesDesc);
+    });
+});
+
+describe("Bubble sort negative descending", () => {
+    it("Should be correct with only one item", async () => {
+        await bubbleSortDescending(arrayWithOneNegativeItem, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenCalledTimes(0);
+    });
+    it("Should be correct with items", async () => {
+        await bubbleSortDescending(arrayNegativeWithItems, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenLastCalledWith(resultArrayWithNegativesAsc);
+    });
+})
+
+describe("Selection sort mixed ascending", () => {
+    it("Should be correct with items", async () => {
+        await selectSortAscending(arrayMixedWithItems, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenLastCalledWith(resultMixedArrayAsc);
+    });
+});
+
+describe("Selection sort mixed descending", () => {
+    it("Should be correct with items", async () => {
+        await selectSortDescending(arrayMixedWithItems, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenLastCalledWith(resultMixedArrayDesc)
+    });
+});
+
+describe("Bubble sort mixed ascending", () => {
+    it("Should be correct with items", async () => {
+        await bubbleSortAscending(arrayMixedWithItems, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenLastCalledWith(resultMixedArrayDesc);
+    });
+});
+
+describe("Bubble sort mixed descending", () => {
+    it("Should be correct with items", async () => {
+        await bubbleSortDescending(arrayMixedWithItems, setArray, setActive, setIsReversed);
+        expect(setArray).toHaveBeenLastCalledWith(resultMixedArrayAsc);
     });
 })
