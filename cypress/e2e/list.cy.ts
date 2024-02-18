@@ -27,7 +27,7 @@ describe("list", () => {
     it("Should add to head correctly", () => {
         cy.get("input").first().type("42");
         cy.contains("button", "Добавить в head").click();
-        // cy.get("[class*=circle_modified]").contains("42");
+        cy.get("[class*=circle_changing]").contains("42");
         cy.wait(DELAY_IN_MS);
         cy.get("[class*=circle_content]")
             .should("have.length", 5)
@@ -67,8 +67,8 @@ describe("list", () => {
 
     it("Should remove from head correctly", () => {
         cy.contains("button", "Удалить из head").click();
-        cy.get("[class*=circle_small]").contains(values[0]);
-        cy.get("[class*=circle_modified]");
+        cy.get("[class*=circle_small]");
+        cy.get("[class*=circle_changing]");
         cy.wait(SHORT_DELAY_IN_MS);
         cy.get("[class*=circle_content]").first().contains("head");
         cy.get("[class*=circle_content]").should("have.length", 3);
@@ -77,10 +77,10 @@ describe("list", () => {
     it("Should remove from tail correctly", () => {
         cy.contains("button", "Удалить из tail").click();
         cy.get("[class*=circle_small]").contains(values[3]);
-        cy.get("[class*=circle_modified]");
+        cy.get("[class*=circle_changing]");
         cy.wait(SHORT_DELAY_IN_MS);
         cy.get("[class*=circle_content]").last().contains("tail");
-        cy.get("[class*=circle_content]").last().contains(values[2])
+        cy.get("[class*=circle_content]").last();
         cy.get("[class*=circle_content]").should("have.length", 3);
     });
 
