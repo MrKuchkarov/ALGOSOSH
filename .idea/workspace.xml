@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/cypress/e2e/queue.cy.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/e2e/list.cy.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/e2e/stack.cy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/stack.cy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/testing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/testing.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +195,11 @@
       <workItem from="1707993973620" duration="1161000" />
       <workItem from="1707997082502" duration="49000" />
       <workItem from="1708017346897" duration="7161000" />
-      <workItem from="1708069789027" duration="2879000" />
+      <workItem from="1708069789027" duration="3232000" />
+      <workItem from="1708080281219" duration="689000" />
+      <workItem from="1708089882245" duration="1418000" />
+      <workItem from="1708108416401" duration="8616000" />
+      <workItem from="1708236761600" duration="2314000" />
     </task>
     <servers />
   </component>

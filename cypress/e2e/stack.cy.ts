@@ -9,7 +9,7 @@ const addElements = (value: string) => {
   cy.get("[class*=circle_default]").contains(value);
 };
 
-const removeElements = (value: string[]) => {
+const removeElements = (value: string) => {
     cy.contains("button", "Удалить").click();
     cy.get("[class*=circle_changing]").contains(value);
     cy.get("[class*=circle_circle]").each((element, index) => {
@@ -19,8 +19,8 @@ const removeElements = (value: string[]) => {
         }
     });
 }
-const value: any = ["a", "b", "c"];
 
+const value: any = ["a", "b", "c"];
 describe("stack", () => {
     beforeEach(() => {
         cy.visit(`${TEST_URL}/stack`);
