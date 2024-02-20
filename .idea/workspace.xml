@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/testing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/testing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/fibonacci.cy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/fibonacci.cy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/delays.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/delays.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +97,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs.jest.jest_package&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/ALGOSOSH/node_modules/react-scripts&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/ALGOSOSH/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -198,7 +199,12 @@
       <workItem from="1708080281219" duration="689000" />
       <workItem from="1708089882245" duration="1418000" />
       <workItem from="1708108416401" duration="8616000" />
-      <workItem from="1708236761600" duration="12743000" />
+      <workItem from="1708236761600" duration="15353000" />
+      <workItem from="1708285209093" duration="396000" />
+      <workItem from="1708285966838" duration="113000" />
+      <workItem from="1708286092914" duration="83000" />
+      <workItem from="1708286180990" duration="108000" />
+      <workItem from="1708355696921" duration="1398000" />
     </task>
     <servers />
   </component>
