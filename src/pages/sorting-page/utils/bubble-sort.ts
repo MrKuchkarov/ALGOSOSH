@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import { ElementStates } from "../../../types/element-states";
 import {SHORT_DELAY_IN_MS} from "../../../constants/delays";
 import { swap } from "../../../utils/swap";
+import {delay} from "../../../utils/delay";
 
 const bubbleSort = async (
     array: TArrayItem[],
@@ -10,12 +11,18 @@ const bubbleSort = async (
     setActive: Dispatch<SetStateAction<boolean>>,
     setIsReversed: Dispatch<SetStateAction<boolean>>,
     compare: (a: number, b: number) => boolean,
-    delayFunction: (ms: number) => Promise<void>
+    delayFunction: (ms: number) => Promise<void> = delay
 ) => {
     setActive(true);
     setIsReversed(false);
 
     const newArray = [...array]; // Создаем новый массив для изменений
+    if (newArray.length <= 1) {
+        // Если массив пустой или содержит только один элемент, завершаем выполнение функции
+        setActive(false);
+        setIsReversed(true);
+        return;
+    }
 
     for (let i = 0; i < newArray.length; i++) {
         for (let j = 0; j < newArray.length - i - 1; j++) {
@@ -41,7 +48,7 @@ export const bubbleSortAscending = async (
     setArray: Dispatch<SetStateAction<TArrayItem[]>>,
     setActive: Dispatch<SetStateAction<boolean>>,
     setIsReversed: Dispatch<SetStateAction<boolean>>,
-    delayFunction: (ms: number) => Promise<void>
+    delayFunction: (ms: number) => Promise<void> = delay
 ) => {
     const newArray = [...array]; // Создаем новый массив для изменений
     await bubbleSort(newArray, setArray, setActive, setIsReversed, (a, b) => a < b, delayFunction);
@@ -52,7 +59,7 @@ export const bubbleSortDescending = async (
     setArray: Dispatch<SetStateAction<TArrayItem[]>>,
     setActive: Dispatch<SetStateAction<boolean>>,
     setIsReversed: Dispatch<SetStateAction<boolean>>,
-    delayFunction: (ms: number) => Promise<void>
+    delayFunction: (ms: number) => Promise<void> = delay
 ) => {
     const newArray = [...array]; // Создаем новый массив для изменений
     await bubbleSort(newArray, setArray, setActive, setIsReversed, (a, b) => a > b, delayFunction);

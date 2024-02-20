@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45d62840-55a8-460c-a324-8b2469cbb258" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/list-page/list-page.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list-page/list-page.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/fibonacci.cy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/fibonacci.cy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/delays.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/delays.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +41,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1703866820" />
+                    <option name="branchName" value="month-13/step-1" />
+                    <option name="lastUsedInstant" value="1707809070" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -69,6 +65,10 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/cypress/e2e/is-available.cy.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/cypress/e2e/routing.cy.ts" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -88,15 +88,17 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;month-12/step-1&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mr.kuchkorov/Desktop/algososh&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;month-13/step-1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/ALGOSOSH&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/ALGOSOSH/node_modules/react-scripts&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/algososh/node_modules/typescript/lib&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/mr.kuchkorov/Desktop/Projects/ALGOSOSH/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -162,6 +164,47 @@
       <workItem from="1707568002972" duration="12000" />
       <workItem from="1707723679954" duration="674000" />
       <workItem from="1707756900457" duration="2259000" />
+      <workItem from="1707808668305" duration="1331000" />
+      <workItem from="1707810432061" duration="342000" />
+      <workItem from="1707810881682" duration="3917000" />
+      <workItem from="1707818496010" duration="1385000" />
+      <workItem from="1707835075834" duration="9910000" />
+      <workItem from="1707855999804" duration="240000" />
+      <workItem from="1707890239241" duration="3608000" />
+      <workItem from="1707898820696" duration="5705000" />
+      <workItem from="1707932510133" duration="555000" />
+      <workItem from="1707933281739" duration="5000" />
+      <workItem from="1707933308643" duration="11000" />
+      <workItem from="1707933542101" duration="3000" />
+      <workItem from="1707933610365" duration="2000" />
+      <workItem from="1707933692525" duration="10000" />
+      <workItem from="1707934765016" duration="20000" />
+      <workItem from="1707934919264" duration="19000" />
+      <workItem from="1707938589759" duration="48000" />
+      <workItem from="1707938643566" duration="2000" />
+      <workItem from="1707938673324" duration="61000" />
+      <workItem from="1707938759640" duration="7000" />
+      <workItem from="1707938880807" duration="5000" />
+      <workItem from="1707938910417" duration="1000" />
+      <workItem from="1707939293776" duration="7000" />
+      <workItem from="1707939396515" duration="23000" />
+      <workItem from="1707939435762" duration="21000" />
+      <workItem from="1707939472501" duration="122000" />
+      <workItem from="1707985789487" duration="1000" />
+      <workItem from="1707992591159" duration="1372000" />
+      <workItem from="1707993973620" duration="1161000" />
+      <workItem from="1707997082502" duration="49000" />
+      <workItem from="1708017346897" duration="7161000" />
+      <workItem from="1708069789027" duration="3232000" />
+      <workItem from="1708080281219" duration="689000" />
+      <workItem from="1708089882245" duration="1418000" />
+      <workItem from="1708108416401" duration="8616000" />
+      <workItem from="1708236761600" duration="15353000" />
+      <workItem from="1708285209093" duration="396000" />
+      <workItem from="1708285966838" duration="113000" />
+      <workItem from="1708286092914" duration="83000" />
+      <workItem from="1708286180990" duration="108000" />
+      <workItem from="1708355696921" duration="1398000" />
     </task>
     <servers />
   </component>

@@ -12,9 +12,9 @@ export enum SortName {
 }
 
 export type TArrayItem = {
+    _id?: string;
     item: number;
     state: ElementStates;
-    _id: string;
 }
 
 export type TQueueItem = TCircleItem & {
